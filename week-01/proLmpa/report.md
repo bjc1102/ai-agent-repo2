@@ -1,6 +1,6 @@
 # LLM 호출 실험 결과
 
-## E1. effort low vs high
+## E1. effort low vs high (생성 설정)
 
 - 모델: claude-sonnet-5-5 / SDK: anthropic 2.3.0
 - 바꾼 조건: output_config.effort (low / high)
@@ -17,11 +17,13 @@
 | effort=high | 2 | end_turn | 122/465 | 3.29 | {"format_ok": true, "answer": 8003, "correct": true} | - | 1부터 200까지에서 3의 배수의 합, 5의 배수의 합, 15의 배수의 합을 각각 구한다. ⏎  ⏎ - 3의 배수: 3×1 ~ 3×66(=198)이므로 합은 3 × (66×67/2) = 3 × 2211 = 6633 ⏎ - 5의 배수: 5×1 ~ 5×40(=200)이므로 합은 5 × (4… |
 | effort=high | 3 | end_turn | 122/422 | 3.4 | {"format_ok": true, "answer": 8003, "correct": true} | - | 1부터 200까지에서 3의 배수의 합, 5의 배수의 합, 15의 배수의 합을 구한다. 3 또는 5의 배수이면서 15의 배수가 아닌 수의 합은 (3의 배수의 합) + (5의 배수의 합) − 2×(15의 배수의 합)이다. ⏎  ⏎ 3 또는 5로 나누어떨어지는 수의 합은 (3의 배수의 합) … |
 
-**관찰 (직접 작성, 3~5줄)**
+**관찰**
 
-- 
+- 직관적인 산수 문제에 있어 'effort' 조건은 정답률(정확도)에 영향을 미치지 않는다. (effort=low/high 모두 정답률 100%)
+- 대신 effort=high는 절차를 세세히 설명하기 위해 결과를 출력하는데 low보다 ~20% 가량 더 많은 토큰을 소모했다.
+- 결론적으로 effort 조건은 단순하고 잘 정리된 문제에 대해서는 답변의 **분량**에만 유의미한 영향을 주는 것으로 확인된다.
 
-## E2. zero-shot vs few-shot
+## E2. zero-shot vs few-shot (예시)
 
 - 모델: claude-sonnet-5-5 / SDK: anthropic 2.3.0
 - 바꾼 조건: 예시 3개 포함 여부
@@ -41,11 +43,14 @@
 - zero-shot: 서로 다른 라벨 조합 2종 → 부정/긍정/중립/부정/긍정, 중립/긍정/중립/부정/긍정
 - few-shot: 서로 다른 라벨 조합 1종 → 부정/긍정/중립/부정/긍정
 
-**관찰 (직접 작성, 3~5줄)**
+**관찰**
 
-- 
+- zero-shot: 1번 리뷰 ("배우 연기는 좋았는데 결말이 너무 허무했다.")에 대해서는 부정/중립으로 라벨 구분이 나뉘었다.
+- few-shot: 3번의 실행 전체에 있어서 동일한 패턴이 발견되었다. (100% 동일)
+- Few-shot 예시는 감정 분류의 모호성을 제거했다. 하지만 이로 인해 zero-shot 보다 입력에 대해 ~48% 가량 더 많은 토큰을 소모했다.
+- 때문에 실제 운영 환경에서 few-shot은 혼합 감정 분석 같은 경계 분석에 대해 일관된 결과를 제공하는 것이 (요청 당 토큰 소모량보다) 더 중요할 때 적합한 것으로 보인다.
 
-## E3. 프롬프트 JSON 지시 vs 구조화 출력
+## E3. 프롬프트 JSON 지시 vs 구조화 출력 (출력 형식)
 
 - 모델: claude-sonnet-5-5 / SDK: anthropic 2.3.0
 - 바꾼 조건: output_config.format(JSON 스키마) 지정 여부
@@ -62,11 +67,12 @@
 | json_schema | 2 | end_turn | 493/49 | 1.23 | {"json_ok": true, "keys_ok": true, "budget_ok": true} | - | {"date":"2026-03-12","organization":"디지털정책과","budget_krw":450000000,"deadline":"2026-06-30"} |
 | json_schema | 3 | end_turn | 493/49 | 1.02 | {"json_ok": true, "keys_ok": true, "budget_ok": true} | - | {"date":"2026-03-12","organization":"디지털정책과","budget_krw":450000000,"deadline":"2026-06-30"} |
 
-**관찰 (직접 작성, 3~5줄)**
+**관찰**
 
-- 
+- Prompt-only와 json_schema의 두 접근 방식 모두 JSON 형식을 출력했지만, deadline 필드 값을 완전히 통일시키진 못했다. (type: string)
+- json_schema는 입력 토큰을 493개 소모하였고, 이는 prompt-only의 것보다 ~100% 가량 더 많은 토큰을 소모했다.
 
-## E4. temperature 지정 시 동작 확인
+## E4. temperature 지정 시 동작 확인 (생성 설정)
 
 - 모델: claude-sonnet-5-5 / SDK: anthropic 2.3.0
 - 바꾼 조건: temperature 파라미터 지정 여부 (미지정 / 0.7)
@@ -76,9 +82,6 @@
 
 | 조건 | 회차 | stop_reason | 입력/출력 토큰 | 지연(s) | 자동 점검 | 오류 | 응답 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| no-temperature | 1 | end_turn | 44/86 | 1.92 | {} | - | LLM(대규모 언어 모델)은 방대한 양의 텍스트 데이터로 학습하여 사람의 언어를 이해하고 문장을 생성하거나 질문에 답할 수 있는 인공지능 모델입니다. |
-| no-temperature | 2 | end_turn | 44/84 | 1.79 | {} | - | LLM(대규모 언어 모델)은 방대한 텍스트 데이터를 학습해 문맥을 이해하고 사람처럼 글을 이해·생성할 수 있도록 만들어진 인공지능 모델입니다. |
-| no-temperature | 3 | end_turn | 44/110 | 1.76 | {} | - | LLM(대규모 언어 모델)은 방대한 양의 텍스트 데이터를 학습해 사람의 언어를 이해하고 문장을 생성하며 질문에 답하거나 번역·요약 같은 다양한 언어 작업을 수행할 수 있는 인공지능 모델입니다. |
 | no-temperature | 1 | end_turn | 44/88 | 2.02 | {} | - | LLM(대규모 언어 모델)은 방대한 양의 텍스트 데이터로 학습하여 문맥을 이해하고 사람처럼 글을 생성·요약·번역·답변할 수 있는 인공지능 모델입니다. |
 | no-temperature | 2 | end_turn | 44/100 | 1.7 | {} | - | LLM(대규모 언어 모델)은 방대한 텍스트 데이터를 학습하여 사람의 언어를 이해하고 문장을 생성하며 질문에 답하는 등 다양한 언어 작업을 수행할 수 있는 인공지능 모델입니다. |
 | no-temperature | 3 | end_turn | 44/77 | 1.6 | {} | - | LLM(대규모 언어 모델)은 방대한 양의 텍스트 데이터로 학습하여 사람의 언어를 이해하고 생성할 수 있도록 만든 인공지능 모델입니다. |
@@ -86,9 +89,11 @@
 | temperature=0.7 | 2 | - | - | 0.0 | - | None: TypeError: Messages.create() got an unexpected keyword argument 'temperature' | - |
 | temperature=0.7 | 3 | - | - | 0.0 | - | None: TypeError: Messages.create() got an unexpected keyword argument 'temperature' | - |
 
-**관찰 (직접 작성, 3~5줄)**
+**관찰**
 
-- 
+- temperature=0.7 조건은 API 호출 전 SDK 레벨에서 TypeError로 차단되어 3회 모두 실패했다. effort 기반 API에서 temperature는 effort 파라미터로 대체되는 구조로 설계된 것으로 보인다.
+- no-temperature 조건에서도 출력 토큰 수(77~110)와 문장 표현이 실행마다 달라, 명시적 설정 없이도 모델 자체의 비결정성이 존재하는 것으로 보인다.
+- 결론: output_config API 사용 시 temperature는 사용 불가하며, 출력 다양성 제어가 필요하다면 effort를 활용해야 한다.
 
 ## E5. effort 전 단계 비교 (low/medium/high/xhigh/max)
 
