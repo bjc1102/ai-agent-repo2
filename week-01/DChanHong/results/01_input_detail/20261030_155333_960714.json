@@ -1,0 +1,1010 @@
+{
+  "experiment": "01_input_detail",
+  "started_at": "2026-10-30T15:53:33.960714+09:00",
+  "sdk_version": "3.41.0",
+  "request_settings": {
+    "model": "gpt-6-luna",
+    "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+    "reasoning": {
+      "effort": "none"
+    },
+    "max_output_tokens": 2000,
+    "store": false
+  },
+  "client_settings": {
+    "max_retries": 0,
+    "timeout_seconds": 60
+  },
+  "records": [
+    {
+      "sequence": 1,
+      "requested_at": "2026-10-30T15:53:47.942749+09:00",
+      "input": "결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 1,
+      "status": "completed",
+      "answer": "결제 후에도 블랙 큐브가 지급되지 않아 불편을 드려 죄송합니다.\n\n먼저 캐시샵을 닫았다가 다시 열어 보시고, **캐시 보관함**에 아이템이 들어와 있는지 확인해 주세요. 캐시 보관함에 있다면 해당 캐릭터의 인벤토리로 옮기시면 됩니다. 다른 월드나 캐릭터로 접속해 구매한 경우에도 캐시 보관함을 확인해 주세요.\n\n계속 보이지 않는다면 결제 내역에서 결제 완료 여부를 확인한 뒤, **결제 시간·구매한 서버와 캐릭터·주문번호**를 준비해 넥슨 고객센터에 문의해 주세요. 중복 구매는 우선 피해주세요.",
+      "response": {
+        "id": "resp_08f46326eb21cfc4016ae43efd44bc87d2969a1491613a88a6",
+        "access_programs": null,
+        "created_at": 1793343229.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_08f46326eb21cfc4016ae43f00b22887d28494bef39fc62161",
+            "content": [
+              {
+                "annotations": [],
+                "text": "결제 후에도 블랙 큐브가 지급되지 않아 불편을 드려 죄송합니다.\n\n먼저 캐시샵을 닫았다가 다시 열어 보시고, **캐시 보관함**에 아이템이 들어와 있는지 확인해 주세요. 캐시 보관함에 있다면 해당 캐릭터의 인벤토리로 옮기시면 됩니다. 다른 월드나 캐릭터로 접속해 구매한 경우에도 캐시 보관함을 확인해 주세요.\n\n계속 보이지 않는다면 결제 내역에서 결제 완료 여부를 확인한 뒤, **결제 시간·구매한 서버와 캐릭터·주문번호**를 준비해 넥슨 고객센터에 문의해 주세요. 중복 구매는 우선 피해주세요.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793343234.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 89,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 172,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 261
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 2,
+      "requested_at": "2026-10-30T16:51:05.322287+09:00",
+      "input": "결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 2,
+      "status": "completed",
+      "answer": "불편을 드려 죄송합니다. 먼저 캐시샵을 나갔다가 다시 들어오거나, 캐시 보관함에서 아이템을 수령했는지 확인해 주세요. 블랙 큐브는 구매 후 캐시 보관함에 들어가며, 캐릭터 인벤토리로 옮겨야 사용할 수 있습니다.\n\n그래도 확인되지 않는다면 구매 내역에서 결제 완료 여부와 구매한 월드·캐릭터를 확인해 주세요. 결제 완료인데도 아이템이 없다면 결제 시각, 상품명, 결제 수단을 준비해 넥슨 고객센터에 문의해 주시면 확인에 도움이 됩니다.",
+      "response": {
+        "id": "resp_03ec8b48ffcbf0d5016ae44c6a5ee887d2bfa5d1409728dfcb",
+        "access_programs": null,
+        "created_at": 1793346666.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_03ec8b48ffcbf0d5016ae44c6ccac887d29d2da43d64f94a41",
+            "content": [
+              {
+                "annotations": [],
+                "text": "불편을 드려 죄송합니다. 먼저 캐시샵을 나갔다가 다시 들어오거나, 캐시 보관함에서 아이템을 수령했는지 확인해 주세요. 블랙 큐브는 구매 후 캐시 보관함에 들어가며, 캐릭터 인벤토리로 옮겨야 사용할 수 있습니다.\n\n그래도 확인되지 않는다면 구매 내역에서 결제 완료 여부와 구매한 월드·캐릭터를 확인해 주세요. 결제 완료인데도 아이템이 없다면 결제 시각, 상품명, 결제 수단을 준비해 넥슨 고객센터에 문의해 주시면 확인에 도움이 됩니다.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793346670.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 89,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 148,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 237
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 3,
+      "requested_at": "2026-10-30T16:56:49.532004+09:00",
+      "input": "결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 3,
+      "status": "completed",
+      "answer": "결제 후 아이템이 지급되지 않아 불편을 드려 죄송합니다. 먼저 캐릭터를 재접속한 뒤, 캐시 보관함과 인벤토리의 **캐시·소비·기타 탭**을 확인해 주세요. 캐시샵에서 구매하셨다면 아이템이 캐시 보관함에 들어와 있을 수 있습니다.\n\n그래도 보이지 않으면 결제 내역에서 결제가 완료됐는지 확인해 주세요. **결제 시각, 상품명(블랙 큐브인지 여부), 월드·캐릭터명, 결제 수단과 주문번호**를 준비해 메이플스토리 고객센터의 결제/아이템 미지급 문의로 접수해 주시면 확인을 도와드릴 수 있습니다. 중복 결제 방지를 위해 같은 상품을 다시 구매하기 전에는 지급 여부를 먼저 확인해 주세요.",
+      "response": {
+        "id": "resp_054d14e954f9e60f016ae44dc20ec887d285251f015dec8dc5",
+        "access_programs": null,
+        "created_at": 1793347010.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_054d14e954f9e60f016ae44dc3504887d2bb843127431b4b08",
+            "content": [
+              {
+                "annotations": [],
+                "text": "결제 후 아이템이 지급되지 않아 불편을 드려 죄송합니다. 먼저 캐릭터를 재접속한 뒤, 캐시 보관함과 인벤토리의 **캐시·소비·기타 탭**을 확인해 주세요. 캐시샵에서 구매하셨다면 아이템이 캐시 보관함에 들어와 있을 수 있습니다.\n\n그래도 보이지 않으면 결제 내역에서 결제가 완료됐는지 확인해 주세요. **결제 시각, 상품명(블랙 큐브인지 여부), 월드·캐릭터명, 결제 수단과 주문번호**를 준비해 메이플스토리 고객센터의 결제/아이템 미지급 문의로 접수해 주시면 확인을 도와드릴 수 있습니다. 중복 결제 방지를 위해 같은 상품을 다시 구매하기 전에는 지급 여부를 먼저 확인해 주세요.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793347013.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 89,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 197,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 286
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 4,
+      "requested_at": "2026-10-30T16:56:59.378784+09:00",
+      "input": "블랙 큐브를 결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 1,
+      "status": "completed",
+      "answer": "불편을 드려 죄송합니다. 먼저 캐시샵에서 **구매가 정상 완료됐는지** 확인해 주세요. 구매가 완료됐다면 캐시 보관함에 블랙 큐브가 있는지 살펴보고, 보관함에 있다면 해당 캐릭터로 이동해 주세요.\n\n캐시 보관함에도 없다면 게임을 재접속한 뒤 다시 확인해 보시고, 계속 확인되지 않으면 **결제 내역과 구매 시각, 월드·캐릭터명**을 준비해 메이플스토리 고객센터에 문의해 주세요. 결제만 완료되고 상품이 지급되지 않은 경우에는 구매 내역 확인이 필요합니다.",
+      "response": {
+        "id": "resp_0e0dd63461d20b5d016ae44dcbb63087d2bf613bdb51b1dc44",
+        "access_programs": null,
+        "created_at": 1793347019.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_0e0dd63461d20b5d016ae44dcd9b7c87d28a2992d7180ef777",
+            "content": [
+              {
+                "annotations": [],
+                "text": "불편을 드려 죄송합니다. 먼저 캐시샵에서 **구매가 정상 완료됐는지** 확인해 주세요. 구매가 완료됐다면 캐시 보관함에 블랙 큐브가 있는지 살펴보고, 보관함에 있다면 해당 캐릭터로 이동해 주세요.\n\n캐시 보관함에도 없다면 게임을 재접속한 뒤 다시 확인해 보시고, 계속 확인되지 않으면 **결제 내역과 구매 시각, 월드·캐릭터명**을 준비해 메이플스토리 고객센터에 문의해 주세요. 결제만 완료되고 상품이 지급되지 않은 경우에는 구매 내역 확인이 필요합니다.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793347023.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 95,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 151,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 246
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 5,
+      "requested_at": "2026-10-30T16:57:06.310246+09:00",
+      "input": "블랙 큐브를 결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 2,
+      "status": "completed",
+      "answer": "불편을 드려 죄송합니다. 먼저 **캐시샵 구매 내역**과 **캐시 보관함**을 확인해 주세요. 캐시 보관함에 있다면 아이템을 받을 캐릭터로 이동한 뒤 인벤토리에서 확인하실 수 있습니다.\n\n구매 내역에는 결제가 완료됐는데 캐시 보관함에도 없다면, 게임에서 로그아웃한 뒤 다시 접속해 확인해 주세요. 그래도 보이지 않으면 **구매 시각, 결제 수단, 주문번호(또는 결제 내역), 서버·캐릭터명**을 준비해 메이플스토리 고객센터에 문의해 주시면 확인을 도와드릴 수 있습니다. 결제가 완료되지 않았거나 취소된 경우에는 아이템이 지급되지 않을 수 있으니 결제 상태도 함께 확인해 주세요.",
+      "response": {
+        "id": "resp_013025af6a737021016ae44dd2796487d2b5a89a6ed0768006",
+        "access_programs": null,
+        "created_at": 1793347026.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_013025af6a737021016ae44dd4dc2887d28086966baecdea8c",
+            "content": [
+              {
+                "annotations": [],
+                "text": "불편을 드려 죄송합니다. 먼저 **캐시샵 구매 내역**과 **캐시 보관함**을 확인해 주세요. 캐시 보관함에 있다면 아이템을 받을 캐릭터로 이동한 뒤 인벤토리에서 확인하실 수 있습니다.\n\n구매 내역에는 결제가 완료됐는데 캐시 보관함에도 없다면, 게임에서 로그아웃한 뒤 다시 접속해 확인해 주세요. 그래도 보이지 않으면 **구매 시각, 결제 수단, 주문번호(또는 결제 내역), 서버·캐릭터명**을 준비해 메이플스토리 고객센터에 문의해 주시면 확인을 도와드릴 수 있습니다. 결제가 완료되지 않았거나 취소된 경우에는 아이템이 지급되지 않을 수 있으니 결제 상태도 함께 확인해 주세요.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793347030.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 95,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 187,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 282
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 6,
+      "requested_at": "2026-10-30T16:57:19.043113+09:00",
+      "input": "블랙 큐브를 결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 3,
+      "status": "completed",
+      "answer": "결제하셨는데 블랙 큐브가 지급되지 않아 불편을 드려 죄송합니다.\n\n먼저 **캐시샵의 구매 내역**과 인벤토리의 **캐시 보관함**을 확인해 주세요. 캐시 보관함에 있다면 해당 캐릭터로 수령해야 게임 인벤토리에서 확인할 수 있습니다. 캐시샵을 다시 열거나 게임에 재접속한 뒤에도 보이지 않는지 확인해 주세요.\n\n계속 지급되지 않았다면 결제 내역을 확인할 수 있도록 **고객센터 1:1 문의**로 접수해 주세요. 결제 일시, 결제 수단, 구매한 블랙 큐브 개수와 서버·캐릭터명을 함께 알려주시면 확인에 도움이 됩니다.",
+      "response": {
+        "id": "resp_041133130d6d8203016ae44de005d887d29c7c83f83086368e",
+        "access_programs": null,
+        "created_at": 1793347040.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_041133130d6d8203016ae44de2067087d29201034e857ae423",
+            "content": [
+              {
+                "annotations": [],
+                "text": "결제하셨는데 블랙 큐브가 지급되지 않아 불편을 드려 죄송합니다.\n\n먼저 **캐시샵의 구매 내역**과 인벤토리의 **캐시 보관함**을 확인해 주세요. 캐시 보관함에 있다면 해당 캐릭터로 수령해야 게임 인벤토리에서 확인할 수 있습니다. 캐시샵을 다시 열거나 게임에 재접속한 뒤에도 보이지 않는지 확인해 주세요.\n\n계속 지급되지 않았다면 결제 내역을 확인할 수 있도록 **고객센터 1:1 문의**로 접수해 주세요. 결제 일시, 결제 수단, 구매한 블랙 큐브 개수와 서버·캐릭터명을 함께 알려주시면 확인에 도움이 됩니다.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793347043.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 95,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 173,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 268
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 7,
+      "requested_at": "2026-10-30T17:17:36.114192+09:00",
+      "input": "10분 전에 블랙 큐브를 결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 1,
+      "status": "completed",
+      "answer": "불편을 드려 죄송합니다. 블랙 큐브 구매 후 반영까지 잠시 지연될 수 있으니, 먼저 게임을 재접속한 뒤 **캐시 보관함**을 확인해 주세요. 캐시 보관함에 있다면 캐릭터 인벤토리로 이동하시면 됩니다.\n\n그래도 보이지 않는다면 결제 내역에서 결제 완료 여부를 확인해 주세요. 결제는 완료됐는데 캐시 보관함에도 없다면, **구매한 서버·캐릭터와 결제 시각, 결제 수단 및 주문번호**를 확인해 고객센터에 문의해 주시면 확인을 도와드리겠습니다.",
+      "response": {
+        "id": "resp_0eb76a7108b4fe5c016ae452a2a5bc87d29145401a0d995e2a",
+        "access_programs": null,
+        "created_at": 1793348258.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_0eb76a7108b4fe5c016ae452a4be7487d2b3e8214f31b8a17b",
+            "content": [
+              {
+                "annotations": [],
+                "text": "불편을 드려 죄송합니다. 블랙 큐브 구매 후 반영까지 잠시 지연될 수 있으니, 먼저 게임을 재접속한 뒤 **캐시 보관함**을 확인해 주세요. 캐시 보관함에 있다면 캐릭터 인벤토리로 이동하시면 됩니다.\n\n그래도 보이지 않는다면 결제 내역에서 결제 완료 여부를 확인해 주세요. 결제는 완료됐는데 캐시 보관함에도 없다면, **구매한 서버·캐릭터와 결제 시각, 결제 수단 및 주문번호**를 확인해 고객센터에 문의해 주시면 확인을 도와드리겠습니다.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793348262.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 98,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 150,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 248
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 8,
+      "requested_at": "2026-10-30T17:17:43.485938+09:00",
+      "input": "10분 전에 블랙 큐브를 결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 2,
+      "status": "completed",
+      "answer": "결제가 완료됐는데 블랙 큐브가 보이지 않아 불편하셨겠어요. 먼저 캐시샵을 닫았다가 다시 열거나, 캐릭터 선택 화면으로 나갔다가 재접속한 뒤 **캐시 보관함**을 확인해 주세요. 블랙 큐브는 캐시 보관함에 지급된 뒤 원하는 캐릭터의 인벤토리로 옮겨야 할 수 있습니다.\n\n그래도 없다면 결제 내역에서 결제가 **완료** 상태인지 확인해 주세요. 결제 완료인데도 지급되지 않았다면 결제 시각과 결제 수단, 주문번호를 준비해 메이플스토리 고객센터에 문의해 주시면 확인을 도와드릴 수 있습니다.",
+      "response": {
+        "id": "resp_00db0fb99244f49a016ae452a9b12487d2a4f68243a5e73982",
+        "access_programs": null,
+        "created_at": 1793348265.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_00db0fb99244f49a016ae452aa7f7c87d28358085d3ae25e8e",
+            "content": [
+              {
+                "annotations": [],
+                "text": "결제가 완료됐는데 블랙 큐브가 보이지 않아 불편하셨겠어요. 먼저 캐시샵을 닫았다가 다시 열거나, 캐릭터 선택 화면으로 나갔다가 재접속한 뒤 **캐시 보관함**을 확인해 주세요. 블랙 큐브는 캐시 보관함에 지급된 뒤 원하는 캐릭터의 인벤토리로 옮겨야 할 수 있습니다.\n\n그래도 없다면 결제 내역에서 결제가 **완료** 상태인지 확인해 주세요. 결제 완료인데도 지급되지 않았다면 결제 시각과 결제 수단, 주문번호를 준비해 메이플스토리 고객센터에 문의해 주시면 확인을 도와드릴 수 있습니다.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793348268.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 98,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 164,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 262
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    },
+    {
+      "sequence": 9,
+      "requested_at": "2026-10-30T17:17:47.825405+09:00",
+      "input": "10분 전에 블랙 큐브를 결제했는데 아이템이 안 들어왔어요.",
+      "attempt_for_same_input": 3,
+      "status": "completed",
+      "answer": "불편을 드려 죄송합니다. 먼저 캐시샵의 **구매 내역**과 게임 내 **캐시 보관함**을 확인해 주세요. 블랙 큐브가 보관함에 있다면 해당 캐릭터로 이동한 뒤 인벤토리에서 확인하실 수 있습니다.\n\n구매 내역에도 없거나 결제는 완료됐는데 보관함에 나타나지 않는다면, 결제 처리에 시간이 걸릴 수 있으니 잠시 후 다시 확인해 주세요. 그래도 받지 못하셨다면 **결제 시각, 결제 수단, 주문번호(또는 결제 내역)**를 준비해 고객센터에 문의해 주시면 확인을 도와드리겠습니다.",
+      "response": {
+        "id": "resp_05766b846526368b016ae452ae055487d29babefbd47d30c4e",
+        "access_programs": null,
+        "created_at": 1793348270.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 블랙 큐브가 캐시샵에서 판매되던 2024년 1월 10일입니다.\n고객 문의에 한국어로 답변하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_05766b846526368b016ae452aeb65c87d2817816ed017d73bb",
+            "content": [
+              {
+                "annotations": [],
+                "text": "불편을 드려 죄송합니다. 먼저 캐시샵의 **구매 내역**과 게임 내 **캐시 보관함**을 확인해 주세요. 블랙 큐브가 보관함에 있다면 해당 캐릭터로 이동한 뒤 인벤토리에서 확인하실 수 있습니다.\n\n구매 내역에도 없거나 결제는 완료됐는데 보관함에 나타나지 않는다면, 결제 처리에 시간이 걸릴 수 있으니 잠시 후 다시 확인해 주세요. 그래도 받지 못하셨다면 **결제 시각, 결제 수단, 주문번호(또는 결제 내역)**를 준비해 고객센터에 문의해 주시면 확인을 도와드리겠습니다.",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.98,
+        "background": false,
+        "completed_at": 1793348272.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "type": "text"
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 98,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 159,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 257
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      }
+    }
+  ]
+}
