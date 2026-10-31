@@ -1,0 +1,248 @@
+{
+  "experiment": "프롬프트 구체성에 따른 보안 로그 분석 결과 비교",
+  "started_at_utc": "2026-10-31T10:44:28.469246+00:00",
+  "model_requested": "gpt-5.4-mini-2026-03-17",
+  "sdk": {
+    "name": "openai",
+    "version": "3.42.0",
+    "python": "3.10.0"
+  },
+  "api": "POST https://api.openai.com/v1/responses",
+  "input_log": "GET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+  "instructions": {
+    "A": "다음 HTTP 로그를 분석해줘.",
+    "B": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘."
+  },
+  "request_settings": {
+    "max_output_tokens": 1600,
+    "reasoning": {
+      "effort": "none"
+    },
+    "store": false
+  },
+  "temperature_sent": false,
+  "repetitions_per_condition": 3,
+  "planned_calls": 6,
+  "order": "A1, B1, A2, B2, A3, B3",
+  "independence": "Each request contains only its instruction and the same log; no conversation or previous_response_id.",
+  "max_retries": 0,
+  "official_documentation": {
+    "checked_date_kst": "2026-10-31",
+    "model": "https://developers.openai.com/api/docs/models/gpt-5.4-mini",
+    "api": "https://developers.openai.com/api/reference/python/resources/responses/methods/create",
+    "sdk": "https://developers.openai.com/api/reference/python"
+  },
+  "setup_error": null,
+  "runs": [
+    {
+      "condition": "A",
+      "repeat": 1,
+      "prompt": "다음 HTTP 로그를 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+      "request": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "input": "다음 HTTP 로그를 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+        "max_output_tokens": 1600,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "started_at_utc": "2026-10-31T10:44:28.470069+00:00",
+      "api_call_attempted": true,
+      "success": false,
+      "response": null,
+      "output_text": null,
+      "error": {
+        "type": "RateLimitError",
+        "message": "Error code: 429 - You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+        "http_status": 429,
+        "body": {
+          "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+          "type": "insufficient_quota",
+          "param": null,
+          "code": "credit_balance_exhausted"
+        }
+      },
+      "status": "error",
+      "elapsed_seconds": 2.734
+    },
+    {
+      "condition": "B",
+      "repeat": 1,
+      "prompt": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+      "request": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "input": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+        "max_output_tokens": 1600,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "started_at_utc": "2026-10-31T10:44:31.205208+00:00",
+      "api_call_attempted": true,
+      "success": false,
+      "response": null,
+      "output_text": null,
+      "error": {
+        "type": "RateLimitError",
+        "message": "Error code: 429 - You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+        "http_status": 429,
+        "body": {
+          "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+          "type": "insufficient_quota",
+          "param": null,
+          "code": "credit_balance_exhausted"
+        }
+      },
+      "status": "error",
+      "elapsed_seconds": 0.707
+    },
+    {
+      "condition": "A",
+      "repeat": 2,
+      "prompt": "다음 HTTP 로그를 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+      "request": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "input": "다음 HTTP 로그를 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+        "max_output_tokens": 1600,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "started_at_utc": "2026-10-31T10:44:31.914301+00:00",
+      "api_call_attempted": true,
+      "success": false,
+      "response": null,
+      "output_text": null,
+      "error": {
+        "type": "RateLimitError",
+        "message": "Error code: 429 - You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+        "http_status": 429,
+        "body": {
+          "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+          "type": "insufficient_quota",
+          "param": null,
+          "code": "credit_balance_exhausted"
+        }
+      },
+      "status": "error",
+      "elapsed_seconds": 1.356
+    },
+    {
+      "condition": "B",
+      "repeat": 2,
+      "prompt": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+      "request": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "input": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+        "max_output_tokens": 1600,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "started_at_utc": "2026-10-31T10:44:33.272544+00:00",
+      "api_call_attempted": true,
+      "success": false,
+      "response": null,
+      "output_text": null,
+      "error": {
+        "type": "RateLimitError",
+        "message": "Error code: 429 - You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+        "http_status": 429,
+        "body": {
+          "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+          "type": "insufficient_quota",
+          "param": null,
+          "code": "credit_balance_exhausted"
+        }
+      },
+      "status": "error",
+      "elapsed_seconds": 0.859
+    },
+    {
+      "condition": "A",
+      "repeat": 3,
+      "prompt": "다음 HTTP 로그를 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+      "request": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "input": "다음 HTTP 로그를 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+        "max_output_tokens": 1600,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "started_at_utc": "2026-10-31T10:44:34.134376+00:00",
+      "api_call_attempted": true,
+      "success": false,
+      "response": null,
+      "output_text": null,
+      "error": {
+        "type": "RateLimitError",
+        "message": "Error code: 429 - You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+        "http_status": 429,
+        "body": {
+          "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+          "type": "insufficient_quota",
+          "param": null,
+          "code": "credit_balance_exhausted"
+        }
+      },
+      "status": "error",
+      "elapsed_seconds": 0.714
+    },
+    {
+      "condition": "B",
+      "repeat": 3,
+      "prompt": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+      "request": {
+        "model": "gpt-5.4-mini-2026-03-17",
+        "input": "다음 HTTP 로그를 공격 의심 여부, 판단 근거, 추가 확인 사항으로 구분해 분석해줘.\n\nGET /.env HTTP/1.1\nUser-Agent: python-requests/2.31.0\nHTTP Status: 403",
+        "max_output_tokens": 1600,
+        "reasoning": {
+          "effort": "none"
+        },
+        "store": false
+      },
+      "started_at_utc": "2026-10-31T10:44:34.849977+00:00",
+      "api_call_attempted": true,
+      "success": false,
+      "response": null,
+      "output_text": null,
+      "error": {
+        "type": "RateLimitError",
+        "message": "Error code: 429 - You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+        "http_status": 429,
+        "body": {
+          "message": "You have no credits remaining. Add credits to continue using the API at https://platform.openai.com/settings/organization/billing/.",
+          "type": "insufficient_quota",
+          "param": null,
+          "code": "credit_balance_exhausted"
+        }
+      },
+      "status": "error",
+      "elapsed_seconds": 0.695
+    }
+  ],
+  "finished_at_utc": "2026-10-31T10:44:35.547404+00:00",
+  "summary": {
+    "planned_calls": 6,
+    "api_call_attempts": 6,
+    "successful_calls": 0,
+    "errors": 6,
+    "not_attempted": 0,
+    "by_condition": {
+      "A": {
+        "planned": 3,
+        "successful": 0
+      },
+      "B": {
+        "planned": 3,
+        "successful": 0
+      }
+    }
+  }
+}
