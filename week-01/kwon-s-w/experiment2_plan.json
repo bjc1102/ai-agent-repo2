@@ -1,0 +1,73 @@
+{
+  "run_id": "20261028T111608Z_e8e224",
+  "model": "gemini-3.5-flash-lite",
+  "sdk": "google-genai",
+  "sdk_version": "2.12.1",
+  "variable": "분류 예시의 유무만 변경",
+  "conditions": {
+    "A_예시없음": "고객 문의를 다음 기준으로 분류하세요.\n- 배송지를 바꾸려는 요청: category=배송지 변경, department=주문변경팀\n- 상품이 도착하지 않거나 배송이 늦어 도착 시점을 묻는 문의: category=배송 지연, department=배송팀\n- 구매 취소 후 돈을 돌려받으려는 요청: category=환불 요청, department=환불팀\n- 변경할 대상 등 요청 의도가 불명확하면: category=의도 불명확, department=추가확인\n고객이 부정한 의도는 선택하지 마세요. 근거가 부족하면 추측하지 마세요.\n지정한 JSON 구조로만 응답하세요.",
+    "B_예시있음": "고객 문의를 다음 기준으로 분류하세요.\n- 배송지를 바꾸려는 요청: category=배송지 변경, department=주문변경팀\n- 상품이 도착하지 않거나 배송이 늦어 도착 시점을 묻는 문의: category=배송 지연, department=배송팀\n- 구매 취소 후 돈을 돌려받으려는 요청: category=환불 요청, department=환불팀\n- 변경할 대상 등 요청 의도가 불명확하면: category=의도 불명확, department=추가확인\n고객이 부정한 의도는 선택하지 마세요. 근거가 부족하면 추측하지 마세요.\n지정한 JSON 구조로만 응답하세요.\n분류 예시:\n문의: 받는 곳을 사무실로 바꿀 수 있나요?\n응답: {\"category\":\"배송지 변경\",\"department\":\"주문변경팀\"}\n문의: 도착 예정일이 지났는데 아직 못 받았어요.\n응답: {\"category\":\"배송 지연\",\"department\":\"배송팀\"}\n문의: 물건을 돌려보내고 결제한 돈을 받고 싶어요.\n응답: {\"category\":\"환불 요청\",\"department\":\"환불팀\"}\n문의: 주문한 것 좀 처리해주세요.\n응답: {\"category\":\"의도 불명확\",\"department\":\"추가확인\"}\n"
+  },
+  "tests": [
+    {
+      "id": "Q1",
+      "input": "어제는 배송이 늦으면 환불하겠다고 했는데, 환불은 하지 않고 그냥 받겠습니다. 오늘 요청하는 건 받을 주소를 회사에서 집으로 바꾸는 것뿐이에요.",
+      "expected": {
+        "category": "배송지 변경",
+        "department": "주문변경팀"
+      }
+    },
+    {
+      "id": "Q2",
+      "input": "처음에는 주소를 잘못 적어서 배송지를 바꾸려 했지만 그 문제는 이미 해결됐어요. 취소나 환불도 원하지 않습니다. 도착 예정일이 지났는데 지금 상품이 어디에 있고 언제 도착하나요?",
+      "expected": {
+        "category": "배송 지연",
+        "department": "배송팀"
+      }
+    },
+    {
+      "id": "Q3",
+      "input": "배송지를 바꾸거나 환불해 달라는 뜻은 아니에요. 주문한 내용을 조금 수정하고 싶은데 처리해 주실 수 있나요?",
+      "expected": {
+        "category": "의도 불명확",
+        "department": "추가확인"
+      }
+    }
+  ],
+  "common_config": {
+    "response_mime_type": "application/json",
+    "response_schema": {
+      "type": "OBJECT",
+      "properties": {
+        "category": {
+          "type": "STRING",
+          "enum": [
+            "배송지 변경",
+            "배송 지연",
+            "환불 요청",
+            "의도 불명확"
+          ]
+        },
+        "department": {
+          "type": "STRING",
+          "enum": [
+            "주문변경팀",
+            "배송팀",
+            "환불팀",
+            "추가확인"
+          ]
+        }
+      },
+      "required": [
+        "category",
+        "department"
+      ]
+    },
+    "max_output_tokens": 4096
+  },
+  "repeats_per_input_condition": 3,
+  "history": "매번 독립적인 generate_content 호출. 이전 응답을 전달하지 않음.",
+  "unspecified_parameters": "temperature, top_p, thinking 미전송. 제공자 기본값 사용.",
+  "execution_order": "각 반복의 6건을 seed=42로 섞음",
+  "retry_policy": "실험 코드에서 재시도하지 않음. SDK 내부 HTTP 재시도는 기본 동작 사용."
+}
