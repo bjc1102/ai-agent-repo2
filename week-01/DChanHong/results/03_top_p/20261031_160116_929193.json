@@ -1,0 +1,1628 @@
+{
+  "experiment": "03_top_p",
+  "started_at": "2026-10-31T16:01:16.929193+09:00",
+  "sdk_version": "3.41.0",
+  "pydantic_version": "2.14.2",
+  "input": "좀전에 큐브 샀는데 템이 없는데?",
+  "common_settings": {
+    "model": "gpt-6-luna",
+    "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+    "reasoning": {
+      "effort": "none"
+    },
+    "max_output_tokens": 2000,
+    "store": false,
+    "text": {
+      "format": {
+        "type": "json_schema",
+        "name": "customer_response",
+        "strict": true,
+        "schema": {
+          "additionalProperties": false,
+          "properties": {
+            "request_type": {
+              "enum": [
+                "아이템_미지급",
+                "결제_실패",
+                "중복_결제",
+                "환불_요청",
+                "기타"
+              ],
+              "title": "Request Type",
+              "type": "string"
+            },
+            "urgency": {
+              "enum": [
+                "낮음",
+                "보통",
+                "높음"
+              ],
+              "title": "Urgency",
+              "type": "string"
+            },
+            "customer_reply": {
+              "title": "Customer Reply",
+              "type": "string"
+            },
+            "next_action": {
+              "enum": [
+                "추가_정보_요청",
+                "확인_방법_안내",
+                "상담원_연결"
+              ],
+              "title": "Next Action",
+              "type": "string"
+            }
+          },
+          "required": [
+            "request_type",
+            "urgency",
+            "customer_reply",
+            "next_action"
+          ],
+          "title": "CustomerResponse",
+          "type": "object"
+        }
+      }
+    }
+  },
+  "client_settings": {
+    "max_retries": 0,
+    "timeout_seconds": 60
+  },
+  "plan": {
+    "name": "03_top_p",
+    "variable": "top_p",
+    "values": [
+      0.1,
+      0.5,
+      1.0
+    ],
+    "fixed": {
+      "temperature": 1.0
+    }
+  },
+  "planned_attempts_per_condition": 3,
+  "actual_attempts": 9,
+  "records": [
+    {
+      "sequence": 1,
+      "requested_at": "2026-10-31T16:01:16.938504+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 0.1
+      },
+      "attempt_for_condition": 1,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 받지 못해 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 확인해 주시고, 아이템 보관함에도 없다면 고객센터로 문의해 주세요.",
+        "next_action": "확인_방법_안내"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 받지 못해 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 확인해 주시고, 아이템 보관함에도 없다면 고객센터로 문의해 주세요.\",\"next_action\":\"확인_방법_안내\"}",
+      "response": {
+        "id": "resp_051e218e1152e7e9016ae5923d444c87d2938f125f4ecc1aa4",
+        "access_programs": null,
+        "created_at": 1793430077.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_051e218e1152e7e9016ae5923dd5ec87d2904c3833249693d7",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 받지 못해 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 확인해 주시고, 아이템 보관함에도 없다면 고객센터로 문의해 주세요.\",\"next_action\":\"확인_방법_안내\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.1,
+        "background": false,
+        "completed_at": 1793430078.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 96,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1054
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:19.141586+09:00"
+    },
+    {
+      "sequence": 2,
+      "requested_at": "2026-10-31T16:01:19.143196+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 0.1
+      },
+      "attempt_for_condition": 2,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 아이템이 보이지 않아 불편하시겠어요. 구매한 캐릭터의 인벤토리와 캐시 보관함을 확인해 보시고, 그래도 없다면 결제 시각과 구매한 큐브 종류를 알려 주세요.",
+        "next_action": "추가_정보_요청"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 아이템이 보이지 않아 불편하시겠어요. 구매한 캐릭터의 인벤토리와 캐시 보관함을 확인해 보시고, 그래도 없다면 결제 시각과 구매한 큐브 종류를 알려 주세요.\",\"next_action\":\"추가_정보_요청\"}",
+      "response": {
+        "id": "resp_08e7dd768b846e3f016ae5923f643c87d2909ddeb7ee3ab679",
+        "access_programs": null,
+        "created_at": 1793430079.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_08e7dd768b846e3f016ae59240026087d281dd2f7e3b320316",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 아이템이 보이지 않아 불편하시겠어요. 구매한 캐릭터의 인벤토리와 캐시 보관함을 확인해 보시고, 그래도 없다면 결제 시각과 구매한 큐브 종류를 알려 주세요.\",\"next_action\":\"추가_정보_요청\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.1,
+        "background": false,
+        "completed_at": 1793430081.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 100,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1058
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:21.400143+09:00"
+    },
+    {
+      "sequence": 3,
+      "requested_at": "2026-10-31T16:01:21.401393+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 0.1
+      },
+      "attempt_for_condition": 3,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 받지 못해 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 알려주시면 다음 확인 방법을 안내해 드릴게요.",
+        "next_action": "추가_정보_요청"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 받지 못해 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 알려주시면 다음 확인 방법을 안내해 드릴게요.\",\"next_action\":\"추가_정보_요청\"}",
+      "response": {
+        "id": "resp_04e6b6dc821befb0016ae5924196f887d2913eeba55fa5e100",
+        "access_programs": null,
+        "created_at": 1793430081.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_04e6b6dc821befb0016ae59242505487d283d9ebf491b59605",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 받지 못해 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 알려주시면 다음 확인 방법을 안내해 드릴게요.\",\"next_action\":\"추가_정보_요청\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.1,
+        "background": false,
+        "completed_at": 1793430083.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 89,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1047
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:23.939387+09:00"
+    },
+    {
+      "sequence": 4,
+      "requested_at": "2026-10-31T16:01:23.941415+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 0.5
+      },
+      "attempt_for_condition": 1,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 확인해 주시고, 게임을 재접속한 뒤에도 보이지 않으면 고객센터에 문의해 주세요.",
+        "next_action": "확인_방법_안내"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 확인해 주시고, 게임을 재접속한 뒤에도 보이지 않으면 고객센터에 문의해 주세요.\",\"next_action\":\"확인_방법_안내\"}",
+      "response": {
+        "id": "resp_03f440ef79c9edd0016ae592441f5c87d2869f4b265a10be28",
+        "access_programs": null,
+        "created_at": 1793430084.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_03f440ef79c9edd0016ae59244ff7c87d28162b8987cab445b",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 구매한 캐릭터와 월드, 결제 시각 및 결제 내역을 확인해 주시고, 게임을 재접속한 뒤에도 보이지 않으면 고객센터에 문의해 주세요.\",\"next_action\":\"확인_방법_안내\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.5,
+        "background": false,
+        "completed_at": 1793430086.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 99,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1057
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:26.812158+09:00"
+    },
+    {
+      "sequence": 5,
+      "requested_at": "2026-10-31T16:01:26.813744+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 0.5
+      },
+      "attempt_for_condition": 2,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 받지 못해 불편하시겠어요. 게임을 재접속한 뒤 캐시 인벤토리와 사용 가능한 인벤토리를 확인해 보시고, 그래도 없다면 결제 내역과 캐릭터 정보를 준비해 고객센터에 문의해 주세요.",
+        "next_action": "확인_방법_안내"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 받지 못해 불편하시겠어요. 게임을 재접속한 뒤 캐시 인벤토리와 사용 가능한 인벤토리를 확인해 보시고, 그래도 없다면 결제 내역과 캐릭터 정보를 준비해 고객센터에 문의해 주세요.\",\"next_action\":\"확인_방법_안내\"}",
+      "response": {
+        "id": "resp_046e55fd8698c96c016ae59246fcac87d2a3783e8a31f34934",
+        "access_programs": null,
+        "created_at": 1793430087.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_046e55fd8698c96c016ae59247ffc087d28305b0a35dbbd5c1",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 받지 못해 불편하시겠어요. 게임을 재접속한 뒤 캐시 인벤토리와 사용 가능한 인벤토리를 확인해 보시고, 그래도 없다면 결제 내역과 캐릭터 정보를 준비해 고객센터에 문의해 주세요.\",\"next_action\":\"확인_방법_안내\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.5,
+        "background": false,
+        "completed_at": 1793430089.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 104,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1062
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:29.753259+09:00"
+    },
+    {
+      "sequence": 6,
+      "requested_at": "2026-10-31T16:01:29.753849+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 0.5
+      },
+      "attempt_for_condition": 3,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 아이템이 보이지 않아 불편하시겠어요. 구매한 캐릭터와 서버, 결제 시각 및 결제 내역을 알려주시면 확인 방법을 안내해 드리겠습니다.",
+        "next_action": "추가_정보_요청"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 아이템이 보이지 않아 불편하시겠어요. 구매한 캐릭터와 서버, 결제 시각 및 결제 내역을 알려주시면 확인 방법을 안내해 드리겠습니다.\",\"next_action\":\"추가_정보_요청\"}",
+      "response": {
+        "id": "resp_06da6d38ba252a1d016ae59249f1ac87d2b11371adfa74d7c4",
+        "access_programs": null,
+        "created_at": 1793430089.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_06da6d38ba252a1d016ae5924b1fb087d2bef89d74fec8bbc5",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 아이템이 보이지 않아 불편하시겠어요. 구매한 캐릭터와 서버, 결제 시각 및 결제 내역을 알려주시면 확인 방법을 안내해 드리겠습니다.\",\"next_action\":\"추가_정보_요청\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 0.5,
+        "background": false,
+        "completed_at": 1793430092.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 88,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1046
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:32.502844+09:00"
+    },
+    {
+      "sequence": 7,
+      "requested_at": "2026-10-31T16:01:32.504279+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 1.0
+      },
+      "attempt_for_condition": 1,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 구매한 캐릭터명과 월드, 결제 시각 및 결제 내역을 알려주시면 확인 방법을 안내해 드리겠습니다.",
+        "next_action": "추가_정보_요청"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 구매한 캐릭터명과 월드, 결제 시각 및 결제 내역을 알려주시면 확인 방법을 안내해 드리겠습니다.\",\"next_action\":\"추가_정보_요청\"}",
+      "response": {
+        "id": "resp_004375817f85c131016ae5924cb19087d290ded424f53d5860",
+        "access_programs": null,
+        "created_at": 1793430092.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_004375817f85c131016ae5924d520487d2936d466712945855",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 구매한 캐릭터명과 월드, 결제 시각 및 결제 내역을 알려주시면 확인 방법을 안내해 드리겠습니다.\",\"next_action\":\"추가_정보_요청\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 1.0,
+        "background": false,
+        "completed_at": 1793430094.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 87,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1045
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:34.582058+09:00"
+    },
+    {
+      "sequence": 8,
+      "requested_at": "2026-10-31T16:01:34.583982+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 1.0
+      },
+      "attempt_for_condition": 2,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 결제 내역과 아이템 지급 여부를 확인할 수 있도록 고객센터에 문의해 주세요.",
+        "next_action": "상담원_연결"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 결제 내역과 아이템 지급 여부를 확인할 수 있도록 고객센터에 문의해 주세요.\",\"next_action\":\"상담원_연결\"}",
+      "response": {
+        "id": "resp_06a0324d7cb10d3a016ae5924ec25487d298440e021554feb9",
+        "access_programs": null,
+        "created_at": 1793430094.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_06a0324d7cb10d3a016ae5924f72f887d29f1aeeb3f96a983e",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠어요. 결제 내역과 아이템 지급 여부를 확인할 수 있도록 고객센터에 문의해 주세요.\",\"next_action\":\"상담원_연결\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 1.0,
+        "background": false,
+        "completed_at": 1793430096.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 75,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1033
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:36.518037+09:00"
+    },
+    {
+      "sequence": 9,
+      "requested_at": "2026-10-31T16:01:36.519817+09:00",
+      "input": "좀전에 큐브 샀는데 템이 없는데?",
+      "sampling_settings": {
+        "temperature": 1.0,
+        "top_p": 1.0
+      },
+      "attempt_for_condition": 3,
+      "status": "completed",
+      "validation_status": "passed",
+      "parsed": {
+        "request_type": "아이템_미지급",
+        "urgency": "보통",
+        "customer_reply": "큐브를 구매하셨는데 지급되지 않아 불편하시겠습니다. 결제 내역과 아이템 지급 여부를 확인할 수 있도록 고객센터에 문의해 주세요.",
+        "next_action": "상담원_연결"
+      },
+      "answer": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠습니다. 결제 내역과 아이템 지급 여부를 확인할 수 있도록 고객센터에 문의해 주세요.\",\"next_action\":\"상담원_연결\"}",
+      "response": {
+        "id": "resp_0065f59993537da1016ae59250b5e487d2a16d333c0e1048cb",
+        "access_programs": null,
+        "created_at": 1793430096.0,
+        "error": null,
+        "incomplete_details": null,
+        "instructions": "당신은 메이플스토리의 구매 문의를 돕는 가상의 고객센터 상담 챗봇입니다.\n상담 시점은 2024년 1월 10일입니다.\n아래 기준은 실험용 가상 고객센터의 기준이며 실제 운영 정책이 아닙니다.\n현재 고객 문의만 보고 제공된 JSON 스키마에 맞게 답변하세요.\n\n[request_type]\n- 아이템_미지급: 결제했다고 했지만 아이템을 받지 못한 경우.\n- 결제_실패: 결제가 거절되거나 오류로 완료되지 않은 경우.\n- 중복_결제: 의도한 횟수보다 여러 번 결제되었다고 한 경우.\n- 환불_요청: 결제 취소나 환불을 명시적으로 요청한 경우.\n- 기타: 위 유형에 해당하지 않거나 정보가 부족해 구분하기 어려운 경우.\n여러 문제가 있으면 명시적인 환불 요청을 우선합니다.\n그 외에는 고객이 주된 문제로 말한 유형을 선택합니다.\n\n[urgency]\n- 높음: 계정 도용이나 계속되는 무단 결제 등 추가 피해 가능성이 명시된 경우.\n- 보통: 결제 실패, 아이템 미지급, 중복 결제, 환불 등\n  발생한 문제의 확인이나 처리가 필요한 경우.\n- 낮음: 현재 발생한 피해 없이 이용 방법이나 정책을 질문하는 경우.\n\"빨리\", \"당장\" 같은 표현이나 화난 말투만으로 긴급도를 높이지 마세요.\n고객이 말하지 않은 피해나 상황을 추측하지 마세요.\n정보가 부족해 긴급도를 판단하기 어려우면 보통을 선택하세요.\n\n[next_action]\n- 추가_정보_요청: 문의를 이해하거나 다음 안내를 결정하는 데\n  필요한 핵심 정보가 부족한 경우.\n- 확인_방법_안내: 고객이 직접 해볼 수 있는 확인 방법이나\n  문의 절차를 안내할 수 있는 경우.\n- 상담원_연결: 추가 피해 우려가 있거나, 기본 확인을 마쳤는데도\n  해결되지 않았거나, 실제 결제 조회 또는 환불 처리가 필요한 경우.\n여러 기준에 해당하면 다음 순서로 판단하세요.\n1. 추가 피해 우려나 담당자의 처리가 필요하면 상담원_연결.\n2. 그 외에 안내를 결정할 핵심 정보가 부족하면 추가_정보_요청.\n3. 나머지는 확인_방법_안내.\n\n[customer_reply]\n- 한국어 존댓말로 1~2문장만 작성하세요.\n- 고객 상황에 대한 짧은 반응과 다음 행동 안내를 포함하세요.\n- 정보가 부족하면 필요한 내용을 질문하세요.\n- 이미 제공한 정보는 다시 묻지 마세요.\n- 확인되지 않은 원인, 처리 시간, 환불 가능 여부를 단정하지 마세요.\n- next_action으로 선택한 조치와 답변 내용이 일치해야 합니다.\n- 실제 조회, 환불, 상담원 연결을 완료했다고 말하지 마세요.\n- 상담원_연결을 선택했다면 고객센터 문의 방법을 안내하세요.\n- 인사말이나 문장 순서는 자유롭게 구성하세요.",
+        "metadata": {},
+        "model": "gpt-6-luna",
+        "object": "response",
+        "output": [
+          {
+            "id": "msg_0065f59993537da1016ae59251f58c87d2be78082b16110039",
+            "content": [
+              {
+                "annotations": [],
+                "text": "{\"request_type\":\"아이템_미지급\",\"urgency\":\"보통\",\"customer_reply\":\"큐브를 구매하셨는데 지급되지 않아 불편하시겠습니다. 결제 내역과 아이템 지급 여부를 확인할 수 있도록 고객센터에 문의해 주세요.\",\"next_action\":\"상담원_연결\"}",
+                "type": "output_text",
+                "logprobs": []
+              }
+            ],
+            "role": "assistant",
+            "status": "completed",
+            "type": "message",
+            "phase": "final_answer"
+          }
+        ],
+        "parallel_tool_calls": true,
+        "temperature": 1.0,
+        "tool_choice": "auto",
+        "tools": [],
+        "top_p": 1.0,
+        "background": false,
+        "completed_at": 1793430098.0,
+        "conversation": null,
+        "max_output_tokens": 2000,
+        "max_tool_calls": null,
+        "moderation": null,
+        "previous_response_id": null,
+        "prompt": null,
+        "prompt_cache_diagnostics": null,
+        "prompt_cache_key": null,
+        "prompt_cache_options": null,
+        "prompt_cache_retention": "24h",
+        "reasoning": {
+          "context": "all_turns",
+          "effort": "none",
+          "generate_summary": null,
+          "mode": "standard",
+          "summary": null
+        },
+        "safety_identifier": null,
+        "service_tier": "default",
+        "status": "completed",
+        "text": {
+          "format": {
+            "name": "customer_response",
+            "schema_": {
+              "additionalProperties": false,
+              "properties": {
+                "request_type": {
+                  "enum": [
+                    "아이템_미지급",
+                    "결제_실패",
+                    "중복_결제",
+                    "환불_요청",
+                    "기타"
+                  ],
+                  "title": "Request Type",
+                  "type": "string"
+                },
+                "urgency": {
+                  "enum": [
+                    "낮음",
+                    "보통",
+                    "높음"
+                  ],
+                  "title": "Urgency",
+                  "type": "string"
+                },
+                "customer_reply": {
+                  "title": "Customer Reply",
+                  "type": "string"
+                },
+                "next_action": {
+                  "enum": [
+                    "추가_정보_요청",
+                    "확인_방법_안내",
+                    "상담원_연결"
+                  ],
+                  "title": "Next Action",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "request_type",
+                "urgency",
+                "customer_reply",
+                "next_action"
+              ],
+              "title": "CustomerResponse",
+              "type": "object"
+            },
+            "type": "json_schema",
+            "description": null,
+            "strict": true
+          },
+          "verbosity": "medium"
+        },
+        "tool_usage": {
+          "image_gen": {
+            "input_tokens": 0,
+            "input_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            },
+            "output_tokens": 0,
+            "total_tokens": 0,
+            "cached_tokens": null,
+            "cached_tokens_details": null,
+            "output_tokens_details": {
+              "image_tokens": 0,
+              "text_tokens": 0
+            }
+          },
+          "web_search": {
+            "num_requests": 0
+          }
+        },
+        "top_logprobs": 0,
+        "truncation": "disabled",
+        "usage": {
+          "input_tokens": 958,
+          "input_tokens_details": {
+            "cache_write_tokens": 0,
+            "cached_tokens": 0
+          },
+          "output_tokens": 74,
+          "output_tokens_details": {
+            "reasoning_tokens": 0
+          },
+          "total_tokens": 1032
+        },
+        "user": null,
+        "billing": {
+          "payer": "developer"
+        },
+        "frequency_penalty": 0.0,
+        "presence_penalty": 0.0,
+        "store": false
+      },
+      "finished_at": "2026-10-31T16:01:39.085357+09:00"
+    }
+  ]
+}
