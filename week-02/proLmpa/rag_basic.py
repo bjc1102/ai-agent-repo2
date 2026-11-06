@@ -78,7 +78,10 @@ def build_index(chunks: list[dict], model: SentenceTransformer) -> chromadb.Coll
         client.delete_collection(COLLECTION_NAME)
     except Exception:
         pass
-    collection = client.create_collection(COLLECTION_NAME)
+    collection = client.create_collection(
+        COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
     collection.add(
         documents=texts,
         embeddings=embeddings,
