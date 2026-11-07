@@ -1,0 +1,10 @@
+{
+  "questions": 10,
+  "completed": 9,
+  "errors": 1,
+  "generation_calls": 27,
+  "embedding_calls": 10,
+  "withheld_statements": 10,
+  "quality": "미채점. 호출 완료와 기계 검증은 정답을 뜻하지 않음.",
+  "timing": "질문 분해·검색·추출·검증·답변의 전체 시간. 기존 단일 생성 시간과 직접 비교하지 않음."
+}

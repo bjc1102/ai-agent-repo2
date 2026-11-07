@@ -1,0 +1,81 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "packages": {
+    "chromadb": "1.5.9",
+    "requests": "2.32.4",
+    "pypdf": "6.21.4",
+    "rank-bm25": "0.2.2"
+  },
+  "pip_check": {
+    "returncode": 1,
+    "stdout": "betterproto 2.0.0b7 has requirement python-dateutil<3.0,>=2.8, but you have python-dateutil 4.0.0.\nbigframes 2.51.0 has requirement python-dateutil<3,>=2.8.2, but you have python-dateutil 4.0.0.\nibis-framework 9.5.0 has requirement python-dateutil<3,>=2.8.2, but you have python-dateutil 4.0.0.\ntweepy 4.17.0 has requirement oauthlib<4,>=3.2.0, but you have oauthlib 4.0.1.\ngoogle-cloud-bigquery 3.47.0 has requirement python-dateutil<3.0.0,>=2.8.2, but you have python-dateutil 4.0.0.\nholidays 0.108 has requirement python-dateutil<3,>=2.9.0.post0, but you have python-dateutil 4.0.0.\n",
+    "stderr": ""
+  },
+  "gpu": {
+    "returncode": 0,
+    "stdout": "Fri Nov  6 23:44:48 2026       \n+-----------------------------------------------------------------------------------------+\n| NVIDIA-SMI 580.82.07              Driver Version: 580.82.07      CUDA Version: 13.0     |\n+-----------------------------------------+------------------------+----------------------+\n| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |\n| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |\n|                                         |                        |               MIG M. |\n|=========================================+========================+======================|\n|   0  Tesla T4                       Off |   00000000:00:04.0 Off |                    0 |\n| N/A   38C    P8              9W /   70W |       0MiB /  15360MiB |      0%      Default |\n|                                         |                        |                  N/A |\n+-----------------------------------------+------------------------+----------------------+\n\n+-----------------------------------------------------------------------------------------+\n| Processes:                                                                              |\n|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |\n|        ID   ID                                                               Usage      |\n|=========================================================================================|\n|  No running processes found                                                             |\n+-----------------------------------------------------------------------------------------+\n",
+    "stderr": ""
+  },
+  "ollama_version": {
+    "returncode": 0,
+    "stdout": "ollama version is 0.40.15\n",
+    "stderr": ""
+  },
+  "model_tags_and_digests": {
+    "models": [
+      {
+        "name": "gemma3:4b",
+        "model": "gemma3:4b",
+        "modified_at": "2026-11-06T23:46:39.059101619Z",
+        "size": 3350272403,
+        "digest": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7",
+        "details": {
+          "parent_model": "dhiltgen/gemma3:4b-it-q4_K_M-llamacpp",
+          "format": "gguf",
+          "family": "gemma3",
+          "families": [
+            "gemma3",
+            "clip"
+          ],
+          "parameter_size": "3.9B",
+          "quantization_level": "Q4_K_M",
+          "context_length": 131072,
+          "embedding_length": 2560,
+          "runner": "llamacpp"
+        },
+        "capabilities": [
+          "completion",
+          "vision"
+        ]
+      },
+      {
+        "name": "embeddinggemma:latest",
+        "model": "embeddinggemma:latest",
+        "modified_at": "2026-11-06T23:46:02.404316813Z",
+        "size": 621875917,
+        "digest": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+        "details": {
+          "parent_model": "embeddinggemma:300m-bf16",
+          "format": "gguf",
+          "family": "gemma3",
+          "families": [
+            "gemma3"
+          ],
+          "parameter_size": "307.58M",
+          "quantization_level": "BF16",
+          "context_length": 2048,
+          "embedding_length": 768,
+          "runner": "ggml"
+        },
+        "capabilities": [
+          "embedding"
+        ]
+      }
+    ]
+  },
+  "ollama_ps_after_run": {
+    "returncode": 0,
+    "stdout": "NAME                     ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \ngemma3:4b                68ceab7e468a    3.0 GB    100% GPU     8192       llamacpp    7 minutes from now    \nembeddinggemma:latest    85462619ee72    685 MB    100% GPU     2048       llamacpp    7 minutes from now    \n",
+    "stderr": ""
+  }
+}
