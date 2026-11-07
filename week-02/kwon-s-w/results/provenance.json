@@ -1,0 +1,94 @@
+{
+  "review_date_kst": "2026-11-07",
+  "gemma_source_archive": {
+    "name": "20261106T235401_945797_cellfix.zip",
+    "sha256": "9aa345e786e90c58ae2c0fdc2af93144de8b3b46a0b15b537aa028688c0c9009"
+  },
+  "source_pdf_sha256": "9e84959b5991a6b5cedce266d57424579f8ac2c1e9b045cac06f0550b3446d41",
+  "source_pdf_included": false,
+  "policy": "원본 ZIP/PDF/노트북 미변경. 제출 사본의 인명·연락처·식별 경로만 가림. 답변·수치·쪽수·오류를 수정하지 않음.",
+  "hash_note": "원본 context_sha256/messages_sha256 등은 가림 전 원 실행의 값이다. 제출 컨텍스트를 다시 해시하면 다를 수 있다.",
+  "files": [
+    {
+      "path": "results/gemma/config.json",
+      "source_entry_sha256": "83912f6354dd4d2fec6d21c3e66ec19f2467021fc2c7b6a307533ada0ce954ba",
+      "submitted_sha256": "35fc1caaeffa69c132668d39f81096c11d809dbb4f80b6cb14a98f21e38ca070",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/environment.json",
+      "source_entry_sha256": "fe3a37f8d680957517d1c69c9b63e869a25ff88f3891625bd10136d1e3e2a24a",
+      "submitted_sha256": "9a1a5558561c79f08083780c3c585937ea06b5859224fd089fbe7e583a5769e1",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/evaluation_references.json",
+      "source_entry_sha256": "0b961d17fb38e72c64393e66ebc8a0d8c453f2f872460dfd90b3dbef20e6733d",
+      "submitted_sha256": "ebd0b929cccf7589f3492b8950f8a843e5069b4f9a5c2369a94769bced4264ef",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/chunks.json",
+      "source_entry_sha256": "c376dd93c89d2f2b1a29707cfb652a3c63f940e64ea0478a36156b841e836090",
+      "submitted_sha256": "b90c3ac9e620d22a54a6f998945fb1a6590e2df2e2d5e7d5c8931c8e41eccf4f",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/extracted_pages.json",
+      "source_entry_sha256": "c0886b022b0887456c59f518a1fff530dfe19d1a21f12dbc55f2672ccf815164",
+      "submitted_sha256": "6ffa8c0d5cd74c7a5552efc5e4373bb318e66e3ea9b78f027f8dcb5a9bf92dfe",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/results.json",
+      "source_entry_sha256": "b3e754430a4d3cbec35774b53d17f6fca23aa9309ffacc9493e778de62d5c84e",
+      "submitted_sha256": "7c6e99016859072b9493f36ea48f0db3d486c3e18e45558eb964417ba4bbc99c",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/run_summary.json",
+      "source_entry_sha256": "9a51d2bb482bdcc57ddb4c31e8201efc47f759650b2108e9893130831311acc2",
+      "submitted_sha256": "4474791596ef7d2b488775734af2b940a58622e3bb65708d243ee76843e9e698",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/token_usage.json",
+      "source_entry_sha256": "ba044c57fb14cd0a4c6840b77748e74eb6d9634d6cdcbd9ffa397c35a74f8c4a",
+      "submitted_sha256": "7cff4cc919281732f1a11cae96143a3bcbeedcef3d761fa7076677098beb3127",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/prompt_templates.json",
+      "source_entry_sha256": "a8682e09a0a1c985187a4ad9cce75299d2c2a3f494dae0cda8a08a8304a1302f",
+      "submitted_sha256": "d0bbd2f439133b93ff3b4ba2ab9c1c59baba1fee752230d6342bd0921257054f",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/patch_metadata.json",
+      "source_entry_sha256": "6643d6f44654397c31590123c52f9efc042d84d545191f9f1bba0e6080f68ad0",
+      "submitted_sha256": "1908cacd069add6aa4520677f3cdcc1a8125caa2dfe1179653390c1b23bb7946",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/requirements_actual.txt",
+      "source_entry_sha256": "6e89e2b328351746072542b252e2b9431b3c9d4c1b84e494b38a9ba38f0bef1b",
+      "submitted_sha256": "6e89e2b328351746072542b252e2b9431b3c9d4c1b84e494b38a9ba38f0bef1b",
+      "redaction_policy": "contacts/names/identifying paths only"
+    },
+    {
+      "path": "results/gemma/calls.jsonl",
+      "source_entry_sha256": "df8fabe3c1ba2c20a6bb128d91295d08a0de9cd90073f531c2da6db716c82e1d",
+      "submitted_sha256": "a35e1d12b0657ca792cf074250fabc64f9626609bb1fa13fde18ef3c506592b1",
+      "redaction_policy": "contacts/names/identifying paths only"
+    }
+  ],
+  "code_note": "src/applied_cell_patch.py는 실제 실행 ZIP의 코드. src/rag_experiment.py는 준비 셀과 패치의 통합본으로 모델 재실행 없이 문법/구성 검사만 수행.",
+  "actual_run": {
+    "questions": 10,
+    "completed": 9,
+    "wall_seconds": 365.73069409800064,
+    "generation_tokens": 57719,
+    "calculations_logged": 7,
+    "calculations_visible": 6
+  }
+}
