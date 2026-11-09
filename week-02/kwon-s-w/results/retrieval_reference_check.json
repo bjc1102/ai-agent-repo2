@@ -1,0 +1,62 @@
+[
+  {
+    "question_id": "Q1",
+    "matched_reference_phrases": 7,
+    "reference_phrases": 7,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q2",
+    "matched_reference_phrases": 6,
+    "reference_phrases": 6,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q3",
+    "matched_reference_phrases": 6,
+    "reference_phrases": 6,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q4",
+    "matched_reference_phrases": 5,
+    "reference_phrases": 5,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q5",
+    "matched_reference_phrases": 4,
+    "reference_phrases": 4,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q6",
+    "matched_reference_phrases": 0,
+    "reference_phrases": 0,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q7",
+    "matched_reference_phrases": 0,
+    "reference_phrases": 0,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q8",
+    "matched_reference_phrases": 0,
+    "reference_phrases": 0,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q9",
+    "matched_reference_phrases": 0,
+    "reference_phrases": 0,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  },
+  {
+    "question_id": "Q10",
+    "matched_reference_phrases": 0,
+    "reference_phrases": 0,
+    "scope": "페이지 일치+정규화한 짧은 문구 포함 검사. 일반 검색 Recall/의미적 충분성 점수가 아님."
+  }
+]

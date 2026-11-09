@@ -1,0 +1,29 @@
+{
+  "source": "Ollama API reported counts; retries included",
+  "stages": {
+    "query_embedding": {
+      "calls": 10,
+      "input_tokens": 690,
+      "output_tokens": 0
+    },
+    "extraction": {
+      "calls": 10,
+      "input_tokens": 16421,
+      "output_tokens": 5194
+    },
+    "final": {
+      "calls": 11,
+      "input_tokens": 23614,
+      "output_tokens": 6976
+    },
+    "calculation_plan_repair": {
+      "calls": 6,
+      "input_tokens": 4917,
+      "output_tokens": 597
+    }
+  },
+  "generation_input_tokens": 44952,
+  "generation_output_tokens": 12767,
+  "python_calculations": 7,
+  "note": "임베딩 토큰과 생성 토큰을 분리. 계산 실행/자동 검사 통과는 정답률이 아님."
+}
