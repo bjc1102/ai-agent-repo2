@@ -1,0 +1,88 @@
+{
+  "source": "https://github.com/python/cpython/blob/v3.13.0/Doc/library/venv.rst",
+  "ollama_python_version": "0.6.3",
+  "answer_model": "qwen2.5:3b",
+  "chunk_lines": 14,
+  "overlap_lines": 3,
+  "chunk_count": 67,
+  "top_k": 3,
+  "retrieval": "vector",
+  "search_backend": "Chroma",
+  "chromadb_version": "1.5.9",
+  "embedding_model": "embeddinggemma",
+  "metric": "cosine",
+  "results": [
+    {
+      "question": "Windows PowerShell에서 venv를 활성화하는 스크립트 경로는 무엇인가요?",
+      "hits": [
+        {
+          "rank": 1,
+          "location": "venv.rst:166-179",
+          "distance": 0.31160861253738403,
+          "text": ".. code-block:: powershell\n\n      PS C:\\> Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser\n\n   See `About Execution Policies\n   <https://go.microsoft.com/fwlink/?LinkID=135170>`_\n   for more information.\n\nThe created :file:`pyvenv.cfg` file also includes the\n``include-system-site-packages`` key, set to ``true`` if ``venv`` is\nrun with the ``--system-site-packages`` option, ``false`` otherwise.\n\nUnless the ``--without-pip`` option is given, :mod:`ensurepip` will be"
+        },
+        {
+          "rank": 2,
+          "location": "venv.rst:199-212",
+          "distance": 0.3176112174987793,
+          "text": "A virtual environment may be \"activated\" using a script in its binary directory\n(``bin`` on POSIX; ``Scripts`` on Windows).\nThis will prepend that directory to your :envvar:`PATH`, so that running\n:program:`python` will invoke the environment's Python interpreter\nand you can run installed scripts without having to use their full path.\nThe invocation of the activation script is platform-specific\n(:samp:`{<venv>}` must be replaced by the path to the directory\ncontaining the virtual environment):\n\n+-------------+------------+--------------------------------------------------+\n| Platform    | Shell      | Command to activate virtual environment          |\n+=============+============+==================================================+\n| POSIX       | bash/zsh   | :samp:`$ source {<venv>}/bin/activate`           |"
+        },
+        {
+          "rank": 3,
+          "location": "venv.rst:221-234",
+          "distance": 0.3303276300430298,
+          "text": "|             +------------+--------------------------------------------------+\n|             | PowerShell | :samp:`PS C:\\\\> {<venv>}\\\\Scripts\\\\Activate.ps1` |\n+-------------+------------+--------------------------------------------------+\n\n.. versionadded:: 3.4\n   :program:`fish` and :program:`csh` activation scripts.\n\n.. versionadded:: 3.8\n   PowerShell activation scripts installed under POSIX for PowerShell Core\n   support.\n\nYou don't specifically *need* to activate a virtual environment,\nas you can just specify the full path to that environment's\nPython interpreter when invoking Python."
+        }
+      ],
+      "answer": "Windows PowerShell에서 venv를 활성화하는 스크립트 경로는 {<venv>}\\\\Scripts\\\\Activate.ps1입니다. [3] venv.rst:221-234 참조"
+    },
+    {
+      "question": "기본 Python에 설치된 패키지를 가상 환경에서도 사용할 수 있게 하는 옵션은 무엇인가요?",
+      "hits": [
+        {
+          "rank": 1,
+          "location": "venv.rst:23-36",
+          "distance": 0.41985422372817993,
+          "text": "their :mod:`site` directories.\nA virtual environment is created on top of an existing\nPython installation, known as the virtual environment's \"base\" Python, and may\noptionally be isolated from the packages in the base environment,\nso only those explicitly installed in the virtual environment are available.\n\nWhen used from within a virtual environment, common installation tools such as\n:pypi:`pip` will install Python packages into a virtual environment\nwithout needing to be told to do so explicitly.\n\nA virtual environment is (amongst other things):\n\n* Used to contain a specific Python interpreter and software libraries and\n  binaries which are needed to support a project (library or application). These"
+        },
+        {
+          "rank": 2,
+          "location": "venv.rst:12-25",
+          "distance": 0.42434632778167725,
+          "text": "**Source code:** :source:`Lib/venv/`\n\n.. index:: pair: Environments; virtual\n\n--------------\n\n.. _venv-def:\n.. _venv-intro:\n\nThe :mod:`!venv` module supports creating lightweight \"virtual environments\",\neach with their own independent set of Python packages installed in\ntheir :mod:`site` directories.\nA virtual environment is created on top of an existing\nPython installation, known as the virtual environment's \"base\" Python, and may"
+        },
+        {
+          "rank": 3,
+          "location": "venv.rst:56-69",
+          "distance": 0.45055246353149414,
+          "text": "`Python Packaging User Guide: Creating and using virtual environments\n   <https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments>`__\n\n.. include:: ../includes/wasm-mobile-notavail.rst\n\nCreating virtual environments\n-----------------------------\n\n:ref:`Virtual environments <venv-def>` are created by executing the ``venv``\nmodule:\n\n.. code-block:: shell\n\n    python -m venv /path/to/new/virtual/environment"
+        }
+      ],
+      "answer": "기본 Python에 설치된 패키지를 가상 환경에서도 사용할 수 있게 하는 옵션은 없습니다. 가상 환경은 기본 Python에 설치된 패키지와 독립된 패키지 설치를 지원합니다. 이를 통해 가상 환경에서 사용하고자 하는 패키지만 설치할 수 있습니다."
+    },
+    {
+      "question": "가상 환경 하나에 기본으로 적용되는 저장 용량 제한은 몇 GB인가요?",
+      "hits": [
+        {
+          "rank": 1,
+          "location": "venv.rst:12-25",
+          "distance": 0.6368420124053955,
+          "text": "**Source code:** :source:`Lib/venv/`\n\n.. index:: pair: Environments; virtual\n\n--------------\n\n.. _venv-def:\n.. _venv-intro:\n\nThe :mod:`!venv` module supports creating lightweight \"virtual environments\",\neach with their own independent set of Python packages installed in\ntheir :mod:`site` directories.\nA virtual environment is created on top of an existing\nPython installation, known as the virtual environment's \"base\" Python, and may"
+        },
+        {
+          "rank": 2,
+          "location": "venv.rst:45-58",
+          "distance": 0.6376698613166809,
+          "text": "* Considered as disposable -- it should be simple to delete and recreate it from\n  scratch. You don't place any project code in the environment.\n\n* Not considered as movable or copyable -- you just recreate the same\n  environment in the target location.\n\nSee :pep:`405` for more background on Python virtual environments.\n\n.. seealso::\n\n   `Python Packaging User Guide: Creating and using virtual environments\n   <https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#create-and-use-virtual-environments>`__"
+        },
+        {
+          "rank": 3,
+          "location": "venv.rst:23-36",
+          "distance": 0.6618365049362183,
+          "text": "their :mod:`site` directories.\nA virtual environment is created on top of an existing\nPython installation, known as the virtual environment's \"base\" Python, and may\noptionally be isolated from the packages in the base environment,\nso only those explicitly installed in the virtual environment are available.\n\nWhen used from within a virtual environment, common installation tools such as\n:pypi:`pip` will install Python packages into a virtual environment\nwithout needing to be told to do so explicitly.\n\nA virtual environment is (amongst other things):\n\n* Used to contain a specific Python interpreter and software libraries and\n  binaries which are needed to support a project (library or application). These"
+        }
+      ],
+      "answer": "문서에서 확인할 수 없습니다."
+    }
+  ]
+}
