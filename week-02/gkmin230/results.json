@@ -1,0 +1,102 @@
+{
+  "created_at": "2026-11-12T16:36:23.604601+09:00",
+  "embedding_model": "text-embedding-3-small",
+  "answer_model": "gpt-4o-mini",
+  "vector_db": "Chroma",
+  "top_k": 3,
+  "experiments": [
+    {
+      "experiment": 1,
+      "question": "SSHBruteForce 탐지는 무엇을 의미하나요?",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_index": 67,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.0989,
+          "text": "k aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi"
+        },
+        {
+          "rank": 2,
+          "chunk_index": 66,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.2007,
+          "text": "nly trusted IPs\n                    through Security Groups, ACLs, or firewalls. For more information see\nTips\n                        for securing your EC2 instances (Linux)\n.\nUnauthorizedAccess:EC2/SSHBruteForce\nAn EC2 instance has been involved in SSH brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if a brute force attack is aimed at one of\n                        your EC2 instances. This finding's severity is high if your EC2 instance is\n                        being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can "
+        },
+        {
+          "rank": 3,
+          "chunk_index": 69,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.3046,
+          "text": "\n                    be remediated by securing your SSH port to only trusted IPs through Security\n                    Groups, ACLs, or firewalls. For more information, see\nTips for securing your\n                        EC2 instances (Linux)\n.\nIf your instance's\nResource Role\nis\nACTOR\n,\n                    this indicates the instance has been used to perform SSH brute force attacks.\n                    Unless this instance has a legitimate reason to be contacting the IP address\n                    listed as the\nTarget\n, it is recommended that you assume your\n                    instance has been compromised and take the actions listed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/TorClient\nYour EC2 instance is making connections to a Tor Guard or an A"
+        }
+      ],
+      "answer": "SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타냅니다. 이 탐지는 주로 포트 22에서의 트래픽 모니터링을 통해 생성되며, 만약 SSH 서비스가 다른 포트를 사용하도록 구성되어 있다면 이 탐지는 생성되지 않습니다. 기본적으로 이 탐지의 심각도는 낮지만, EC2 인스턴스가 무차별 대입 공격을 수행하는 경우 심각도가 높아질 수 있습니다."
+    },
+    {
+      "experiment": 2,
+      "question": "Portscan 탐지는 무엇을 의미하나요?",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_index": 43,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.2541,
+          "text": "ctedPort\n. The second filter\n                    criteria should match the instance or instances that serve as a bastion host.\n                    You can use either the\nInstance image ID\nattribute or the\nTag\nvalue attribute, depending on which criteria is\n                    identifiable with the instances that host these tools. For more information\n                    about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/Portscan\nAn EC2 instance is performing outbound port scans to a remote host.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                   "
+        },
+        {
+          "rank": 2,
+          "chunk_index": 44,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.293,
+          "text": "\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is engaged in a possible port scan attack because it is trying to\n                    connect to multiple ports over a short period of time. The purpose of a port\n                    scan attack is to locate open ports to discover which services the machine is\n                    running and to identify its operating system.\nRemediation recommendations:\nThis finding can be a false positive when vulnerability assessment\n                    applications are deployed on EC2 instances in your environment because these\n                    applications conduct port scans to alert you about misconfigured open ports. If\n                    this is the case in your AWS environment, we re"
+        },
+        {
+          "rank": 3,
+          "chunk_index": 10,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.3032,
+          "text": "tack using the TCP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound TCP traffic. This may\n                    indicate that the instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using TCP protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Udp\nAn EC2 instance is behaving in a "
+        }
+      ],
+      "answer": "Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 의미합니다. 이는 포트 스캔 공격의 일환으로, 공격자가 열려 있는 포트를 찾아 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하려고 하는 목적을 가지고 있습니다. 이 탐지는 기본적으로 중간 정도의 심각도로 분류됩니다."
+    },
+    {
+      "experiment": 3,
+      "question": "어제 우리 회사에서 발생한 GuardDuty 탐지 건수는?",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_index": 52,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.2343,
+          "text": " their command and control (C&C) servers.\n                    Command and control servers are computers that issue commands to members of a\n                    botnet, which is a collection of internet-connected devices that are infected\n                    and controlled by a common type of malware. The large number of potential\n                    rendezvous points makes it difficult to effectively shut down botnets because\n                    infected computers attempt to contact some of these domain names every day to\n                    receive updates or commands.\nNote\nThis finding is based on known DGA domains from GuardDuty's threat\n                        intelligence feeds.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more inf"
+        },
+        {
+          "rank": 2,
+          "chunk_index": 0,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.2452,
+          "text": "GuardDuty EC2 finding types\nThe following findings are specific to Amazon EC2 resources and always have a Resource Type of\nInstance\n. The severity and details of the findings differ based on the\n        Resource Role, which indicates whether the EC2 resource was the target of suspicious\n        activity or the actor performing the activity.\nThe findings listed here include the data sources and models used to generate that finding\n        type. For more information data sources and models see\nGuardDuty foundational data sources\n.\nNotes\nEC2 finding instance details may be missing if the instance was already terminated, or if the underlying \n                    API call originated from an EC2 instance in a different Region.\nEC2 findings that use VPC flow logs as a data source do not support I"
+        },
+        {
+          "rank": 3,
+          "chunk_index": 34,
+          "source": "AWS GuardDuty EC2 Finding Types",
+          "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+          "distance": 1.2497,
+          "text": "             environment is querying a domain name that is included in threat entity list\n                    that you uploaded and activated. In GuardDuty, a threat entity list consists of known\n                malicious domain names and IP addresses. GuardDuty generates findings based on the activity\n                associated with the uploaded threat entity list. You can view name of the threat entity\n                list in the finding details.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/PortSweep\nAn EC2 instance is probing a port on a large number of IP addresses.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you t"
+        }
+      ],
+      "answer": "제공된 문서만으로는 확인할 수 없습니다."
+    }
+  ]
+}
