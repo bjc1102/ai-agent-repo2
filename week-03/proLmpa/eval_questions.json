@@ -1,0 +1,52 @@
+[
+  {
+    "id": "Q1",
+    "type": "answerable",
+    "question": "선택의료급여기관 적용 대상자가 의료급여의뢰서 없이 다른 기관에서 진료받을 수 있는 경우는 언제인가요?",
+    "reference": "응급환자인 경우, 장애인 보조기기를 지급받고자 하는 경우",
+    "ground_truth_pages": [13],
+    "ground_truth_chunk_ids": ["chunk_42"],
+    "answerable": true,
+    "_note": "chunk_42 (p.13, 269자): Q25 질문과 A25 응급증상·장애인 보조기기 답변 포함"
+  },
+  {
+    "id": "Q2",
+    "type": "answerable_known_failure",
+    "question": "65세 이상 수급권자가 틀니 의료급여를 받을 때 1종과 2종의 본인부담률은 각각 얼마인가요?",
+    "reference": "1종 5%, 2종 15%",
+    "ground_truth_pages": [17],
+    "ground_truth_chunk_ids": ["chunk_57", "chunk_58", "chunk_59"],
+    "answerable": true,
+    "_note": "Q48 틀니 답변이 p.17 세 청크에 걸쳐 분산됨 (다단 PDF 레이아웃 → 선형 추출로 Q번호 뒤섞임). Week-02 known retrieval failure."
+  },
+  {
+    "id": "Q3",
+    "type": "answerable",
+    "question": "의료급여 수급자가 약국에서 처방약을 조제받을 때 본인부담금은 얼마인가요?",
+    "reference": "500원 (1종/2종 공통 정액)",
+    "ground_truth_pages": [19],
+    "ground_truth_chunk_ids": ["chunk_65", "chunk_66"],
+    "answerable": true,
+    "_note": "chunk_65·66 (p.19): 의료급여 본인부담 500원 명시"
+  },
+  {
+    "id": "Q4",
+    "type": "unanswerable",
+    "question": "의료급여 수급자가 미용 목적 성형수술을 받을 경우 본인부담금은 얼마인가요?",
+    "reference": "제공된 문서에서 확인할 수 없습니다",
+    "ground_truth_pages": [],
+    "ground_truth_chunk_ids": [],
+    "answerable": false,
+    "_note": "정답 청크 없음. ID-based Recall, ContextRecall, Faithfulness → N/A"
+  },
+  {
+    "id": "Q5",
+    "type": "partially_answerable",
+    "question": "의료급여 수급자가 65세 이상 치과 임플란트 진료를 받을 때 본인부담률과, 치과 스케일링 치료 비용은 얼마인가요?",
+    "reference": "임플란트: 1종 10%, 2종 20% / 스케일링 비용은 제공된 문서에서 확인할 수 없습니다",
+    "ground_truth_pages": [18],
+    "ground_truth_chunk_ids": ["chunk_61"],
+    "answerable": "partial",
+    "_note": "chunk_61 (p.18): Q49 임플란트 본인부담률 명시. 스케일링 비용은 문서에 없음."
+  }
+]
