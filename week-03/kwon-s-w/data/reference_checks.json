@@ -1,0 +1,46 @@
+{
+  "version": "2026-11-13-reference-elements-v3",
+  "scope": "Evaluation labels only. Phrase/element coverage, not a proof of overall correctness.",
+  "checks": {
+    "E1": [
+      {
+        "id": "supply",
+        "description": "공급량 3.7만호 또는 37,000호 포함",
+        "pattern": "(?:3\\.7만호|37000호)"
+      }
+    ],
+    "E2": [
+      {
+        "id": "site_count",
+        "description": "추가 후보지 수 6곳 포함",
+        "pattern": "(?<![0-9])6(?:곳|개)"
+      }
+    ],
+    "E3": [
+      {
+        "id": "construction_target",
+        "description": "착공과 목표를 연결한 표현 포함",
+        "pattern": "(?:착공.{0,16}목표|목표.{0,16}착공)"
+      }
+    ],
+    "E4": [
+      {
+        "id": "price_unknown",
+        "description": "요청한 가격을 자료로 확인 불가하다고 안내",
+        "pattern": "(?:확인.{0,12}(?:없|불가)|알.{0,6}없|명시.{0,12}(?:않|없)|언급.{0,12}(?:않|없)|제공.{0,12}(?:않|없)|정보.{0,10}없)"
+      }
+    ],
+    "E5": [
+      {
+        "id": "supply",
+        "description": "공급량 1.2만호 또는 12,000호 포함",
+        "pattern": "(?:1\\.2만호|12000호)"
+      },
+      {
+        "id": "occupancy_unknown",
+        "description": "입주일을 자료로 확인 불가하다고 안내",
+        "pattern": "입주.{0,70}(?:확인.{0,12}(?:없|불가)|알.{0,6}없|명시.{0,12}(?:않|없)|언급.{0,12}(?:않|없)|제공.{0,12}(?:않|없)|정보.{0,10}없)"
+      }
+    ]
+  }
+}
