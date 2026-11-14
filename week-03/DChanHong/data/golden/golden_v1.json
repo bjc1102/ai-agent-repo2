@@ -1,0 +1,1576 @@
+{
+  "schema_version": "golden_dataset_v1",
+  "dataset_id": "dongwon_ipo_eval_v1",
+  "created_at": "2026-11-14T15:27:49+09:00",
+  "documents": [
+    {
+      "document_id": "dongwon_correction_20261030",
+      "title": "동원파츠 정정 증권신고서(지분증권), 2026-10-30",
+      "path": "/Users/root1/Desktop/ai-agent-repo2/week-03/DChanHong/docs/01-document/[동원파츠][정정]증권신고서(지분증권)(2026.10.30).pdf",
+      "sha256": "6d9e4475c92e9312f44437dddf10622f199a6339798e6d94eb463cda09a85b43"
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "Q01",
+      "topic": "offering_price",
+      "question": "정정 후 「동원파츠의 희망공모가액 산출내역」에서 주당 평가가액과 확정 주당 공모가액은 각각 얼마인가요? 확정 공모가액은 주당 평가가액보다 몇 원, 몇 % 낮은지 계산해주세요. 할인율은 소수점 둘째 자리까지 표시해주세요.",
+      "expected_answerability": "answerable",
+      "golden_answer": "정정 후 주당 평가가액은 32,783원이며, 확정 주당 공모가액은 26,500원이다. 차액은 32,783 - 26,500 = 6,283원이다. 평가가액 대비 할인율은 (32,783 - 26,500) / 32,783 × 100 = 19.17%이므로, 확정 공모가액은 평가가액보다 6,283원, 약 19.17% 낮다.",
+      "answerable_parts": [
+        "정정 후 주당 평가가액",
+        "정정 후 확정 주당 공모가액",
+        "평가가액과 확정 공모가액의 차액",
+        "평가가액을 기준으로 계산한 할인율"
+      ],
+      "unanswerable_parts": [],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "주당 평가가액 32,783원과 확정 주당 공모가액 26,500원의 성격·금액·단위를 정확하게 구분한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "차액 6,283원과 할인율 19.17%를 제시한다. 할인율의 분모는 확정 공모가액이 아니라 주당 평가가액 32,783원이다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "두 가격을 확인할 수 있는 정정 후 원문 표를 실제 제공된 E 근거로 인용한다. 차액과 할인율은 인용한 입력값에서 계산할 수 있으면 된다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "정정 후 기준으로 두 가격·차액·할인율을 모두 답하고 할인율을 소수점 둘째 자리까지 표시한다.",
+          "source_refs": [
+            "G1"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 92,
+          "printed_page": "Page 91",
+          "revision": "after",
+          "section": "(주15) 정정 후 / 라. 희망공모가액 산출 / (4) 희망공모가액 산정",
+          "excerpt": "[㈜동원파츠의 희망공모가액 산출내역]\n구분 내용 비고\n주당 평가가액 32,783원 -\n평가액 대비 할인율 29.84% ~ 19.17% 주1)\n희망공모가액 밴드 23,000원 ~ 26,500원 -\n확정 주당 공모가액 26,500원 주2)",
+          "role": "answer_evidence"
+        }
+      ],
+      "absence_checks": [],
+      "retrieval_reference": "정정 후 「㈜동원파츠의 희망공모가액 산출내역」의 주당 평가가액은 32,783원이며, 확정 주당 공모가액은 26,500원이다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "numeric",
+          "target": "주당 평가가액",
+          "revision": "after",
+          "period": null,
+          "expected_value": 32783,
+          "unit": "원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R2",
+          "kind": "numeric",
+          "target": "확정 주당 공모가액",
+          "revision": "after",
+          "period": null,
+          "expected_value": 26500,
+          "unit": "원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R3",
+          "kind": "calculation",
+          "target": "평가가액 대비 공모가액 차액",
+          "revision": "after",
+          "period": null,
+          "expected_value": 6283,
+          "unit": "원",
+          "formula": "32783 - 26500",
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R4",
+          "kind": "calculation",
+          "target": "평가가액 대비 공모가액 할인율",
+          "revision": "after",
+          "period": null,
+          "expected_value": 19.17,
+          "unit": "%",
+          "formula": "(32783 - 26500) / 32783 * 100",
+          "rounding_digits": 2,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R5",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "두 가격의 근거가 검색 결과에서 얼마나 적절한 순서로 검색됐는지 평가한다.",
+          "reason": "원문에 정답 근거가 있는 답변 가능 문항이다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "검색 결과에 주당 평가가액과 확정 주당 공모가액의 근거가 포함됐는지 평가한다.",
+          "reason": "두 가격의 근거 사실을 검색용 reference로 사용할 수 있다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수한 확인 불가 안내는 적용 불가이며, 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "run",
+          "scope": "실제 답변이 두 가격과 차액·할인율을 묻는 질문에 관련되는지 평가한다.",
+          "reason": "Q01은 Answer Relevancy 적용 대상인 답변 가능 문항이다."
+        }
+      }
+    },
+    {
+      "question_id": "Q02",
+      "topic": "offering_price",
+      "question": "정정 전후의 「공모가격 산정 개요」를 비교해주세요. 확정공모가액은 누가 결정하며, 수요예측 결과를 어떤 방식으로 반영하나요? 정정 전과 후에 가격 결정의 진행 상태가 어떻게 달라졌는지도 설명해주세요.",
+      "expected_answerability": "answerable",
+      "golden_answer": "확정공모가액은 발행회사 동원파츠와 대표주관회사 삼성증권이 협의하여 결정한다. 수요예측에 참여한 기관별 자산규모와 장기보유 성향 등을 고려하여 참여수량을 집계하고 가중평균가격을 산정한 뒤, 시장상황 등을 종합적으로 고려하여 가격 결정의 근거로 활용한다. 정정 전에는 수요예측 실시와 최종 가격 결정이 예정된 상태였으며, 정정 후에는 수요예측을 실시하고 최종 공모가격을 결정한 상태로 바뀌었다.",
+      "answerable_parts": [
+        "확정공모가액의 결정 주체",
+        "수요예측 결과와 시장상황을 가격 결정에 반영하는 방식",
+        "정정 전후 수요예측과 가격 결정의 진행 상태"
+      ],
+      "unanswerable_parts": [],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "발행회사 동원파츠와 대표주관회사 삼성증권이 협의하여 확정공모가액을 결정한다고 설명한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "기관별 자산규모·장기보유 성향, 참여수량, 가중평균가격, 시장상황을 고려한다는 내용을 설명한다. 가중평균가격은 가격 결정의 근거이며 자동으로 최종 공모가가 되는 값으로 설명하지 않는다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "정정 전에는 수요예측 실시와 가격 결정이 예정됐고, 정정 후에는 수요예측을 실시하고 가격 결정을 완료했다는 상태 변화를 구분한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "결정 주체·반영 방식·진행 상태를 뒷받침하는 실제 제공 E 근거를 인용하고, 정정 전후 비교 주장에 각각의 근거를 연결한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C5",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "질문이 요구한 결정 주체, 수요예측 반영 방식, 정정 전후 진행 상태를 모두 설명한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C6",
+          "dimension": "answer_scope",
+          "kind": "allowed",
+          "description": "확정공모가액 26,500원을 추가로 제시할 수 있으나 필수는 아니다. 제시한다면 금액과 정정 후 상태가 정확해야 한다.",
+          "source_refs": [
+            "G2"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 29,
+          "printed_page": "Page 28",
+          "revision": "before",
+          "section": "(주3) 정정 전 / 3. 공모가격 결정방법 / 나. 공모가격 산정 개요",
+          "excerpt": "대표주관회사 삼성증권㈜는 ㈜동원파츠의 코스닥시장 상장을 위한 공모와 관련하여 당사의 현황, 국내외 시장상황 및 산업전망 등을 고려하여 희망공모가액을 아래와 같이 제시하였습니다.\n구 분 내 용\n주당 희망공모가액 23,000원 ~ 26,500원\n확정공모가액 결정방법\n수요예측 결과와 시장 상황을 고려하여 발행회사와 대표주관회사가 협의하여 확정공모가액을 결정할 예정입니다.\n수요예측 결과 반영 여부\n수요예측에 참여한 기관별 자산규모, 장기보유 성향 등을 고려하여 참여수량을 집계하고, 가중평균 가격을 산정한 후 시장상황 등을 종합적으로 고려하여 확정 공모가격 결정의 근거로 활용합니다.\n주1) 상기 주당 희망공모가액의 범위는 ㈜동원파츠의 실질적인 가치를 의미하는 절대적 평가액이 아닙니다. 또한 향후 발생할 수 있는 경기변동에 따른 위험, 영업 및 재무에 대한 위험, 산업에 대한 위험, 주식시장 상황의 변동가능성 등이 반영되지 않았음을 투자자께서는 유의하시기 바랍니다.\n주2) 대표주관회사인 삼성증권㈜는 상기 희망공모가액을 바탕으로 국내외 기관투자자 대상 수요예측을 실시할 예정이며, 확정공모가액은 동 수요예측 결과 및 주식시장 상황 등을 고려하여 대표주관회사 및 발행회사가 협의하여 최종 확정 예정입니다.",
+          "role": "answer_evidence"
+        },
+        {
+          "source_id": "G2",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 30,
+          "printed_page": "Page 29",
+          "revision": "after",
+          "section": "(주3) 정정 후 / 3. 공모가격 결정방법 / 나. 공모가격 산정 개요",
+          "excerpt": "대표주관회사 삼성증권㈜는 ㈜동원파츠의 코스닥시장 상장을 위한 공모와 관련하여 당사의 현황, 국내외 시장상황 및 산업전망 등을 고려하여 희망공모가액을 아래와 같이 제시하였습니다.\n구 분 내 용\n주당 희망공모가액 23,000원 ~ 26,500원\n주당 확정공모가액 26,500원\n확정공모가액 결정방법\n수요예측 결과와 시장 상황을 고려하여 발행회사와 대표주관회사가 협의하여 확정공모가액을 결정하였습니다.\n수요예측 결과 반영 여부\n수요예측에 참여한 기관별 자산규모, 장기보유 성향 등을 고려하여 참여수량을 집계하고, 가중평균 가격을 산정한 후 시장상황 등을 종합적으로 고려하여 확정 공모가격 결정의 근거로 활용합니다.\n주1) 상기 주당 희망공모가액의 범위는 ㈜동원파츠의 실질적인 가치를 의미하는 절대적 평가액이 아닙니다. 또한 향후 발생할 수 있는 경기변동에 따른 위험, 영업 및 재무에 대한 위험, 산업에 대한 위험, 주식시장 상황의 변동가능성 등이 반영되지 않았음을 투자자께서는 유의하시기 바랍니다.\n주2) 대표주관회사인 삼성증권㈜는 상기 희망공모가액을 바탕으로 국내외 기관투자자 대상 수요예측을 실시하였으며, 확정공모가액은 동 수요예측 결과 및 주식시장 상황 등을 고려하여 대표주관회사 및 발행회사가 협의하여 26,500원으로 최종 확정하였습니다.",
+          "role": "answer_evidence"
+        }
+      ],
+      "absence_checks": [],
+      "retrieval_reference": "확정공모가액은 발행회사 동원파츠와 대표주관회사 삼성증권이 협의하여 결정한다. 기관별 자산규모와 장기보유 성향 등을 고려하여 수요예측 참여수량을 집계하고 가중평균가격을 산정한 뒤 시장상황 등을 종합적으로 고려한다. 정정 전에는 수요예측 실시와 최종 가격 결정이 예정됐으며, 정정 후에는 수요예측을 실시하고 최종 가격을 결정했다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "가격 결정 주체·반영 방식·정정 전후 진행 상태의 근거가 검색 결과에서 적절한 순서로 검색됐는지 평가한다.",
+          "reason": "정정 전후 원문에 정답 근거가 있는 답변 가능 문항이다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "검색 결과에 결정 주체·반영 방식과 정정 전후 진행 상태의 근거가 포함됐는지 평가한다.",
+          "reason": "정정 전후의 근거 사실을 검색용 reference로 사용할 수 있다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수한 확인 불가 안내는 적용 불가이며, 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "run",
+          "scope": "실제 답변이 결정 주체·수요예측 반영 방식·진행 상태 비교라는 질문에 관련되는지 평가한다.",
+          "reason": "Q02는 Answer Relevancy 적용 대상인 답변 가능 문항이다."
+        }
+      }
+    },
+    {
+      "question_id": "Q03",
+      "topic": "offering_terms",
+      "question": "정정 전후의 「청약대상자 유형별 공모대상 주식수」를 비교해주세요. 일반청약자와 기관투자자의 배정 주식 수와 배정비율은 각각 어떻게 달라졌나요? 전체 공모 주식 수에도 변화가 있었는지 설명해주세요.",
+      "expected_answerability": "answerable",
+      "golden_answer": "정정 전 일반청약자 배정은 507,500~609,000주(25~30%), 기관투자자 배정은 1,421,000~1,522,500주(70~75%)였다. 정정 후에는 일반청약자 507,500주(25%), 기관투자자 1,522,500주(75%)로 정해졌다. 전체 공모 주식 수는 정정 전후 모두 2,030,000주로 변하지 않았다. 이는 문서에 기재된 공모 배정 조건이다.",
+      "answerable_parts": [
+        "일반청약자의 정정 전후 배정 수량과 비율",
+        "기관투자자의 정정 전후 배정 수량과 비율",
+        "전체 공모 주식 수의 변화 여부"
+      ],
+      "unanswerable_parts": [],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "정정 전 일반청약자 507,500~609,000주·25~30%, 기관투자자 1,421,000~1,522,500주·70~75%를 범위로 설명한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "정정 후 일반청약자 507,500주·25%, 기관투자자 1,522,500주·75%를 제시하고 전체 공모 주식 수는 전후 모두 2,030,000주로 동일하다고 설명한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "정정 전후 배정 표에 대응하는 실제 제공 E 근거를 인용한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "두 청약자 유형의 수량·비율과 총수 변화 여부를 모두 답한다. 문서상 배정 조건을 실제 최종 배정 결과로 바꾸지 않는다. 정정 전 상한과의 차이를 제시하면 상한 기준 비교임을 밝힌다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 8,
+          "printed_page": "Page 7",
+          "revision": "before",
+          "section": "(주2) 정정 전 / 청약대상자 유형별 공모대상 주식수 / 수량·배정비율 열",
+          "excerpt": "[청약대상자 유형별 공모대상 주식수]\n공모대상 주식수 배정비율\n일반청약자 507,500주 ~ 609,000주 25.00% ~ 30.00%\n기관투자자 1,421,000주 ~ 1,522,500주 70.00% ~ 75.00%\n합계 2,030,000주 100.00%",
+          "role": "answer_evidence"
+        },
+        {
+          "source_id": "G2",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 18,
+          "printed_page": "Page 17",
+          "revision": "after",
+          "section": "(주2) 정정 후 / 청약대상자 유형별 공모대상 주식수 / 수량·배정비율 열",
+          "excerpt": "[청약대상자 유형별 공모대상 주식수]\n공모대상 주식수 배정비율\n일반청약자 507,500주 25.00%\n기관투자자 1,522,500주 75.00%\n합계 2,030,000주 100.00%",
+          "role": "answer_evidence"
+        }
+      ],
+      "absence_checks": [],
+      "retrieval_reference": "정정 전 일반청약자 배정은 507,500~609,000주와 25~30%, 기관투자자 배정은 1,421,000~1,522,500주와 70~75%이다. 정정 후 일반청약자 배정은 507,500주와 25%, 기관투자자 배정은 1,522,500주와 75%이다. 전체 공모 주식 수는 정정 전후 모두 2,030,000주이다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "numeric_range",
+          "target": "일반청약자 배정 주식 수",
+          "revision": "before",
+          "period": null,
+          "expected_value": {
+            "min": 507500,
+            "max": 609000
+          },
+          "unit": "주",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R2",
+          "kind": "numeric_range",
+          "target": "일반청약자 배정비율",
+          "revision": "before",
+          "period": null,
+          "expected_value": {
+            "min": 25,
+            "max": 30
+          },
+          "unit": "%",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R3",
+          "kind": "numeric_range",
+          "target": "기관투자자 배정 주식 수",
+          "revision": "before",
+          "period": null,
+          "expected_value": {
+            "min": 1421000,
+            "max": 1522500
+          },
+          "unit": "주",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R4",
+          "kind": "numeric_range",
+          "target": "기관투자자 배정비율",
+          "revision": "before",
+          "period": null,
+          "expected_value": {
+            "min": 70,
+            "max": 75
+          },
+          "unit": "%",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R5",
+          "kind": "numeric",
+          "target": "일반청약자 배정 주식 수",
+          "revision": "after",
+          "period": null,
+          "expected_value": 507500,
+          "unit": "주",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R6",
+          "kind": "numeric",
+          "target": "일반청약자 배정비율",
+          "revision": "after",
+          "period": null,
+          "expected_value": 25,
+          "unit": "%",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R7",
+          "kind": "numeric",
+          "target": "기관투자자 배정 주식 수",
+          "revision": "after",
+          "period": null,
+          "expected_value": 1522500,
+          "unit": "주",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R8",
+          "kind": "numeric",
+          "target": "기관투자자 배정비율",
+          "revision": "after",
+          "period": null,
+          "expected_value": 75,
+          "unit": "%",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R9",
+          "kind": "numeric",
+          "target": "전체 공모 주식 수",
+          "revision": "before",
+          "period": null,
+          "expected_value": 2030000,
+          "unit": "주",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R10",
+          "kind": "numeric",
+          "target": "전체 공모 주식 수",
+          "revision": "after",
+          "period": null,
+          "expected_value": 2030000,
+          "unit": "주",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R11",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "정정 전후 배정 수량·비율·총수 근거의 검색 순서를 평가한다.",
+          "reason": "정정 전후 표에 정답 근거가 있다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "두 청약자 유형의 전후 수량·비율과 총수 근거가 검색됐는지 평가한다.",
+          "reason": "전후 배정 조건을 검색용 reference로 사용할 수 있다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수 거절은 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "run",
+          "scope": "답변이 배정 수량·비율·총수의 전후 비교에 관련되는지 평가한다.",
+          "reason": "Q03은 답변 가능 문항이다."
+        }
+      }
+    },
+    {
+      "question_id": "Q04",
+      "topic": "offering_terms",
+      "question": "동원파츠의 이번 공모에서 일반청약자에게 환매청구권이 부여되나요? 정정 후 문서에 명시된 부여 여부와 그 이유를 설명해주세요.",
+      "expected_answerability": "answerable",
+      "golden_answer": "일반청약자에게 환매청구권이 부여되지 않는다. 이번 공모는 「증권 인수업무 등에 관한 규정」 제10조의3 제1항의 환매청구권 부여 요건에 해당하지 않기 때문이다.",
+      "answerable_parts": [
+        "일반청약자의 환매청구권 부여 여부",
+        "환매청구권이 부여되지 않는 사유"
+      ],
+      "unanswerable_parts": [],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "이번 공모의 일반청약자에게 환매청구권이 부여되지 않는다고 설명한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "관련 규정의 환매청구권 부여 요건에 해당하지 않는다는 이유를 설명한다. 정확한 조문 번호를 쓰는 것은 필수가 아니다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "정정 후 공모개요의 환매청구권 주석에 대응하는 실제 제공 E 근거를 인용한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "이번 공모의 미부여와 이유를 모두 답한다. 명시된 미부여를 확인 불가로 바꾸거나 모든 IPO에 일반화하지 않으며 행사 기간·가격을 만들어내지 않는다.",
+          "source_refs": [
+            "G1"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 6,
+          "printed_page": "Page 5",
+          "revision": "after",
+          "section": "(주1) 정정 후 / 공모개요 / 주7",
+          "excerpt": "금번 공모에서는「증권 인수업무 등에 관한 규정」제10조의3(환매청구권) 제1항 각 호에 해당하는 사항이 존재하지 않으며, 이에 따라「증권 인수업무 등에 관한 규정」제10조의3(환매청구권)에 따라 일반청약자에게 공모주식을 인수회사에 매도할 수 있는 권리(이하 \"환매청구권\" 이라 한다)를 부여하지 않습니다.",
+          "role": "answer_evidence"
+        }
+      ],
+      "absence_checks": [],
+      "retrieval_reference": "이번 공모는 「증권 인수업무 등에 관한 규정」 제10조의3 제1항 각 호에 해당하지 않으므로 일반청약자에게 환매청구권을 부여하지 않는다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "환매청구권 미부여와 사유에 관한 근거의 검색 순서를 평가한다.",
+          "reason": "원문에 부여 여부와 사유가 명시돼 있다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "미부여와 요건 미해당이라는 두 근거 사실이 검색됐는지 평가한다.",
+          "reason": "명시된 사실을 검색용 reference로 사용할 수 있다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수 거절은 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "run",
+          "scope": "답변이 환매청구권 부여 여부와 이유라는 질문에 관련되는지 평가한다.",
+          "reason": "Q04는 답변 가능 문항이다."
+        }
+      }
+    },
+    {
+      "question_id": "Q05",
+      "topic": "fund_use",
+      "question": "정정 후 시설자금 사용 계획에서 2026년·2027년·2028년의 예정 금액과 3개년 합계를 알려주세요. 또한 2027년 시설자금 중 건축자금을 제외한 금액은 얼마인가요? 모든 금액은 백만원 단위로 표시하고, 합계와 건축자금 제외 금액의 계산식도 제시해주세요.",
+      "expected_answerability": "answerable",
+      "golden_answer": "정정 후 시설자금 예정액은 2026년 6,400백만원, 2027년 20,920백만원, 2028년 4,000백만원이다. 3개년 합계는 6,400 + 20,920 + 4,000 = 31,320백만원이다. 2027년 건축자금은 9,600백만원이므로, 이를 제외한 시설자금은 20,920 - 9,600 = 11,320백만원이다. 모두 사용 계획상의 금액이다.",
+      "answerable_parts": [
+        "2026년·2027년·2028년 시설자금 예정액",
+        "시설자금 3개년 합계와 계산식",
+        "2027년 건축자금 제외 시설자금과 계산식"
+      ],
+      "unanswerable_parts": [],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "연도별 시설자금 6,400·20,920·4,000백만원과 2027년 건축자금 9,600백만원을 올바른 연도·항목에 연결한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "6,400 + 20,920 + 4,000 = 31,320 및 20,920 - 9,600 = 11,320을 정확하게 계산한다. 2027년 건축자금 대신 전체 건축자금 16,000을 차감하지 않는다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "계산 입력값을 뒷받침하는 실제 제공 E 근거를 인용한다. 필요한 입력값이 모두 포함된 시설자금 세부 표 하나만으로도 충분하다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "요청한 연도별 금액·합계·건축자금 제외액과 두 계산식을 백만원 단위로 제시하고 계획임을 유지한다. 계획으로 일관되게 설명했다면 별도의 면책 문장은 요구하지 않는다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 113,
+          "printed_page": "Page 112",
+          "revision": "after",
+          "section": "(주18) 정정 후 / 나. 자금의 세부 사용 계획",
+          "excerpt": "[연도별 자금 세부 사용 계획]\n(단위: 백만원)\n구분 내역 2026년 2027년 2028년 합계\n시설자금 남동공장(7공장) 건축 및 장비, 기타 설비 등 매입 6,400 20,920 4,000 31,320\n채무상환자금 금융기관 차입금 상환 8,200 13,206 - 21,406\n운영자금 기타 운영자금 사용 36 - - 36\n합계 14,636 34,126 4,000 52,762",
+          "role": "answer_evidence"
+        },
+        {
+          "source_id": "G2",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 115,
+          "printed_page": "Page 114",
+          "revision": "after",
+          "section": "(주18) 정정 후 / (1) 시설자금 / 표의 건축자금·합계 행",
+          "excerpt": "[연도별 시설자금 세부 사용 계획]\n(단위: 백만원)\n구분 내역 설비명 2026년 2027년 2028년 합계\n건축자금 연면적 4,014평(13,246㎡), 평당 건축비 약4,000천원 가정 - 6,400 9,600 - 16,000\n합 계 6,400 20,920 4,000 31,320",
+          "role": "answer_evidence"
+        }
+      ],
+      "absence_checks": [],
+      "retrieval_reference": "정정 후 시설자금 사용 계획은 2026년 6,400백만원, 2027년 20,920백만원, 2028년 4,000백만원이다. 2027년 건축자금 계획은 9,600백만원이다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "numeric",
+          "target": "시설자금 예정액",
+          "revision": "after",
+          "period": "2026",
+          "expected_value": 6400,
+          "unit": "백만원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R2",
+          "kind": "numeric",
+          "target": "시설자금 예정액",
+          "revision": "after",
+          "period": "2027",
+          "expected_value": 20920,
+          "unit": "백만원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R3",
+          "kind": "numeric",
+          "target": "시설자금 예정액",
+          "revision": "after",
+          "period": "2028",
+          "expected_value": 4000,
+          "unit": "백만원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R4",
+          "kind": "numeric",
+          "target": "건축자금 예정액",
+          "revision": "after",
+          "period": "2027",
+          "expected_value": 9600,
+          "unit": "백만원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R5",
+          "kind": "calculation",
+          "target": "시설자금 3개년 합계",
+          "revision": "after",
+          "period": "2026~2028",
+          "expected_value": 31320,
+          "unit": "백만원",
+          "formula": "6400 + 20920 + 4000",
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R6",
+          "kind": "calculation",
+          "target": "건축자금 제외 시설자금",
+          "revision": "after",
+          "period": "2027",
+          "expected_value": 11320,
+          "unit": "백만원",
+          "formula": "20920 - 9600",
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R7",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "연도별 시설자금과 2027년 건축자금 근거의 검색 순서를 평가한다.",
+          "reason": "계산에 필요한 입력값이 원문에 있다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "세 연도의 시설자금과 2027년 건축자금 근거가 검색됐는지 평가한다.",
+          "reason": "검색용 reference에는 계산 결과가 아닌 입력값을 사용한다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수 거절은 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "run",
+          "scope": "답변이 연도별 계획과 요청한 두 계산에 관련되는지 평가한다.",
+          "reason": "Q05는 답변 가능 문항이다."
+        }
+      }
+    },
+    {
+      "question_id": "Q06",
+      "topic": "fund_use",
+      "question": "정정 후 문서에서 공모자금의 사용 우선순위는 무엇인가요? 실제 유입금액이 문서에 제시된 하단 기준 공모 순수입금보다 적을 경우, 추가 차입 여부와 대체 재원, 자체 현금으로도 부족할 때의 후속 조달 계획을 설명해주세요. 비교 기준이 되는 하단 금액도 함께 알려주세요.",
+      "expected_answerability": "answerable",
+      "golden_answer": "공모자금 사용 우선순위는 시설자금, 채무상환자금, 기타 운영자금 순이다. 비교 기준인 하단 공모 순수입금은 46,036백만원이다. 실제 유입금액이 이보다 적으면 해당 사용 계획을 위해 추가 차입하지 않고 자체 보유 현금과 향후 영업활동 현금흐름 등을 활용한다. 자체 현금으로도 부족하면 상장 후 증자 등을 통해 조달할 계획이다.",
+      "answerable_parts": [
+        "공모자금 사용 우선순위",
+        "하단 기준 공모 순수입금",
+        "유입금액 부족 시 추가 차입 여부와 대체 재원",
+        "자체 현금으로도 부족할 때의 후속 조달 계획"
+      ],
+      "unanswerable_parts": [],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "시설자금 → 채무상환자금 → 기타 운영자금의 우선순위와 하단 기준 46,036백만원을 정확하게 설명한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "실제 유입금액이 하단 기준보다 적으면 해당 계획을 위해 추가 차입하지 않고 보유 현금과 향후 영업활동 현금흐름을 활용하며, 자체 현금으로도 부족하면 상장 후 증자 등을 통해 조달한다는 조건을 설명한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "사용 우선순위와 조건부 자금 조달 설명에 대응하는 실제 제공 E 근거를 인용한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "우선순위·하단 금액·차입 여부·대체 재원·후속 계획을 모두 답한다. 모든 차입이 영구적으로 금지된다고 확대하거나 증자를 완료한 것으로 표현하지 않는다.",
+          "source_refs": [
+            "G1"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 114,
+          "printed_page": "Page 113",
+          "revision": "after",
+          "section": "(주18) 정정 후 / 자금 사용 우선순위와 유입금액 부족 시 계획",
+          "excerpt": "금번 코스닥시장 상장을 통해 조달된 자금 중 당사 유입액은 52,762백만원이며, 해당 자금은 시설자금, 채무상환자금, 기타 운영자금으로 사용할 계획입니다. 자금사용의 우선순위는 시설자금, 채무상환자금, 기타 운영자금입니다. 당사의 2026년 반기말 기준 차입금 의존도는 35.3% 수준으로 다소 높은 상황이며 금번 공모로 유입되는 자금 일부를 차입금 상환에 활용 예정인 바, 증권신고서 제출일 현재 예상되는 하단 기준 공모 순수입금 규모(46,036백만원)보다 실제 유입금액이 적은 경우, 추가 차입을 통해 자금을 조달하여 시설자금 등을 충당할 계획은 없습니다. 이 경우 당사는 보유하고 있는 현금(2026년 반기말 기준 현금및현금성 자산은 17,671백만원 수준) 및 영업활동을 통해 창출되는 추가 현금흐름을 통해 우선순위대로 자금을 집행할 계획이며, 자체 현금으로 충분한 자금 집행이 불가한 경우에는 상장 후 증자 등을 통해 자금을 조달하여 집행할 계획입니다.",
+          "role": "answer_evidence"
+        }
+      ],
+      "absence_checks": [],
+      "retrieval_reference": "정정 후 공모자금 사용 우선순위는 시설자금, 채무상환자금, 기타 운영자금이다. 하단 기준 공모 순수입금은 46,036백만원이다. 실제 유입금액이 하단 기준보다 적으면 해당 계획을 위한 추가 차입 없이 보유 현금과 영업활동 현금흐름을 활용하고, 자체 현금으로도 부족하면 상장 후 증자 등을 통해 조달할 계획이다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "numeric",
+          "target": "하단 기준 공모 순수입금",
+          "revision": "after",
+          "period": null,
+          "expected_value": 46036,
+          "unit": "백만원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R2",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "우선순위와 자금 부족 시 조건부 조달 계획 근거의 검색 순서를 평가한다.",
+          "reason": "원문에 질문의 각 조건과 답변 근거가 있다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "우선순위·하단 금액·차입 여부·대체 재원·후속 조달의 근거가 검색됐는지 평가한다.",
+          "reason": "조건부 계획을 검색용 reference로 사용할 수 있다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수 거절은 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "run",
+          "scope": "답변이 자금 사용 우선순위와 부족 시 조달 계획에 관련되는지 평가한다.",
+          "reason": "Q06은 답변 가능 문항이다."
+        }
+      }
+    },
+    {
+      "question_id": "Q07",
+      "topic": "offering_terms",
+      "question": "동원파츠의 이번 공모에서 일반청약 마감 후 실제 최종 청약 경쟁률은 몇 대 1이었나요?",
+      "expected_answerability": "unanswerable",
+      "golden_answer": "제공된 문서에서는 일반청약 마감 후 실제 최종 청약 경쟁률을 확인할 수 없다.",
+      "answerable_parts": [],
+      "unanswerable_parts": [
+        "일반청약 마감 후 실제 최종 청약 경쟁률"
+      ],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "제공된 문서에서 실제 일반청약 최종 경쟁률을 확인할 수 없다고 설명한다.",
+          "source_refs": []
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "forbidden",
+          "description": "기관투자자 수요예측 경쟁률 840.86:1을 일반청약 최종 경쟁률로 사용하거나 다른 경쟁률을 추정한다.",
+          "source_refs": [
+            "G3"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "추가 사실 없는 확인 불가 안내에는 인용이 없어도 통과한다. 일정이나 기관 수요예측 결과를 덧붙이면 대상을 정확히 구분하고 실제 제공 E 근거로 뒷받침한다.",
+          "source_refs": [
+            "G1",
+            "G2",
+            "G3"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "확인 불가의 범위를 제공된 문서로 한정한다. 현재 현실에서도 청약이 진행되지 않았거나 결과가 존재하지 않는다고 단정하지 않는다.",
+          "source_refs": []
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 2,
+          "printed_page": "Page 1",
+          "revision": null,
+          "section": "증권발행조건확정 / 제출 기준일",
+          "excerpt": "증권발행조건확정\n금융위원회 귀중 2026년 10월 30일",
+          "role": "related_context"
+        },
+        {
+          "source_id": "G2",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 39,
+          "printed_page": "Page 38",
+          "revision": "after",
+          "section": "4. 모집 또는 매출절차 등에 관한 사항 / 가. 모집 또는 매출 조건 / 일반청약 기일",
+          "excerpt": "청약기일\n일반청약자\n개시일 2026년 11월 02일(월)\n종료일 2026년 11월 03일(화)",
+          "role": "related_context"
+        },
+        {
+          "source_id": "G3",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 31,
+          "printed_page": "Page 30",
+          "revision": "after",
+          "section": "(주3) 정정 후 / (13) 수요예측 결과 / (가) 수요예측 참여내역",
+          "excerpt": "경쟁률 (주2)\n28.64 308.08 27.05 262.83 75.71 40.16 73.14 25.25 0.00 840.86\n주2) 경쟁률은 기관투자자 배정물량인 1,522,500주를 기준으로 산출하였습니다.",
+          "role": "related_context"
+        }
+      ],
+      "absence_checks": [
+        {
+          "target": "일반청약 마감 후 실제 최종 청약 경쟁률",
+          "search_terms": [
+            "경쟁률",
+            "청약결과",
+            "청약 결과"
+          ],
+          "reviewed_locations": [
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 2,
+              "section": "문서 기준일"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 31,
+              "section": "기관투자자 수요예측 결과"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 39,
+              "section": "일반청약 기일"
+            }
+          ],
+          "conclusion": "문서 전체 텍스트 검색과 관련 구간 검토에서 일반청약 마감 후 실제 최종 경쟁률을 확인하지 못했다. 일반청약 일정과 기관투자자 수요예측 경쟁률은 요청한 실제 일반청약 결과를 대신하지 않는다."
+        }
+      ],
+      "retrieval_reference": null,
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "not_applicable",
+          "scope": "실제 일반청약 최종 경쟁률의 검색 정확도는 계산하지 않는다.",
+          "reason": "긍정적인 정답 근거가 없어 검색용 reference가 null이다."
+        },
+        "context_recall": {
+          "mode": "not_applicable",
+          "scope": "실제 일반청약 최종 경쟁률의 검색 재현율은 계산하지 않는다.",
+          "reason": "주변 일정과 기관 수요예측 결과를 정답 근거로 대체하지 않는다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "배경 설명이나 추정 등 사실 주장이 있으면 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수 확인 불가 안내는 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "not_applicable",
+          "scope": "확인 불가 안내의 관련성을 이 지표로 점수화하지 않는다.",
+          "reason": "적절한 거절이 불리하게 평가될 수 있어 Q07은 적용 대상에서 제외했다."
+        }
+      }
+    },
+    {
+      "question_id": "Q08",
+      "topic": "fund_use",
+      "question": "시설투자 계획에 포함된 EOS사 M400-4(3D 프린터)의 구매 계약상 계약금·중도금·잔금 지급 비율은 각각 얼마인가요?",
+      "expected_answerability": "unanswerable",
+      "golden_answer": "제공된 문서에서는 해당 장비 구매 계약의 계약금·중도금·잔금 지급 비율을 확인할 수 없다.",
+      "answerable_parts": [],
+      "unanswerable_parts": [
+        "EOS사 M400-4 구매 계약의 계약금·중도금·잔금 지급 비율"
+      ],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "해당 장비 구매 계약의 계약금·중도금·잔금 지급 비율을 제공된 문서에서 확인할 수 없다고 안내한다.",
+          "source_refs": []
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "forbidden",
+          "description": "연도별 1,500백만원씩의 투자 계획으로 50%·50% 지급을 추정하거나 일반적인 계약 관행으로 지급 비율을 만들어낸다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "추가 사실 없는 확인 불가 안내에는 인용이 없어도 통과한다. 투자 계획을 덧붙이면 대상·연도·단위를 정확하게 설명하고 실제 제공 E 근거를 인용한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "요청한 계약상 지급 비율의 확인 불가를 설명한다. 문서에서 비율을 찾지 못한 것을 계약 자체가 체결되지 않았다는 뜻으로 확대하지 않는다.",
+          "source_refs": []
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 115,
+          "printed_page": "Page 114",
+          "revision": "after",
+          "section": "(주18) 정정 후 / 연도별 시설자금 세부 사용 계획 / EOS 장비 행",
+          "excerpt": "[연도별 시설자금 세부 사용 계획]\n(단위: 백만원)\n구분 내역 설비명 2026년 2027년 2028년 합계\n생산설비투자 APPLIED社 GAS STICK 출력 EOS社 M400-4(3D PRINTER) - 1,500 1,500 3,000",
+          "role": "related_context"
+        }
+      ],
+      "absence_checks": [
+        {
+          "target": "EOS사 M400-4 구매 계약의 단계별 지급 비율",
+          "search_terms": [
+            "EOS",
+            "M400",
+            "계약금",
+            "중도금",
+            "잔금"
+          ],
+          "reviewed_locations": [
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 115,
+              "section": "시설투자 설명과 EOS 장비의 연도별 투자 계획"
+            }
+          ],
+          "conclusion": "문서 전체 텍스트 검색과 시설투자 구간 검토에서 해당 장비 계약의 계약금·중도금·잔금 지급 비율을 확인하지 못했다. 2027년·2028년 투자 계획은 계약상 지급 단계나 비율을 입증하지 않는다."
+        }
+      ],
+      "retrieval_reference": null,
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "not_applicable",
+          "scope": "계약상 지급 비율의 검색 정확도는 계산하지 않는다.",
+          "reason": "계약상 지급 비율의 정답 근거가 없어 reference가 null이다."
+        },
+        "context_recall": {
+          "mode": "not_applicable",
+          "scope": "계약상 지급 비율의 검색 재현율은 계산하지 않는다.",
+          "reason": "연도별 투자 계획을 계약상 지급 비율의 근거로 대체하지 않는다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "투자 계획 설명이나 비율 추정 등 사실 주장이 있으면 실제 답변 전체를 실제 전달 컨텍스트와 대조한다.",
+          "reason": "순수 확인 불가 안내는 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "not_applicable",
+          "scope": "확인 불가 안내의 관련성을 이 지표로 점수화하지 않는다.",
+          "reason": "적절한 거절이 불리하게 평가될 수 있어 Q08은 적용 대상에서 제외했다."
+        }
+      }
+    },
+    {
+      "question_id": "Q09",
+      "topic": "offering_terms",
+      "question": "동원파츠 일반청약에 100주를 청약한 투자자의 청약증거금은 정정 후 공모조건 기준으로 얼마인가요? 수수료는 제외하고 계산식을 제시해주세요. 이 투자자가 청약 종료 후 실제로 배정받은 주식 수도 알려주세요.",
+      "expected_answerability": "partial",
+      "golden_answer": "정정 후 확정 공모가 26,500원과 일반청약 증거금률 50%를 적용하면, 수수료 제외 청약증거금은 100주 × 26,500원 × 50% = 1,325,000원이다. 해당 투자자가 청약 종료 후 실제로 배정받은 주식 수는 제공된 문서에서 확인할 수 없다.",
+      "answerable_parts": [
+        "정정 후 확정 공모가와 일반청약 증거금률",
+        "100주 청약 시 수수료 제외 증거금과 계산식"
+      ],
+      "unanswerable_parts": [
+        "해당 투자자가 청약 종료 후 실제로 배정받은 주식 수"
+      ],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "확정 공모가 26,500원과 일반청약 증거금률 50%를 적용하여 100주 청약증거금을 1,325,000원으로 계산한다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "forbidden",
+          "description": "증거금률 50%를 배정률로 해석하여 50주 등 실제 배정 수를 추정하거나 배정 방식만으로 개인의 실제 배정 결과를 단정한다.",
+          "source_refs": [
+            "G2",
+            "G3"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "공모가와 증거금률을 뒷받침하는 실제 제공 E 근거를 인용한다. 별도 사실 없는 실제 배정 수 확인 불가 안내 자체에는 인용이 필수가 아니다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "수수료 제외 조건·계산식·원 단위를 제시하고 실제 배정 수는 구분하여 확인 불가로 안내한다. 전체 질문을 거절하거나 실제 배정 수 요청을 누락하지 않는다.",
+          "source_refs": [
+            "G1",
+            "G2",
+            "G3"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 39,
+          "printed_page": "Page 38",
+          "revision": "after",
+          "section": "4. 모집 또는 매출절차 등에 관한 사항 / 가. 모집 또는 매출 조건 / 가격·증거금 항목",
+          "excerpt": "주당 모집가액 또는 매출가액\n예정가액 23,000원 (주1)\n확정가액 26,500원 (주1)\n청약 증거금 주4)\n기관투자자 -%\n일반청약자 50%",
+          "role": "answer_evidence"
+        },
+        {
+          "source_id": "G2",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 40,
+          "printed_page": "Page 39",
+          "revision": "after",
+          "section": "모집 또는 매출 조건 / 주4 청약증거금",
+          "excerpt": "청약증거금:\n① 일반청약자의 청약증거금은 청약금액의 50%로 합니다.\n② 기관투자자의 청약증거금은 없습니다.",
+          "role": "answer_evidence"
+        },
+        {
+          "source_id": "G3",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 43,
+          "printed_page": "Page 42",
+          "revision": "after",
+          "section": "청약주식 배정방법 / (2) 배정 방법 / ④",
+          "excerpt": "④ 일반청약자 배정물량 중 1/2 이상으로 일반청약자 인원수로 나눈 몫을 청약자 전원에게 동일하게 배정(전원 균등)하고, 일반청약자 배정 총 주식수에서 균등배정분을 제외한 수량에 대해서는 비례배정이 이루어지게 됩니다. 각 청약자의 청약증거금에서 균등배정분 배정수량(금액)을 차감한 금액(이하 \"비례배정분 청약증거금\")을 기준으로 비례하여 안분배정하며, 비례배정분 청약증거금을 한도로 비례배정이 이루어지게 됩니다. 다만, 총 청약건수가 균등방식 배정주식수를 초과하는 경우, 전체고객 대상으로 무작위 추첨 배정하며, 이에 따라 균등배정으로 1주도 배정받지 못하는 경우가 발생할 수 있습니다.",
+          "role": "related_context"
+        }
+      ],
+      "absence_checks": [
+        {
+          "target": "100주 청약 투자자의 실제 배정 주식 수",
+          "search_terms": [
+            "배정결과",
+            "배정 결과",
+            "100주",
+            "균등",
+            "비례"
+          ],
+          "reviewed_locations": [
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 39,
+              "section": "정정 후 공모조건과 청약 기일"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 40,
+              "section": "청약증거금 조건"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 43,
+              "section": "균등·비례·추첨 배정 방식"
+            }
+          ],
+          "conclusion": "문서 전체 텍스트 검색과 공모조건·배정방법 구간 검토에서 질문의 개인 투자자에게 실제로 배정된 주식 수를 확인하지 못했다. 배정 방식과 청약증거금률은 해당 개인의 실제 배정 결과가 아니다."
+        }
+      ],
+      "retrieval_reference": "정정 후 확정 주당 공모가액은 26,500원이며, 일반청약자의 청약증거금은 청약금액의 50%이다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "numeric",
+          "target": "확정 주당 공모가액",
+          "revision": "after",
+          "period": null,
+          "expected_value": 26500,
+          "unit": "원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R2",
+          "kind": "numeric",
+          "target": "일반청약 증거금률",
+          "revision": "after",
+          "period": null,
+          "expected_value": 50,
+          "unit": "%",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R3",
+          "kind": "calculation",
+          "target": "100주 청약 시 수수료 제외 청약증거금",
+          "revision": "after",
+          "period": null,
+          "expected_value": 1325000,
+          "unit": "원",
+          "formula": "100 * 26500 * 0.5",
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R4",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "원래 질문을 유지하고 공모가·증거금률이라는 답변 가능한 부분의 근거 검색 순서를 평가한다.",
+          "reason": "부분 답변 가능 문항이며 reference는 계산 입력값으로 한정한다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "공모가 26,500원과 일반청약 증거금률 50%의 근거가 검색됐는지 평가한다.",
+          "reason": "실제 배정 수와 계산으로 도출한 증거금은 검색용 reference에서 제외한다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조하며 배정 수에 대한 환각을 제거하지 않는다.",
+          "reason": "순수 거절은 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "not_applicable",
+          "scope": "부분 답변과 확인 불가 안내의 관련성을 이 지표로 점수화하지 않는다.",
+          "reason": "적절한 부분 거절이 불리하게 평가될 수 있어 Q09는 적용 대상에서 제외했다."
+        }
+      }
+    },
+    {
+      "question_id": "Q10",
+      "topic": "fund_use",
+      "question": "정정 후 「연도별 자금 세부 사용 계획」에서 2027년에 공모자금으로 채무상환에 사용할 예정 금액은 얼마인가요? 2027년 한 해 동안 실제로 공모자금에서 채무상환에 집행한 금액과 계획 대비 차이(실제 집행액 − 계획액)도 백만원 단위로 알려주세요.",
+      "expected_answerability": "partial",
+      "golden_answer": "정정 후 「연도별 자금 세부 사용 계획」의 2027년 공모자금 채무상환 예정액은 13,206백만원이다. 2027년 실제 집행액은 제공된 문서에서 확인할 수 없으므로, 실제 집행액에서 계획액 13,206백만원을 뺀 차이도 계산할 수 없다.",
+      "answerable_parts": [
+        "정정 후 연도별 표의 2027년 공모자금 채무상환 예정액"
+      ],
+      "unanswerable_parts": [
+        "2027년 실제 공모자금 채무상환 집행액",
+        "실제 집행액과 계획액의 차이"
+      ],
+      "golden_criteria": [
+        {
+          "criterion_id": "C1",
+          "dimension": "accuracy",
+          "kind": "required",
+          "description": "질문이 지정한 정정 후 연도별 자금 계획을 기준으로 2027년 공모자금 채무상환 예정액 13,206백만원을 제시한다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C2",
+          "dimension": "accuracy",
+          "kind": "forbidden",
+          "description": "계획액을 실제 집행액처럼 쓰거나 확인되지 않은 실제 집행액·차이를 추정하거나 0으로 채운다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C3",
+          "dimension": "citation_appropriateness",
+          "kind": "required",
+          "description": "2027년 계획액을 뒷받침하는 정정 후 연도별 표에 대응하는 실제 제공 E 근거를 인용한다. 별도 사실 없는 실제 집행액 확인 불가 안내 자체에는 인용이 필수가 아니다.",
+          "source_refs": [
+            "G1"
+          ]
+        },
+        {
+          "criterion_id": "C4",
+          "dimension": "answer_scope",
+          "kind": "required",
+          "description": "계획액은 백만원 단위로 답하고 실제 집행액과 계획 대비 차이는 모두 확인·계산 불가로 구분한다. 전체 질문을 거절하거나 자체 자금까지 포함한 전체 채무상환으로 범위를 확대하지 않는다.",
+          "source_refs": [
+            "G1",
+            "G2"
+          ]
+        },
+        {
+          "criterion_id": "C5",
+          "dimension": "answer_scope",
+          "kind": "allowed",
+          "description": "별도 상환 일정 주석의 14,680백만원과 정정 후 연도별 표 합계 21,406백만원의 불일치를 설명할 수 있으나 필수는 아니다. 답변 기준은 지정된 정정 후 표의 2027년 13,206백만원이다.",
+          "source_refs": [
+            "G1",
+            "G3"
+          ]
+        }
+      ],
+      "golden_sources": [
+        {
+          "source_id": "G1",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 113,
+          "printed_page": "Page 112",
+          "revision": "after",
+          "section": "(주18) 정정 후 / 나. 자금의 세부 사용 계획",
+          "excerpt": "[연도별 자금 세부 사용 계획]\n(단위: 백만원)\n구분 내역 2026년 2027년 2028년 합계\n시설자금 남동공장(7공장) 건축 및 장비, 기타 설비 등 매입 6,400 20,920 4,000 31,320\n채무상환자금 금융기관 차입금 상환 8,200 13,206 - 21,406\n운영자금 기타 운영자금 사용 36 - - 36\n합계 14,636 34,126 4,000 52,762",
+          "role": "answer_evidence"
+        },
+        {
+          "source_id": "G2",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 82,
+          "printed_page": "Page 81",
+          "revision": "after",
+          "section": "(주11) 정정 후 / 공모자금의 사용내역 관련 위험",
+          "excerpt": "상세 내역은 「Ⅴ. 자금의 사용목적」을 참고하시기 바랍니다. 또한, 금번 공모를 통해 조달한 순수입금의 사용내역은 향후 당사가 제출하는 사업보고서, 분/반기 보고서 상 「III. 재무에 관한 사항 - 7. 증권의 발행을 통한 자금 조달 - 7-2. 증권의 발행을 통해 조달된 자금의 사용실적」에서 확인하시기 바랍니다.",
+          "role": "related_context"
+        },
+        {
+          "source_id": "G3",
+          "document_id": "dongwon_correction_20261030",
+          "pdf_page": 120,
+          "printed_page": "Page 119",
+          "revision": "after",
+          "section": "상환 예정 차입금 현황 / 주2",
+          "excerpt": "상기한 상환 예정금액 합계액 15,290백만원과 공모자금 중 차입금 상환예정액 14,680백만원의 차액 610백만원은 당사 자기자금으로 충당할 예정입니다.",
+          "role": "related_context"
+        }
+      ],
+      "absence_checks": [
+        {
+          "target": "2027년 실제 공모자금 채무상환 집행액과 계획 대비 차이",
+          "search_terms": [
+            "채무상환",
+            "사용실적",
+            "사용내역",
+            "집행액",
+            "실제 집행"
+          ],
+          "reviewed_locations": [
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 82,
+              "section": "향후 공모자금 사용실적 확인 안내"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 113,
+              "section": "정정 후 연도별 자금 세부 사용 계획"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 119,
+              "section": "정정 후 연도별 채무상환자금 세부 사용 계획"
+            },
+            {
+              "document_id": "dongwon_correction_20261030",
+              "pdf_page": 120,
+              "section": "상환 예정 차입금 현황과 주석"
+            }
+          ],
+          "conclusion": "문서 전체 텍스트 검색과 자금 사용·채무상환 구간 검토에서 2027년 실제 공모자금 채무상환 집행액을 확인하지 못했다. 기재된 금액은 계획이므로 실제 집행액과 계획 대비 차이를 산출할 수 없다."
+        }
+      ],
+      "retrieval_reference": "정정 후 「연도별 자금 세부 사용 계획」의 2027년 공모자금 채무상환 예정 금액은 13,206백만원이다.",
+      "rule_expectations": [
+        {
+          "rule_id": "R1",
+          "kind": "numeric",
+          "target": "공모자금 채무상환 예정액",
+          "revision": "after",
+          "period": "2027",
+          "expected_value": 13206,
+          "unit": "백만원",
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        },
+        {
+          "rule_id": "R2",
+          "kind": "citation_labels",
+          "target": "답변에 사용한 E 인용 라벨의 존재 여부",
+          "revision": null,
+          "period": null,
+          "expected_value": null,
+          "unit": null,
+          "formula": null,
+          "rounding_digits": null,
+          "tolerance": null
+        }
+      ],
+      "metric_policy": {
+        "context_precision": {
+          "mode": "run",
+          "scope": "원래 질문을 유지하고 답변 가능한 2027년 계획액의 근거 검색 순서를 평가한다.",
+          "reason": "부분 답변 가능 문항이며 reference는 계획액의 근거 사실로 한정한다."
+        },
+        "context_recall": {
+          "mode": "run",
+          "scope": "정정 후 표의 2027년 공모자금 채무상환 계획액 13,206백만원이 검색됐는지 평가한다.",
+          "reason": "확인되지 않은 실제 집행액과 계획 대비 차이는 reference에서 제외한다."
+        },
+        "faithfulness": {
+          "mode": "conditional",
+          "scope": "사실 주장이 있는 실제 답변 전체를 실제 전달 컨텍스트와 대조하며 실제 집행액에 대한 환각을 제거하지 않는다.",
+          "reason": "순수 거절은 적용 불가이며 사실 주장 추출 실패는 오류로 구분한다."
+        },
+        "answer_relevancy": {
+          "mode": "not_applicable",
+          "scope": "부분 답변과 확인 불가 안내의 관련성을 이 지표로 점수화하지 않는다.",
+          "reason": "적절한 부분 거절이 불리하게 평가될 수 있어 Q10은 적용 대상에서 제외했다."
+        }
+      }
+    }
+  ]
+}

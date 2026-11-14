@@ -1,0 +1,10 @@
+.venv/
+.uv-cache/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+chroma_db/
+output/
+.DS_Store
