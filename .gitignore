@@ -5,3 +5,6 @@
 __pycache__/
 .venv/
 node_modules/
+
+# 기존 RAG의 로컬 Chroma 색인
+/week-02/DChanHong/chroma_db/

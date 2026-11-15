@@ -1,0 +1,19 @@
+[project]
+name = "dongwon-rag-evaluation"
+version = "0.1.0"
+description = "동원파츠 기존 RAG의 10문항 평가"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+  "ragas==0.4.3",
+  "openai==2.54.0",
+  "instructor==1.17.0",
+  "chromadb==1.5.9",
+  "pydantic==2.14.3",
+  "python-dotenv==1.2.4",
+  "httpx==0.28.1",
+  # Ragas 0.4.3이 import하는 VertexAI 모듈이 0.4.2에서 제거됨.
+  "langchain-community==0.4.1",
+]
+
+[tool.uv]
+package = false

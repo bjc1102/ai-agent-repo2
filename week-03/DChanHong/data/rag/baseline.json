@@ -1,0 +1,42 @@
+{
+  "schema_version": "baseline_assets_v1",
+  "prepared_at": "2026-11-14T16:26:36.471839+09:00",
+  "source_ref": "origin/week-02/DChanHong",
+  "source_commit": "a263ebab6f09a571dc3cc2a2b04ec2be8baa33db",
+  "chunks": {
+    "path": "data/rag/chunks.json",
+    "sha256": "20cc6ca5b2691175ef7d47c432b8a1ce3a5d63ec45f6b8003a90c2493ca1e2df",
+    "count": 325,
+    "revision_counts": {
+      "before": 155,
+      "after": 165,
+      "overview": 5
+    }
+  },
+  "sections": {
+    "path": "data/rag/sections.json",
+    "sha256": "0931a1166919342add8c6f90773a91f77ece088cefbde768deade0517aef5c44",
+    "count": 155
+  },
+  "generation_prompt": {
+    "path": "prompts/generation.py",
+    "sha256": "e231ffb439273fc9ebe834eb186a78335c81ad07bf0e1e630adf12481454c944",
+    "source": "main.py INSTRUCTIONS.strip()",
+    "variable": "GENERATION_PROMPT",
+    "hash_scope": "prompt_text"
+  },
+  "index": {
+    "path": "chroma_db",
+    "copied_from": "../../week-02/DChanHong/chroma_db",
+    "source_chromadb_version": "1.5.9",
+    "collection": "dongwon_20261030_v1",
+    "count": 325,
+    "embedding_dimensions": 1536,
+    "distance_metric": "cosine",
+    "reused": true
+  },
+  "preparation_api_calls": 0,
+  "preparation_api_cost_usd": 0,
+  "historical_index_cost_usd": null,
+  "cost_note": "기존 색인을 로컬 복사했다. 과거 문서 임베딩 비용은 미확보이며 이번 RAG/평가 비용에 재합산하지 않는다."
+}
