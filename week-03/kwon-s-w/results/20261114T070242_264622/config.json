@@ -1,0 +1,22 @@
+{
+  "generation_model": "gemma3:4b",
+  "embedding_model": "embeddinggemma",
+  "temperature": 0,
+  "seed": 42,
+  "num_ctx": 8192,
+  "num_predict": 600,
+  "distance": "cosine",
+  "dense_candidates": 6,
+  "lexical_candidates": 6,
+  "rrf_k": 60,
+  "final_top_k": 8,
+  "context_max_characters": 4200,
+  "chunk_max_characters": 900,
+  "tail_sentence_overlap_max": 120,
+  "chunk_policy": "reuse the 29 week02 submitted redacted chunks",
+  "embedding_input_format": "raw text, same convention as week02",
+  "query_decomposition": false,
+  "generation_output": "plain answer; retrieved source locations logged separately",
+  "embedding_dimensions": 768,
+  "chunk_count": 29
+}
