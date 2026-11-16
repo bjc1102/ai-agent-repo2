@@ -1,0 +1,50 @@
+{
+  "status": "passed",
+  "validated_at": "2026-11-14T14:52:29+09:00",
+  "evaluation_sha256": "7906e7f89a90228883357df13c93fb8bb18172fd117f20f3e53b488ebe4492f5",
+  "automated_result_byte_identical": true,
+  "review_result_hash_matches": true,
+  "completed_questions": 5,
+  "human_success_count": 5,
+  "metric_counts": {
+    "context_precision": {
+      "scored": 4,
+      "N/A": 1,
+      "error": 0,
+      "not_run": 0
+    },
+    "faithfulness": {
+      "scored": 4,
+      "N/A": 1,
+      "error": 0,
+      "not_run": 0
+    }
+  },
+  "metric_means": {
+    "context_precision": 0.7083333333020834,
+    "faithfulness": 0.9583333333333334
+  },
+  "source_and_chunks_hashes_match_run": true,
+  "all_73_fixed_chunks_match": true,
+  "questions_answers_and_review_fields_match": true,
+  "submission_python_syntax": "passed",
+  "excluded_files_and_api_key_pattern_scan": "passed",
+  "existing_repository_files_unchanged": true,
+  "api_calls_during_finalization": 0,
+  "git_commit_push_pr_performed": false,
+  "destination_copy": {
+    "status": "blocked_by_filesystem_permissions",
+    "requested": "/Users/holymin/ai-agent-repo2/week-03/gkmin230",
+    "prepared": "/Users/holymin/ai-agent-week02/week03_work/submission/week-03/gkmin230"
+  },
+  "submission_files_sha256": {
+    "README.md": "48969c0871b3362759326ef0875f67faa91c2f6610925c4d313335a0822b82b6",
+    "data/chunks.json": "0835be62bc0592d86f96cb6523fe669553647b9cba33f89c6e186aa3589f1557",
+    "data/guardduty.txt": "a289bc366e61491457a319df26926318df128ff6ac6185f5b10c1837c253f62d",
+    "evaluate.py": "3b798d7c2a194479960b288b4e33867d7a70bffd6c3550d361e006174d08f59f",
+    "questions.json": "ecd9665f8bc65fc5e2decb23a44b5c99f8d6279661cbc6b5758fbc3ca74d9520",
+    "requirements.txt": "f032d11c9e1164e948f0acb3addd3377e05d38f2a2b656e5e7ee29570be864c9",
+    "results-live-03/evaluation_results.json": "7906e7f89a90228883357df13c93fb8bb18172fd117f20f3e53b488ebe4492f5",
+    "results-live-03/human_review.json": "d107821f478e6f130e5019191c553e7f9de15e5179097df25cf17c4f34366567"
+  }
+}

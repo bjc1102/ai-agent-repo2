@@ -1,0 +1,1104 @@
+{
+  "mode": "live",
+  "created_at": "2026-11-14T05:39:29.122779+00:00",
+  "checks": {
+    "question_count": 5,
+    "chunk_count": 73,
+    "fixed_800_overlap_100_matches_all_chunks": true,
+    "source_sha256": "a289bc366e61491457a319df26926318df128ff6ac6185f5b10c1837c253f62d",
+    "chunks_sha256": "0835be62bc0592d86f96cb6523fe669553647b9cba33f89c6e186aa3589f1557",
+    "packages": {
+      "ragas": "0.3.5",
+      "chromadb": "1.5.9",
+      "openai": "1.109.1",
+      "python-dotenv": "1.2.4",
+      "langchain-openai": "0.3.27"
+    }
+  },
+  "config": {
+    "embedding_model": "text-embedding-3-small",
+    "answer_model": "gpt-4o-mini",
+    "judge_model": "gpt-4o-mini",
+    "temperature": 0,
+    "judge_temperature": 0.01,
+    "max_output_tokens": 2048,
+    "api_max_retries": 0,
+    "ragas_max_attempts": 1,
+    "top_k": 3,
+    "collection": "guardduty_docs",
+    "db_mode": "temporary_copy"
+  },
+  "experiments": [
+    {
+      "id": "q1",
+      "question": "SSHBruteForce 탐지는 무엇을 의미하나요?",
+      "status": "completed",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_id": "chunk_067",
+          "distance": 1.0988757610321045,
+          "metadata": {
+            "chunk_index": 67,
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types"
+          },
+          "text": "k aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "chunk_066",
+          "distance": 1.2006993293762207,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "chunk_index": 66
+          },
+          "text": "nly trusted IPs\n                    through Security Groups, ACLs, or firewalls. For more information see\nTips\n                        for securing your EC2 instances (Linux)\n.\nUnauthorizedAccess:EC2/SSHBruteForce\nAn EC2 instance has been involved in SSH brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if a brute force attack is aimed at one of\n                        your EC2 instances. This finding's severity is high if your EC2 instance is\n                        being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can "
+        },
+        {
+          "rank": 3,
+          "chunk_id": "chunk_069",
+          "distance": 1.3045693635940552,
+          "metadata": {
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "chunk_index": 69
+          },
+          "text": "\n                    be remediated by securing your SSH port to only trusted IPs through Security\n                    Groups, ACLs, or firewalls. For more information, see\nTips for securing your\n                        EC2 instances (Linux)\n.\nIf your instance's\nResource Role\nis\nACTOR\n,\n                    this indicates the instance has been used to perform SSH brute force attacks.\n                    Unless this instance has a legitimate reason to be contacting the IP address\n                    listed as the\nTarget\n, it is recommended that you assume your\n                    instance has been compromised and take the actions listed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/TorClient\nYour EC2 instance is making connections to a Tor Guard or an A"
+        }
+      ],
+      "actual_context": "[문서 1]\nk aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi\n\n[문서 2]\nnly trusted IPs\n                    through Security Groups, ACLs, or firewalls. For more information see\nTips\n                        for securing your EC2 instances (Linux)\n.\nUnauthorizedAccess:EC2/SSHBruteForce\nAn EC2 instance has been involved in SSH brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if a brute force attack is aimed at one of\n                        your EC2 instances. This finding's severity is high if your EC2 instance is\n                        being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can \n\n[문서 3]\n\n                    be remediated by securing your SSH port to only trusted IPs through Security\n                    Groups, ACLs, or firewalls. For more information, see\nTips for securing your\n                        EC2 instances (Linux)\n.\nIf your instance's\nResource Role\nis\nACTOR\n,\n                    this indicates the instance has been used to perform SSH brute force attacks.\n                    Unless this instance has a legitimate reason to be contacting the IP address\n                    listed as the\nTarget\n, it is recommended that you assume your\n                    instance has been compromised and take the actions listed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/TorClient\nYour EC2 instance is making connections to a Tor Guard or an A",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "너는 AWS GuardDuty 보안 분석 도우미다. 반드시 제공된 참고 문서에 근거하여 한국어로 답변하라. 참고 문서에 없는 사실이나 수치는 추측하지 마라. 질문에 답할 근거가 부족하면 '제공된 문서만으로는 확인할 수 없습니다.'라고 답하라. 검색 문서에 관련 단어가 있다는 이유만으로 답을 만들어내지 마라. 여러 부분으로 된 질문은 근거가 있는 부분을 설명하고, 확인할 수 없는 부분은 구분해서 밝혀라."
+        },
+        {
+          "role": "user",
+          "content": "참고 문서:\n[문서 1]\nk aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi\n\n[문서 2]\nnly trusted IPs\n                    through Security Groups, ACLs, or firewalls. For more information see\nTips\n                        for securing your EC2 instances (Linux)\n.\nUnauthorizedAccess:EC2/SSHBruteForce\nAn EC2 instance has been involved in SSH brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if a brute force attack is aimed at one of\n                        your EC2 instances. This finding's severity is high if your EC2 instance is\n                        being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can \n\n[문서 3]\n\n                    be remediated by securing your SSH port to only trusted IPs through Security\n                    Groups, ACLs, or firewalls. For more information, see\nTips for securing your\n                        EC2 instances (Linux)\n.\nIf your instance's\nResource Role\nis\nACTOR\n,\n                    this indicates the instance has been used to perform SSH brute force attacks.\n                    Unless this instance has a legitimate reason to be contacting the IP address\n                    listed as the\nTarget\n, it is recommended that you assume your\n                    instance has been compromised and take the actions listed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/TorClient\nYour EC2 instance is making connections to a Tor Guard or an A\n\n질문: SSHBruteForce 탐지는 무엇을 의미하나요?"
+        }
+      ],
+      "answer": "SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타냅니다. 이 탐지는 VPC 흐름 로그를 통해 생성되며, 공격의 대상이 되는 EC2 인스턴스가 SSH 서비스에 대한 비밀번호를 얻으려는 시도를 받고 있다는 것을 의미합니다. \n\n이 탐지의 심각도는 공격의 대상이 EC2 인스턴스일 경우 낮은 수준으로 평가되지만, 만약 EC2 인스턴스가 공격을 수행하는 주체로 사용되고 있다면 심각도가 높아집니다. \n\n따라서, SSHBruteForce 탐지는 AWS 리소스에 대한 무단 접근 시도를 나타내며, 이를 방지하기 위해 SSH 포트를 신뢰할 수 있는 IP로만 제한하는 등의 보안 조치를 취하는 것이 권장됩니다.",
+      "metrics": {
+        "context_precision": {
+          "status": "scored",
+          "score": 0.9999999999666667,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides information about SSH brute force attempts, specifically mentioning the targeting of SSH services on Linux-based systems and the implications for AWS resources. This directly relates to the answer, which describes the nature of the brute force attack and its monitoring on port 22.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The context provides information about SSH brute force attempts, specifically mentioning the targeting of SSH services on Linux-based systems and the implications for AWS resources. This directly relates to the answer, which describes the nature of the brute force attack and its monitoring on port 22.",
+                "verdict": 1
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The provided context explains what SSH brute force detection means, specifically in relation to EC2 instances and the severity of such attacks. This directly supports the answer given, which summarizes the key points from the context.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The provided context explains what SSH brute force detection means, specifically in relation to EC2 instances and the severity of such attacks. This directly supports the answer given, which summarizes the key points from the context.",
+                "verdict": 1
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides information about SSH brute force attacks and mentions that an instance with the Resource Role 'ACTOR' indicates it has been used for such attacks. This directly relates to the answer, which describes the nature of the brute force attack and its implications.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The context provides information about SSH brute force attacks and mentions that an instance with the Resource Role 'ACTOR' indicates it has been used for such attacks. This directly relates to the answer, which describes the nature of the brute force attack and its implications.",
+                "verdict": 1
+              }
+            }
+          ],
+          "required_inputs": [
+            "reference",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 67,
+              "prompt_tokens": 1067,
+              "total_tokens": 1134,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 56,
+              "prompt_tokens": 1091,
+              "total_tokens": 1147,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 66,
+              "prompt_tokens": 1086,
+              "total_tokens": 1152,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        },
+        "faithfulness": {
+          "status": "scored",
+          "score": 1.0,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"statements\": [\n        \"SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타낸다.\",\n        \"SSHBruteForce 탐지는 VPC 흐름 로그를 통해 생성된다.\",\n        \"SSHBruteForce 탐지는 공격의 대상이 되는 EC2 인스턴스가 SSH 서비스에 대한 비밀번호를 얻으려는 시도를 받고 있다는 것을 의미한다.\",\n        \"SSHBruteForce 탐지의 심각도는 공격의 대상이 EC2 인스턴스일 경우 낮은 수준으로 평가된다.\",\n        \"SSHBruteForce 탐지의 심각도는 EC2 인스턴스가 공격을 수행하는 주체로 사용되고 있다면 높아진다.\",\n        \"SSHBruteForce 탐지는 AWS 리소스에 대한 무단 접근 시도를 나타낸다.\",\n        \"SSH 포트를 신뢰할 수 있는 IP로만 제한하는 등의 보안 조치를 취하는 것이 권장된다.\"\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  "SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타낸다.",
+                  "SSHBruteForce 탐지는 VPC 흐름 로그를 통해 생성된다.",
+                  "SSHBruteForce 탐지는 공격의 대상이 되는 EC2 인스턴스가 SSH 서비스에 대한 비밀번호를 얻으려는 시도를 받고 있다는 것을 의미한다.",
+                  "SSHBruteForce 탐지의 심각도는 공격의 대상이 EC2 인스턴스일 경우 낮은 수준으로 평가된다.",
+                  "SSHBruteForce 탐지의 심각도는 EC2 인스턴스가 공격을 수행하는 주체로 사용되고 있다면 높아진다.",
+                  "SSHBruteForce 탐지는 AWS 리소스에 대한 무단 접근 시도를 나타낸다.",
+                  "SSH 포트를 신뢰할 수 있는 IP로만 제한하는 등의 보안 조치를 취하는 것이 권장된다."
+                ]
+              }
+            },
+            {
+              "raw_output": "{\n    \"statements\": [\n        {\n            \"statement\": \"SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타낸다.\",\n            \"reason\": \"The context explicitly states that an EC2 instance in the AWS environment was involved in SSH brute force attacks aimed at obtaining passwords to SSH services on Linux-based systems.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"SSHBruteForce 탐지는 VPC 흐름 로그를 통해 생성된다.\",\n            \"reason\": \"The context mentions that the data source for this finding is VPC flow logs, which indicates that the SSH brute force detection is generated through monitoring traffic captured in those logs.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"SSHBruteForce 탐지는 공격의 대상이 되는 EC2 인스턴스가 SSH 서비스에 대한 비밀번호를 얻으려는 시도를 받고 있다는 것을 의미한다.\",\n            \"reason\": \"The context indicates that the finding informs about an EC2 instance involved in a brute force attack aimed at obtaining passwords, which directly supports this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"SSHBruteForce 탐지의 심각도는 공격의 대상이 EC2 인스턴스일 경우 낮은 수준으로 평가된다.\",\n            \"reason\": \"The context explicitly states that the severity of this finding is low if the brute force attack is aimed at one of your EC2 instances.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"SSHBruteForce 탐지의 심각도는 EC2 인스턴스가 공격을 수행하는 주체로 사용되고 있다면 높아진다.\",\n            \"reason\": \"The context clearly states that the severity is high if the EC2 instance is being used to perform the brute force attack.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"SSHBruteForce 탐지는 AWS 리소스에 대한 무단 접근 시도를 나타낸다.\",\n            \"reason\": \"The context mentions that the brute force attack can indicate unauthorized access to AWS resources, which supports this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"SSH 포트를 신뢰할 수 있는 IP로만 제한하는 등의 보안 조치를 취하는 것이 권장된다.\",\n            \"reason\": \"The context provides remediation recommendations that include securing your SSH port to only trusted IPs, which directly supports this statement.\",\n            \"verdict\": 1\n        }\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  {
+                    "statement": "SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타낸다.",
+                    "reason": "The context explicitly states that an EC2 instance in the AWS environment was involved in SSH brute force attacks aimed at obtaining passwords to SSH services on Linux-based systems.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "SSHBruteForce 탐지는 VPC 흐름 로그를 통해 생성된다.",
+                    "reason": "The context mentions that the data source for this finding is VPC flow logs, which indicates that the SSH brute force detection is generated through monitoring traffic captured in those logs.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "SSHBruteForce 탐지는 공격의 대상이 되는 EC2 인스턴스가 SSH 서비스에 대한 비밀번호를 얻으려는 시도를 받고 있다는 것을 의미한다.",
+                    "reason": "The context indicates that the finding informs about an EC2 instance involved in a brute force attack aimed at obtaining passwords, which directly supports this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "SSHBruteForce 탐지의 심각도는 공격의 대상이 EC2 인스턴스일 경우 낮은 수준으로 평가된다.",
+                    "reason": "The context explicitly states that the severity of this finding is low if the brute force attack is aimed at one of your EC2 instances.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "SSHBruteForce 탐지의 심각도는 EC2 인스턴스가 공격을 수행하는 주체로 사용되고 있다면 높아진다.",
+                    "reason": "The context clearly states that the severity is high if the EC2 instance is being used to perform the brute force attack.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "SSHBruteForce 탐지는 AWS 리소스에 대한 무단 접근 시도를 나타낸다.",
+                    "reason": "The context mentions that the brute force attack can indicate unauthorized access to AWS resources, which supports this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "SSH 포트를 신뢰할 수 있는 IP로만 제한하는 등의 보안 조치를 취하는 것이 권장된다.",
+                    "reason": "The context provides remediation recommendations that include securing your SSH port to only trusted IPs, which directly supports this statement.",
+                    "verdict": 1
+                  }
+                ]
+              }
+            }
+          ],
+          "required_inputs": [
+            "response",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 234,
+              "prompt_tokens": 565,
+              "total_tokens": 799,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 564,
+              "prompt_tokens": 1480,
+              "total_tokens": 2044,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        }
+      },
+      "generation_usage": {
+        "completion_tokens": 205,
+        "prompt_tokens": 625,
+        "total_tokens": 830,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "embedding_usage": {
+        "prompt_tokens": 20,
+        "total_tokens": 20
+      },
+      "evaluation_scope": "전체 문항; 거절 행동은 별도 사람 평가"
+    },
+    {
+      "id": "q2",
+      "question": "Portscan 탐지는 무엇을 의미하나요?",
+      "status": "completed",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_id": "chunk_043",
+          "distance": 1.2540689706802368,
+          "metadata": {
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "chunk_index": 43,
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html"
+          },
+          "text": "ctedPort\n. The second filter\n                    criteria should match the instance or instances that serve as a bastion host.\n                    You can use either the\nInstance image ID\nattribute or the\nTag\nvalue attribute, depending on which criteria is\n                    identifiable with the instances that host these tools. For more information\n                    about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/Portscan\nAn EC2 instance is performing outbound port scans to a remote host.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                   "
+        },
+        {
+          "rank": 2,
+          "chunk_id": "chunk_044",
+          "distance": 1.293048620223999,
+          "metadata": {
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "chunk_index": 44
+          },
+          "text": "\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is engaged in a possible port scan attack because it is trying to\n                    connect to multiple ports over a short period of time. The purpose of a port\n                    scan attack is to locate open ports to discover which services the machine is\n                    running and to identify its operating system.\nRemediation recommendations:\nThis finding can be a false positive when vulnerability assessment\n                    applications are deployed on EC2 instances in your environment because these\n                    applications conduct port scans to alert you about misconfigured open ports. If\n                    this is the case in your AWS environment, we re"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "chunk_010",
+          "distance": 1.3031985759735107,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "chunk_index": 10
+          },
+          "text": "tack using the TCP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound TCP traffic. This may\n                    indicate that the instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using TCP protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Udp\nAn EC2 instance is behaving in a "
+        }
+      ],
+      "actual_context": "[문서 1]\nctedPort\n. The second filter\n                    criteria should match the instance or instances that serve as a bastion host.\n                    You can use either the\nInstance image ID\nattribute or the\nTag\nvalue attribute, depending on which criteria is\n                    identifiable with the instances that host these tools. For more information\n                    about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/Portscan\nAn EC2 instance is performing outbound port scans to a remote host.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                   \n\n[문서 2]\n\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is engaged in a possible port scan attack because it is trying to\n                    connect to multiple ports over a short period of time. The purpose of a port\n                    scan attack is to locate open ports to discover which services the machine is\n                    running and to identify its operating system.\nRemediation recommendations:\nThis finding can be a false positive when vulnerability assessment\n                    applications are deployed on EC2 instances in your environment because these\n                    applications conduct port scans to alert you about misconfigured open ports. If\n                    this is the case in your AWS environment, we re\n\n[문서 3]\ntack using the TCP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound TCP traffic. This may\n                    indicate that the instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using TCP protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Udp\nAn EC2 instance is behaving in a ",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "너는 AWS GuardDuty 보안 분석 도우미다. 반드시 제공된 참고 문서에 근거하여 한국어로 답변하라. 참고 문서에 없는 사실이나 수치는 추측하지 마라. 질문에 답할 근거가 부족하면 '제공된 문서만으로는 확인할 수 없습니다.'라고 답하라. 검색 문서에 관련 단어가 있다는 이유만으로 답을 만들어내지 마라. 여러 부분으로 된 질문은 근거가 있는 부분을 설명하고, 확인할 수 없는 부분은 구분해서 밝혀라."
+        },
+        {
+          "role": "user",
+          "content": "참고 문서:\n[문서 1]\nctedPort\n. The second filter\n                    criteria should match the instance or instances that serve as a bastion host.\n                    You can use either the\nInstance image ID\nattribute or the\nTag\nvalue attribute, depending on which criteria is\n                    identifiable with the instances that host these tools. For more information\n                    about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/Portscan\nAn EC2 instance is performing outbound port scans to a remote host.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                   \n\n[문서 2]\n\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is engaged in a possible port scan attack because it is trying to\n                    connect to multiple ports over a short period of time. The purpose of a port\n                    scan attack is to locate open ports to discover which services the machine is\n                    running and to identify its operating system.\nRemediation recommendations:\nThis finding can be a false positive when vulnerability assessment\n                    applications are deployed on EC2 instances in your environment because these\n                    applications conduct port scans to alert you about misconfigured open ports. If\n                    this is the case in your AWS environment, we re\n\n[문서 3]\ntack using the TCP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound TCP traffic. This may\n                    indicate that the instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using TCP protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Udp\nAn EC2 instance is behaving in a \n\n질문: Portscan 탐지는 무엇을 의미하나요?"
+        }
+      ],
+      "answer": "Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 원격 호스트에 대해 아웃바운드 포트 스캔을 수행하고 있음을 의미합니다. 이는 해당 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 나타내며, 포트 스캔 공격의 목적은 열려 있는 포트를 찾아내어 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하는 것입니다. \n\n이 탐지는 기본적으로 중간 정도의 심각도로 분류되며, VPC 흐름 로그를 데이터 소스로 사용합니다. 만약 이 활동이 예상치 못한 것이라면, 해당 인스턴스는 손상되었을 가능성이 있습니다.",
+      "metrics": {
+        "context_precision": {
+          "status": "scored",
+          "score": 0.99999999995,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides information about port scanning in the context of AWS EC2 instances, which directly relates to the answer regarding what port scanning means. It explains the behavior of an EC2 instance performing outbound port scans, which is essential for understanding the concept of port scanning.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The context provides information about port scanning in the context of AWS EC2 instances, which directly relates to the answer regarding what port scanning means. It explains the behavior of an EC2 instance performing outbound port scans, which is essential for understanding the concept of port scanning.",
+                "verdict": 1
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The provided context explains what a port scan attack is and how it relates to EC2 instances in an AWS environment. This information is directly relevant to the answer, which describes the behavior of an EC2 instance during a port scan and mentions the potential for false positives from vulnerability assessment applications.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The provided context explains what a port scan attack is and how it relates to EC2 instances in an AWS environment. This information is directly relevant to the answer, which describes the behavior of an EC2 instance during a port scan and mentions the potential for false positives from vulnerability assessment applications.",
+                "verdict": 1
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The provided context discusses TCP traffic and potential denial-of-service attacks but does not directly address the concept of port scanning or its implications. Therefore, it does not provide useful information for understanding what port scanning means.\",\n    \"verdict\": 0\n}",
+              "parsed_output": {
+                "reason": "The provided context discusses TCP traffic and potential denial-of-service attacks but does not directly address the concept of port scanning or its implications. Therefore, it does not provide useful information for understanding what port scanning means.",
+                "verdict": 0
+              }
+            }
+          ],
+          "required_inputs": [
+            "reference",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 68,
+              "prompt_tokens": 1088,
+              "total_tokens": 1156,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 72,
+              "prompt_tokens": 1065,
+              "total_tokens": 1137,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 56,
+              "prompt_tokens": 1090,
+              "total_tokens": 1146,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        },
+        "faithfulness": {
+          "status": "scored",
+          "score": 1.0,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"statements\": [\n        \"Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 원격 호스트에 대해 아웃바운드 포트 스캔을 수행하고 있음을 의미한다.\",\n        \"Portscan 탐지는 해당 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 나타낸다.\",\n        \"포트 스캔 공격의 목적은 열려 있는 포트를 찾아내어 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하는 것이다.\",\n        \"이 탐지는 기본적으로 중간 정도의 심각도로 분류된다.\",\n        \"이 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.\",\n        \"만약 이 활동이 예상치 못한 것이라면, 해당 인스턴스는 손상되었을 가능성이 있다.\"\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  "Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 원격 호스트에 대해 아웃바운드 포트 스캔을 수행하고 있음을 의미한다.",
+                  "Portscan 탐지는 해당 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 나타낸다.",
+                  "포트 스캔 공격의 목적은 열려 있는 포트를 찾아내어 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하는 것이다.",
+                  "이 탐지는 기본적으로 중간 정도의 심각도로 분류된다.",
+                  "이 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.",
+                  "만약 이 활동이 예상치 못한 것이라면, 해당 인스턴스는 손상되었을 가능성이 있다."
+                ]
+              }
+            },
+            {
+              "raw_output": "{\n    \"statements\": [\n        {\n            \"statement\": \"Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 원격 호스트에 대해 아웃바운드 포트 스캔을 수행하고 있음을 의미한다.\",\n            \"reason\": \"The context explicitly states that an EC2 instance is performing outbound port scans to a remote host, which directly supports this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"Portscan 탐지는 해당 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 나타낸다.\",\n            \"reason\": \"The context mentions that the EC2 instance is trying to connect to multiple ports over a short period of time, which confirms this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"포트 스캔 공격의 목적은 열려 있는 포트를 찾아내어 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하는 것이다.\",\n            \"reason\": \"The context describes the purpose of a port scan attack as locating open ports to discover services and identify the operating system, thus validating this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"이 탐지는 기본적으로 중간 정도의 심각도로 분류된다.\",\n            \"reason\": \"The context states that the default severity of the port scan finding is Medium, which directly supports this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"이 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.\",\n            \"reason\": \"The context explicitly mentions that the data source for this finding is VPC flow logs, confirming this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"만약 이 활동이 예상치 못한 것이라면, 해당 인스턴스는 손상되었을 가능성이 있다.\",\n            \"reason\": \"The context indicates that if the activity is unexpected, the instance may be compromised, which directly supports this statement.\",\n            \"verdict\": 1\n        }\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  {
+                    "statement": "Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 원격 호스트에 대해 아웃바운드 포트 스캔을 수행하고 있음을 의미한다.",
+                    "reason": "The context explicitly states that an EC2 instance is performing outbound port scans to a remote host, which directly supports this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "Portscan 탐지는 해당 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 나타낸다.",
+                    "reason": "The context mentions that the EC2 instance is trying to connect to multiple ports over a short period of time, which confirms this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "포트 스캔 공격의 목적은 열려 있는 포트를 찾아내어 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하는 것이다.",
+                    "reason": "The context describes the purpose of a port scan attack as locating open ports to discover services and identify the operating system, thus validating this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "이 탐지는 기본적으로 중간 정도의 심각도로 분류된다.",
+                    "reason": "The context states that the default severity of the port scan finding is Medium, which directly supports this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "이 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.",
+                    "reason": "The context explicitly mentions that the data source for this finding is VPC flow logs, confirming this statement.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "만약 이 활동이 예상치 못한 것이라면, 해당 인스턴스는 손상되었을 가능성이 있다.",
+                    "reason": "The context indicates that if the activity is unexpected, the instance may be compromised, which directly supports this statement.",
+                    "verdict": 1
+                  }
+                ]
+              }
+            }
+          ],
+          "required_inputs": [
+            "response",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 185,
+              "prompt_tokens": 515,
+              "total_tokens": 700,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 449,
+              "prompt_tokens": 1427,
+              "total_tokens": 1876,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        }
+      },
+      "generation_usage": {
+        "completion_tokens": 159,
+        "prompt_tokens": 620,
+        "total_tokens": 779,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "embedding_usage": {
+        "prompt_tokens": 18,
+        "total_tokens": 18
+      },
+      "evaluation_scope": "전체 문항; 거절 행동은 별도 사람 평가"
+    },
+    {
+      "id": "q3",
+      "question": "RDPBruteForce 탐지는 무엇을 의미하나요?",
+      "status": "completed",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_id": "chunk_064",
+          "distance": 1.0556752681732178,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "chunk_index": 64,
+            "source": "AWS GuardDuty EC2 Finding Types"
+          },
+          "text": "formation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "chunk_038",
+          "distance": 1.1057438850402832,
+          "metadata": {
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "chunk_index": 38
+          },
+          "text": "f your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is performing a Windows Remote Management (WinRM) brute force attack\n                    aimed at gaining access to the Windows Remote Management service on\n                    Windows-based systems.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/PortProbeEMRUnprotectedPort\nAn EC2 instance has an unprotected EMR related port which is being probed by a known malicious host.\nDefault severity: High\nData source:\nVPC flow logs\nTh"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "chunk_003",
+          "distance": 1.1235384941101074,
+          "metadata": {
+            "chunk_index": 3,
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html"
+          },
+          "text": "eForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nTrojan:EC2/BlackholeTraffic\nTrojan:EC2/BlackholeTraffic!DNS\nTrojan:EC2/DGADomainRequest.B\nTrojan:EC2/DGADomainRequest.C!DNS\nTrojan:EC2/DNSDataExfiltration\nTrojan:EC2/DriveBySourceTraffic!DNS\nTrojan:EC2/DropPoint\nTrojan:EC2/DropPoint!DNS\nTrojan:EC2/PhishingDomainRequest!DNS\nUnauthorizedAccess:EC2/MaliciousIPCaller.Custom\nUnauthorizedAccess:EC2/MetadataDNSRebind\nUnauthorizedAccess:EC2/RDPBruteForce\nUnauthorizedAccess:EC2/SSHBruteForce\nUnauthorizedAccess:EC2/TorClient\nUnauthorizedAccess:EC2/TorRelay\nBackdoor:EC2/C&CActivity.B\nAn EC2 instance is querying an IP that is associated with a known command and control server.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you tha"
+        }
+      ],
+      "actual_context": "[문서 1]\nformation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm\n\n[문서 2]\nf your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is performing a Windows Remote Management (WinRM) brute force attack\n                    aimed at gaining access to the Windows Remote Management service on\n                    Windows-based systems.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/PortProbeEMRUnprotectedPort\nAn EC2 instance has an unprotected EMR related port which is being probed by a known malicious host.\nDefault severity: High\nData source:\nVPC flow logs\nTh\n\n[문서 3]\neForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nTrojan:EC2/BlackholeTraffic\nTrojan:EC2/BlackholeTraffic!DNS\nTrojan:EC2/DGADomainRequest.B\nTrojan:EC2/DGADomainRequest.C!DNS\nTrojan:EC2/DNSDataExfiltration\nTrojan:EC2/DriveBySourceTraffic!DNS\nTrojan:EC2/DropPoint\nTrojan:EC2/DropPoint!DNS\nTrojan:EC2/PhishingDomainRequest!DNS\nUnauthorizedAccess:EC2/MaliciousIPCaller.Custom\nUnauthorizedAccess:EC2/MetadataDNSRebind\nUnauthorizedAccess:EC2/RDPBruteForce\nUnauthorizedAccess:EC2/SSHBruteForce\nUnauthorizedAccess:EC2/TorClient\nUnauthorizedAccess:EC2/TorRelay\nBackdoor:EC2/C&CActivity.B\nAn EC2 instance is querying an IP that is associated with a known command and control server.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you tha",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "너는 AWS GuardDuty 보안 분석 도우미다. 반드시 제공된 참고 문서에 근거하여 한국어로 답변하라. 참고 문서에 없는 사실이나 수치는 추측하지 마라. 질문에 답할 근거가 부족하면 '제공된 문서만으로는 확인할 수 없습니다.'라고 답하라. 검색 문서에 관련 단어가 있다는 이유만으로 답을 만들어내지 마라. 여러 부분으로 된 질문은 근거가 있는 부분을 설명하고, 확인할 수 없는 부분은 구분해서 밝혀라."
+        },
+        {
+          "role": "user",
+          "content": "참고 문서:\n[문서 1]\nformation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm\n\n[문서 2]\nf your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is performing a Windows Remote Management (WinRM) brute force attack\n                    aimed at gaining access to the Windows Remote Management service on\n                    Windows-based systems.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/PortProbeEMRUnprotectedPort\nAn EC2 instance has an unprotected EMR related port which is being probed by a known malicious host.\nDefault severity: High\nData source:\nVPC flow logs\nTh\n\n[문서 3]\neForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nTrojan:EC2/BlackholeTraffic\nTrojan:EC2/BlackholeTraffic!DNS\nTrojan:EC2/DGADomainRequest.B\nTrojan:EC2/DGADomainRequest.C!DNS\nTrojan:EC2/DNSDataExfiltration\nTrojan:EC2/DriveBySourceTraffic!DNS\nTrojan:EC2/DropPoint\nTrojan:EC2/DropPoint!DNS\nTrojan:EC2/PhishingDomainRequest!DNS\nUnauthorizedAccess:EC2/MaliciousIPCaller.Custom\nUnauthorizedAccess:EC2/MetadataDNSRebind\nUnauthorizedAccess:EC2/RDPBruteForce\nUnauthorizedAccess:EC2/SSHBruteForce\nUnauthorizedAccess:EC2/TorClient\nUnauthorizedAccess:EC2/TorRelay\nBackdoor:EC2/C&CActivity.B\nAn EC2 instance is querying an IP that is associated with a known command and control server.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you tha\n\n질문: RDPBruteForce 탐지는 무엇을 의미하나요?"
+        }
+      ],
+      "answer": "RDPBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 RDP(원격 데스크톱 프로토콜) 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 의미합니다. 이 탐지는 두 가지 경우로 나뉘어 있습니다:\n\n1. **EC2 인스턴스가 공격의 대상인 경우**: 이 경우 탐지의 심각도는 낮습니다.\n2. **EC2 인스턴스가 공격을 수행하는 경우**: 이 경우 탐지의 심각도는 높습니다.\n\n이 탐지는 VPC 흐름 로그를 데이터 소스로 사용하며, AWS 리소스에 대한 무단 접근을 나타낼 수 있습니다.",
+      "metrics": {
+        "context_precision": {
+          "status": "scored",
+          "score": 0.8333333332916666,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides detailed information about RDP brute force attacks, specifically mentioning that an EC2 instance can be involved in such attacks and the implications of being a target versus an actor. This directly supports the answer given.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The context provides detailed information about RDP brute force attacks, specifically mentioning that an EC2 instance can be involved in such attacks and the implications of being a target versus an actor. This directly supports the answer given.",
+                "verdict": 1
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides information about an EC2 instance performing a brute force attack related to Windows Remote Management, which is relevant to the question about RDPBruteForce detection. However, the answer specifically mentions RDP services, which are not explicitly detailed in the context. Therefore, while there is some relevance, the context does not fully support the answer.\",\n    \"verdict\": 0\n}",
+              "parsed_output": {
+                "reason": "The context provides information about an EC2 instance performing a brute force attack related to Windows Remote Management, which is relevant to the question about RDPBruteForce detection. However, the answer specifically mentions RDP services, which are not explicitly detailed in the context. Therefore, while there is some relevance, the context does not fully support the answer.",
+                "verdict": 0
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides information about various unauthorized access attempts, including RDPBruteForce, which directly relates to the answer regarding brute force attacks on RDP services. This context is useful in understanding the nature of the attack described in the answer.\",\n    \"verdict\": 1\n}",
+              "parsed_output": {
+                "reason": "The context provides information about various unauthorized access attempts, including RDPBruteForce, which directly relates to the answer regarding brute force attacks on RDP services. This context is useful in understanding the nature of the attack described in the answer.",
+                "verdict": 1
+              }
+            }
+          ],
+          "required_inputs": [
+            "reference",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 58,
+              "prompt_tokens": 1080,
+              "total_tokens": 1138,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 85,
+              "prompt_tokens": 1086,
+              "total_tokens": 1171,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 63,
+              "prompt_tokens": 1172,
+              "total_tokens": 1235,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        },
+        "faithfulness": {
+          "status": "scored",
+          "score": 1.0,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"statements\": [\n        \"RDPBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 RDP(원격 데스크톱 프로토콜) 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 의미한다.\",\n        \"RDPBruteForce 탐지는 두 가지 경우로 나뉘어 있다.\",\n        \"첫 번째 경우는 EC2 인스턴스가 공격의 대상인 경우이다.\",\n        \"이 경우 탐지의 심각도는 낮다.\",\n        \"두 번째 경우는 EC2 인스턴스가 공격을 수행하는 경우이다.\",\n        \"이 경우 탐지의 심각도는 높다.\",\n        \"RDPBruteForce 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.\",\n        \"RDPBruteForce 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다.\"\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  "RDPBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 RDP(원격 데스크톱 프로토콜) 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 의미한다.",
+                  "RDPBruteForce 탐지는 두 가지 경우로 나뉘어 있다.",
+                  "첫 번째 경우는 EC2 인스턴스가 공격의 대상인 경우이다.",
+                  "이 경우 탐지의 심각도는 낮다.",
+                  "두 번째 경우는 EC2 인스턴스가 공격을 수행하는 경우이다.",
+                  "이 경우 탐지의 심각도는 높다.",
+                  "RDPBruteForce 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.",
+                  "RDPBruteForce 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다."
+                ]
+              }
+            },
+            {
+              "raw_output": "{\n    \"statements\": [\n        {\n            \"statement\": \"RDPBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 RDP(원격 데스크톱 프로토콜) 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 의미한다.\",\n            \"reason\": \"The context explicitly states that an EC2 instance has been involved in RDP brute force attacks aimed at obtaining passwords to RDP services.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"RDPBruteForce 탐지는 두 가지 경우로 나뉘어 있다.\",\n            \"reason\": \"The context describes two scenarios regarding the severity of the finding based on whether the EC2 instance is the target or the actor in the brute force attack, implying that it can be categorized into two cases.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"첫 번째 경우는 EC2 인스턴스가 공격의 대상인 경우이다.\",\n            \"reason\": \"The context mentions that the severity is low if the EC2 instance was the target of a brute force attack, indicating that this is one of the two cases.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"이 경우 탐지의 심각도는 낮다.\",\n            \"reason\": \"The context explicitly states that the finding's severity is low if the EC2 instance was the target of a brute force attack.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"두 번째 경우는 EC2 인스턴스가 공격을 수행하는 경우이다.\",\n            \"reason\": \"The context describes that the severity is high if the EC2 instance is the actor performing the brute force attack, indicating this is the second case.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"이 경우 탐지의 심각도는 높다.\",\n            \"reason\": \"The context explicitly states that the finding's severity is high if the EC2 instance is the actor being used to perform the brute force attack.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"RDPBruteForce 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.\",\n            \"reason\": \"The context mentions that the data source for the finding is VPC flow logs, which applies to the RDP brute force finding.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"RDPBruteForce 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다.\",\n            \"reason\": \"The context states that this finding can indicate unauthorized access to AWS resources, which directly relates to the RDP brute force finding.\",\n            \"verdict\": 1\n        }\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  {
+                    "statement": "RDPBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 RDP(원격 데스크톱 프로토콜) 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 의미한다.",
+                    "reason": "The context explicitly states that an EC2 instance has been involved in RDP brute force attacks aimed at obtaining passwords to RDP services.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "RDPBruteForce 탐지는 두 가지 경우로 나뉘어 있다.",
+                    "reason": "The context describes two scenarios regarding the severity of the finding based on whether the EC2 instance is the target or the actor in the brute force attack, implying that it can be categorized into two cases.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "첫 번째 경우는 EC2 인스턴스가 공격의 대상인 경우이다.",
+                    "reason": "The context mentions that the severity is low if the EC2 instance was the target of a brute force attack, indicating that this is one of the two cases.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "이 경우 탐지의 심각도는 낮다.",
+                    "reason": "The context explicitly states that the finding's severity is low if the EC2 instance was the target of a brute force attack.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "두 번째 경우는 EC2 인스턴스가 공격을 수행하는 경우이다.",
+                    "reason": "The context describes that the severity is high if the EC2 instance is the actor performing the brute force attack, indicating this is the second case.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "이 경우 탐지의 심각도는 높다.",
+                    "reason": "The context explicitly states that the finding's severity is high if the EC2 instance is the actor being used to perform the brute force attack.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "RDPBruteForce 탐지는 VPC 흐름 로그를 데이터 소스로 사용한다.",
+                    "reason": "The context mentions that the data source for the finding is VPC flow logs, which applies to the RDP brute force finding.",
+                    "verdict": 1
+                  },
+                  {
+                    "statement": "RDPBruteForce 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다.",
+                    "reason": "The context states that this finding can indicate unauthorized access to AWS resources, which directly relates to the RDP brute force finding.",
+                    "verdict": 1
+                  }
+                ]
+              }
+            }
+          ],
+          "required_inputs": [
+            "response",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 200,
+              "prompt_tokens": 519,
+              "total_tokens": 719,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 592,
+              "prompt_tokens": 1557,
+              "total_tokens": 2149,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        }
+      },
+      "generation_usage": {
+        "completion_tokens": 157,
+        "prompt_tokens": 738,
+        "total_tokens": 895,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "embedding_usage": {
+        "prompt_tokens": 21,
+        "total_tokens": 21
+      },
+      "evaluation_scope": "전체 문항; 거절 행동은 별도 사람 평가"
+    },
+    {
+      "id": "q4",
+      "question": "어제 우리 회사에서 발생한 GuardDuty 탐지 건수는?",
+      "status": "completed",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_id": "chunk_052",
+          "distance": 1.234325647354126,
+          "metadata": {
+            "chunk_index": 52,
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types"
+          },
+          "text": " their command and control (C&C) servers.\n                    Command and control servers are computers that issue commands to members of a\n                    botnet, which is a collection of internet-connected devices that are infected\n                    and controlled by a common type of malware. The large number of potential\n                    rendezvous points makes it difficult to effectively shut down botnets because\n                    infected computers attempt to contact some of these domain names every day to\n                    receive updates or commands.\nNote\nThis finding is based on known DGA domains from GuardDuty's threat\n                        intelligence feeds.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more inf"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "chunk_000",
+          "distance": 1.2451927661895752,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "chunk_index": 0
+          },
+          "text": "GuardDuty EC2 finding types\nThe following findings are specific to Amazon EC2 resources and always have a Resource Type of\nInstance\n. The severity and details of the findings differ based on the\n        Resource Role, which indicates whether the EC2 resource was the target of suspicious\n        activity or the actor performing the activity.\nThe findings listed here include the data sources and models used to generate that finding\n        type. For more information data sources and models see\nGuardDuty foundational data sources\n.\nNotes\nEC2 finding instance details may be missing if the instance was already terminated, or if the underlying \n                    API call originated from an EC2 instance in a different Region.\nEC2 findings that use VPC flow logs as a data source do not support I"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "chunk_034",
+          "distance": 1.2497398853302002,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "chunk_index": 34,
+            "source": "AWS GuardDuty EC2 Finding Types"
+          },
+          "text": "             environment is querying a domain name that is included in threat entity list\n                    that you uploaded and activated. In GuardDuty, a threat entity list consists of known\n                malicious domain names and IP addresses. GuardDuty generates findings based on the activity\n                associated with the uploaded threat entity list. You can view name of the threat entity\n                list in the finding details.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/PortSweep\nAn EC2 instance is probing a port on a large number of IP addresses.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you t"
+        }
+      ],
+      "actual_context": "[문서 1]\n their command and control (C&C) servers.\n                    Command and control servers are computers that issue commands to members of a\n                    botnet, which is a collection of internet-connected devices that are infected\n                    and controlled by a common type of malware. The large number of potential\n                    rendezvous points makes it difficult to effectively shut down botnets because\n                    infected computers attempt to contact some of these domain names every day to\n                    receive updates or commands.\nNote\nThis finding is based on known DGA domains from GuardDuty's threat\n                        intelligence feeds.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more inf\n\n[문서 2]\nGuardDuty EC2 finding types\nThe following findings are specific to Amazon EC2 resources and always have a Resource Type of\nInstance\n. The severity and details of the findings differ based on the\n        Resource Role, which indicates whether the EC2 resource was the target of suspicious\n        activity or the actor performing the activity.\nThe findings listed here include the data sources and models used to generate that finding\n        type. For more information data sources and models see\nGuardDuty foundational data sources\n.\nNotes\nEC2 finding instance details may be missing if the instance was already terminated, or if the underlying \n                    API call originated from an EC2 instance in a different Region.\nEC2 findings that use VPC flow logs as a data source do not support I\n\n[문서 3]\n             environment is querying a domain name that is included in threat entity list\n                    that you uploaded and activated. In GuardDuty, a threat entity list consists of known\n                malicious domain names and IP addresses. GuardDuty generates findings based on the activity\n                associated with the uploaded threat entity list. You can view name of the threat entity\n                list in the finding details.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/PortSweep\nAn EC2 instance is probing a port on a large number of IP addresses.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you t",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "너는 AWS GuardDuty 보안 분석 도우미다. 반드시 제공된 참고 문서에 근거하여 한국어로 답변하라. 참고 문서에 없는 사실이나 수치는 추측하지 마라. 질문에 답할 근거가 부족하면 '제공된 문서만으로는 확인할 수 없습니다.'라고 답하라. 검색 문서에 관련 단어가 있다는 이유만으로 답을 만들어내지 마라. 여러 부분으로 된 질문은 근거가 있는 부분을 설명하고, 확인할 수 없는 부분은 구분해서 밝혀라."
+        },
+        {
+          "role": "user",
+          "content": "참고 문서:\n[문서 1]\n their command and control (C&C) servers.\n                    Command and control servers are computers that issue commands to members of a\n                    botnet, which is a collection of internet-connected devices that are infected\n                    and controlled by a common type of malware. The large number of potential\n                    rendezvous points makes it difficult to effectively shut down botnets because\n                    infected computers attempt to contact some of these domain names every day to\n                    receive updates or commands.\nNote\nThis finding is based on known DGA domains from GuardDuty's threat\n                        intelligence feeds.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more inf\n\n[문서 2]\nGuardDuty EC2 finding types\nThe following findings are specific to Amazon EC2 resources and always have a Resource Type of\nInstance\n. The severity and details of the findings differ based on the\n        Resource Role, which indicates whether the EC2 resource was the target of suspicious\n        activity or the actor performing the activity.\nThe findings listed here include the data sources and models used to generate that finding\n        type. For more information data sources and models see\nGuardDuty foundational data sources\n.\nNotes\nEC2 finding instance details may be missing if the instance was already terminated, or if the underlying \n                    API call originated from an EC2 instance in a different Region.\nEC2 findings that use VPC flow logs as a data source do not support I\n\n[문서 3]\n             environment is querying a domain name that is included in threat entity list\n                    that you uploaded and activated. In GuardDuty, a threat entity list consists of known\n                malicious domain names and IP addresses. GuardDuty generates findings based on the activity\n                associated with the uploaded threat entity list. You can view name of the threat entity\n                list in the finding details.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/PortSweep\nAn EC2 instance is probing a port on a large number of IP addresses.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you t\n\n질문: 어제 우리 회사에서 발생한 GuardDuty 탐지 건수는?"
+        }
+      ],
+      "answer": "제공된 문서만으로는 확인할 수 없습니다.",
+      "metrics": {
+        "context_precision": {
+          "status": "N/A",
+          "score": null,
+          "reason": "문서에 정답 근거가 없어 reference 기반 관련성 기준을 정의하지 않음. 거절 문장을 검색 정답으로 사용하지 않음.",
+          "judge_outputs": []
+        },
+        "faithfulness": {
+          "status": "N/A",
+          "score": null,
+          "reason": "이 문항은 외부 사실 대신 답변 거절 행동을 평가. 실질 사실 주장이 없는 거절의 Faithfulness를 성공 점수로 처리하지 않음. 수치 환각 여부는 별도 판정.",
+          "judge_outputs": []
+        }
+      },
+      "generation_usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 616,
+        "total_tokens": 629,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "embedding_usage": {
+        "prompt_tokens": 22,
+        "total_tokens": 22
+      },
+      "evaluation_scope": "전체 문항; 거절 행동은 별도 사람 평가"
+    },
+    {
+      "id": "q5",
+      "question": "SSHBruteForce 탐지는 무엇을 의미하고, 어제 우리 회사에서 발생한 GuardDuty 탐지 건수는 몇 건인가요?",
+      "status": "completed",
+      "retrieved_documents": [
+        {
+          "rank": 1,
+          "chunk_id": "chunk_064",
+          "distance": 1.1431901454925537,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "chunk_index": 64,
+            "source": "AWS GuardDuty EC2 Finding Types"
+          },
+          "text": "formation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm"
+        },
+        {
+          "rank": 2,
+          "chunk_id": "chunk_067",
+          "distance": 1.1719897985458374,
+          "metadata": {
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types",
+            "chunk_index": 67
+          },
+          "text": "k aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi"
+        },
+        {
+          "rank": 3,
+          "chunk_id": "chunk_002",
+          "distance": 1.2140138149261475,
+          "metadata": {
+            "chunk_index": 2,
+            "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+            "source": "AWS GuardDuty EC2 Finding Types"
+          },
+          "text": "ialOfService.Dns\nBackdoor:EC2/DenialOfService.Tcp\nBackdoor:EC2/DenialOfService.Udp\nBackdoor:EC2/DenialOfService.UdpOnTcpPorts\nBackdoor:EC2/DenialOfService.UnusualProtocol\nBackdoor:EC2/Spambot\nBehavior:EC2/NetworkPortUnusual\nBehavior:EC2/TrafficVolumeUnusual\nCryptoCurrency:EC2/BitcoinTool.B\nCryptoCurrency:EC2/BitcoinTool.B!DNS\nDefenseEvasion:EC2/UnusualDNSResolver\nDefenseEvasion:EC2/UnusualDoHActivity\nDefenseEvasion:EC2/UnusualDoTActivity\nImpact:EC2/AbusedDomainRequest.Reputation\nImpact:EC2/BitcoinDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Custom\nImpact:EC2/PortSweep\nImpact:EC2/SuspiciousDomainRequest.Reputation\nImpact:EC2/WinRMBruteForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nT"
+        }
+      ],
+      "actual_context": "[문서 1]\nformation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm\n\n[문서 2]\nk aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi\n\n[문서 3]\nialOfService.Dns\nBackdoor:EC2/DenialOfService.Tcp\nBackdoor:EC2/DenialOfService.Udp\nBackdoor:EC2/DenialOfService.UdpOnTcpPorts\nBackdoor:EC2/DenialOfService.UnusualProtocol\nBackdoor:EC2/Spambot\nBehavior:EC2/NetworkPortUnusual\nBehavior:EC2/TrafficVolumeUnusual\nCryptoCurrency:EC2/BitcoinTool.B\nCryptoCurrency:EC2/BitcoinTool.B!DNS\nDefenseEvasion:EC2/UnusualDNSResolver\nDefenseEvasion:EC2/UnusualDoHActivity\nDefenseEvasion:EC2/UnusualDoTActivity\nImpact:EC2/AbusedDomainRequest.Reputation\nImpact:EC2/BitcoinDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Custom\nImpact:EC2/PortSweep\nImpact:EC2/SuspiciousDomainRequest.Reputation\nImpact:EC2/WinRMBruteForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nT",
+      "actual_messages": [
+        {
+          "role": "system",
+          "content": "너는 AWS GuardDuty 보안 분석 도우미다. 반드시 제공된 참고 문서에 근거하여 한국어로 답변하라. 참고 문서에 없는 사실이나 수치는 추측하지 마라. 질문에 답할 근거가 부족하면 '제공된 문서만으로는 확인할 수 없습니다.'라고 답하라. 검색 문서에 관련 단어가 있다는 이유만으로 답을 만들어내지 마라. 여러 부분으로 된 질문은 근거가 있는 부분을 설명하고, 확인할 수 없는 부분은 구분해서 밝혀라."
+        },
+        {
+          "role": "user",
+          "content": "참고 문서:\n[문서 1]\nformation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm\n\n[문서 2]\nk aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi\n\n[문서 3]\nialOfService.Dns\nBackdoor:EC2/DenialOfService.Tcp\nBackdoor:EC2/DenialOfService.Udp\nBackdoor:EC2/DenialOfService.UdpOnTcpPorts\nBackdoor:EC2/DenialOfService.UnusualProtocol\nBackdoor:EC2/Spambot\nBehavior:EC2/NetworkPortUnusual\nBehavior:EC2/TrafficVolumeUnusual\nCryptoCurrency:EC2/BitcoinTool.B\nCryptoCurrency:EC2/BitcoinTool.B!DNS\nDefenseEvasion:EC2/UnusualDNSResolver\nDefenseEvasion:EC2/UnusualDoHActivity\nDefenseEvasion:EC2/UnusualDoTActivity\nImpact:EC2/AbusedDomainRequest.Reputation\nImpact:EC2/BitcoinDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Custom\nImpact:EC2/PortSweep\nImpact:EC2/SuspiciousDomainRequest.Reputation\nImpact:EC2/WinRMBruteForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nT\n\n질문: SSHBruteForce 탐지는 무엇을 의미하고, 어제 우리 회사에서 발생한 GuardDuty 탐지 건수는 몇 건인가요?"
+        }
+      ],
+      "answer": "SSHBruteForce 탐지는 AWS 환경 내에서 EC2 인스턴스가 SSH 서비스에 대한 무차별 대입 공격에 연루되었음을 의미합니다. 이 탐지는 주로 포트 22에서의 트래픽을 모니터링하여 생성됩니다. 만약 SSH 서비스가 다른 포트를 사용하도록 설정되어 있다면 이 탐지는 생성되지 않습니다. 이 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있습니다.\n\n어제 발생한 GuardDuty 탐지 건수에 대한 정보는 제공된 문서에 포함되어 있지 않으므로 확인할 수 없습니다.",
+      "metrics": {
+        "context_precision": {
+          "status": "scored",
+          "score": 0.0,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"reason\": \"The context discusses RDP brute force attacks and mentions unauthorized access to AWS resources, but it does not provide relevant information about SSH brute force attacks or any specific GuardDuty detection counts related to the question. Therefore, the context is not useful for arriving at the given answer.\",\n    \"verdict\": 0\n}",
+              "parsed_output": {
+                "reason": "The context discusses RDP brute force attacks and mentions unauthorized access to AWS resources, but it does not provide relevant information about SSH brute force attacks or any specific GuardDuty detection counts related to the question. Therefore, the context is not useful for arriving at the given answer.",
+                "verdict": 0
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The context provides information about SSH brute force attacks, including their implications and monitoring details. However, it does not directly address the specific incident of GuardDuty detections that occurred yesterday or the number of detections, which is part of the question. Therefore, while the context is somewhat relevant, it does not fully support the answer provided.\",\n    \"verdict\": 0\n}",
+              "parsed_output": {
+                "reason": "The context provides information about SSH brute force attacks, including their implications and monitoring details. However, it does not directly address the specific incident of GuardDuty detections that occurred yesterday or the number of detections, which is part of the question. Therefore, while the context is somewhat relevant, it does not fully support the answer provided.",
+                "verdict": 0
+              }
+            },
+            {
+              "raw_output": "{\n    \"reason\": \"The provided context does not contain relevant information regarding SSHBruteForce detection or the specific number of GuardDuty detections that occurred at the company. The context appears to list various security-related terms and incidents but does not directly address the question asked.\",\n    \"verdict\": 0\n}",
+              "parsed_output": {
+                "reason": "The provided context does not contain relevant information regarding SSHBruteForce detection or the specific number of GuardDuty detections that occurred at the company. The context appears to list various security-related terms and incidents but does not directly address the question asked.",
+                "verdict": 0
+              }
+            }
+          ],
+          "required_inputs": [
+            "reference",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 69,
+              "prompt_tokens": 1084,
+              "total_tokens": 1153,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 82,
+              "prompt_tokens": 1065,
+              "total_tokens": 1147,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 64,
+              "prompt_tokens": 1186,
+              "total_tokens": 1250,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        },
+        "faithfulness": {
+          "status": "scored",
+          "score": 0.8333333333333334,
+          "reason": "공식 Ragas 점수. judge_outputs의 reason/verdict/statement를 함께 확인.",
+          "judge_outputs": [
+            {
+              "raw_output": "{\n    \"statements\": [\n        \"SSHBruteForce 탐지는 AWS 환경 내에서 EC2 인스턴스가 SSH 서비스에 대한 무차별 대입 공격에 연루되었음을 의미한다.\",\n        \"이 탐지는 주로 포트 22에서의 트래픽을 모니터링하여 생성된다.\",\n        \"만약 SSH 서비스가 다른 포트를 사용하도록 설정되어 있다면 이 탐지는 생성되지 않는다.\",\n        \"이 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다.\",\n        \"어제 발생한 GuardDuty 탐지 건수에 대한 정보는 제공된 문서에 포함되어 있지 않다.\",\n        \"어제 발생한 GuardDuty 탐지 건수는 확인할 수 없다.\"\n    ]\n}",
+              "parsed_output": {
+                "statements": [
+                  "SSHBruteForce 탐지는 AWS 환경 내에서 EC2 인스턴스가 SSH 서비스에 대한 무차별 대입 공격에 연루되었음을 의미한다.",
+                  "이 탐지는 주로 포트 22에서의 트래픽을 모니터링하여 생성된다.",
+                  "만약 SSH 서비스가 다른 포트를 사용하도록 설정되어 있다면 이 탐지는 생성되지 않는다.",
+                  "이 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다.",
+                  "어제 발생한 GuardDuty 탐지 건수에 대한 정보는 제공된 문서에 포함되어 있지 않다.",
+                  "어제 발생한 GuardDuty 탐지 건수는 확인할 수 없다."
+                ]
+              }
+            },
+            {
+              "raw_output": "```json\n{\n    \"statements\": [\n        {\n            \"statement\": \"SSHBruteForce 탐지는 AWS 환경 내에서 EC2 인스턴스가 SSH 서비스에 대한 무차별 대입 공격에 연루되었음을 의미한다.\",\n            \"reason\": \"The context mentions that an EC2 instance was involved in brute force attacks aimed at obtaining passwords to RDP services, but it does not explicitly state that this applies to SSH services. Therefore, this statement cannot be directly inferred.\",\n            \"verdict\": 0\n        },\n        {\n            \"statement\": \"이 탐지는 주로 포트 22에서의 트래픽을 모니터링하여 생성된다.\",\n            \"reason\": \"The context states that the finding is generated only through monitoring traffic on port 22, which directly supports this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"만약 SSH 서비스가 다른 포트를 사용하도록 설정되어 있다면 이 탐지는 생성되지 않는다.\",\n            \"reason\": \"The context explicitly mentions that if SSH services are configured to use other ports, this finding is not generated, making this statement directly inferable.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"이 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있다.\",\n            \"reason\": \"The context indicates that the finding can indicate unauthorized access to AWS resources, which directly supports this statement.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"어제 발생한 GuardDuty 탐지 건수에 대한 정보는 제공된 문서에 포함되어 있지 않다.\",\n            \"reason\": \"The context does not provide any information about the number of GuardDuty detections that occurred yesterday, making this statement valid.\",\n            \"verdict\": 1\n        },\n        {\n            \"statement\": \"어제 발생한 GuardDuty 탐지 건수는 확인할 수 없다.\",\n            \"reason\": \"Since the context does not provide information about the number of detections, it can be inferred that this information cannot be confirmed.\",\n            \"verdict\": 1\n        }\n    ]\n}\n```",
+              "parsed_output": null
+            }
+          ],
+          "required_inputs": [
+            "response",
+            "retrieved_contexts",
+            "user_input"
+          ],
+          "judge_usage": [
+            {
+              "completion_tokens": 162,
+              "prompt_tokens": 505,
+              "total_tokens": 667,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            },
+            {
+              "completion_tokens": 451,
+              "prompt_tokens": 1504,
+              "total_tokens": 1955,
+              "completion_tokens_details": {
+                "accepted_prediction_tokens": 0,
+                "audio_tokens": 0,
+                "reasoning_tokens": 0,
+                "rejected_prediction_tokens": 0
+              },
+              "prompt_tokens_details": {
+                "audio_tokens": 0,
+                "cached_tokens": 0
+              }
+            }
+          ],
+          "reason_capture": "모델이 반환한 평가 설명만 기록하며 비공개 내부 추론은 수집하지 않음"
+        }
+      },
+      "generation_usage": {
+        "completion_tokens": 129,
+        "prompt_tokens": 746,
+        "total_tokens": 875,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        },
+        "prompt_tokens_details": {
+          "audio_tokens": 0,
+          "cached_tokens": 0
+        }
+      },
+      "embedding_usage": {
+        "prompt_tokens": 49,
+        "total_tokens": 49
+      },
+      "evaluation_scope": "SSHBruteForce 의미 부분만 Context Precision 평가. 회사 건수의 답변 거절은 사람 평가 대상."
+    }
+  ]
+}
