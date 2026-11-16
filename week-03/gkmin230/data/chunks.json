@@ -1,0 +1,513 @@
+[
+  {
+    "id": "chunk_000",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 0,
+    "text": "GuardDuty EC2 finding types\nThe following findings are specific to Amazon EC2 resources and always have a Resource Type of\nInstance\n. The severity and details of the findings differ based on the\n        Resource Role, which indicates whether the EC2 resource was the target of suspicious\n        activity or the actor performing the activity.\nThe findings listed here include the data sources and models used to generate that finding\n        type. For more information data sources and models see\nGuardDuty foundational data sources\n.\nNotes\nEC2 finding instance details may be missing if the instance was already terminated, or if the underlying \n                    API call originated from an EC2 instance in a different Region.\nEC2 findings that use VPC flow logs as a data source do not support I"
+  },
+  {
+    "id": "chunk_001",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 1,
+    "text": "nstance in a different Region.\nEC2 findings that use VPC flow logs as a data source do not support IPv6 traffic.\nFor all EC2 findings, it is recommended that you examine the resource in question to\n        determine if it is behaving in an expected manner. If the activity is authorized, you can\n        use Suppression Rules or Trusted IP lists to prevent false positive notifications for that\n        resource. If the activity is unexpected, the security best practice is to assume the\n        instance has been compromised and take the actions detailed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nTopics\nBackdoor:EC2/C&CActivity.B\nBackdoor:EC2/C&CActivity.B!DNS\nBackdoor:EC2/DenialOfService.Dns\nBackdoor:EC2/DenialOfService.Tcp\nBackdoor:EC2/DenialOfService.Udp\nBackdoor:EC2/Deni"
+  },
+  {
+    "id": "chunk_002",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 2,
+    "text": "ialOfService.Dns\nBackdoor:EC2/DenialOfService.Tcp\nBackdoor:EC2/DenialOfService.Udp\nBackdoor:EC2/DenialOfService.UdpOnTcpPorts\nBackdoor:EC2/DenialOfService.UnusualProtocol\nBackdoor:EC2/Spambot\nBehavior:EC2/NetworkPortUnusual\nBehavior:EC2/TrafficVolumeUnusual\nCryptoCurrency:EC2/BitcoinTool.B\nCryptoCurrency:EC2/BitcoinTool.B!DNS\nDefenseEvasion:EC2/UnusualDNSResolver\nDefenseEvasion:EC2/UnusualDoHActivity\nDefenseEvasion:EC2/UnusualDoTActivity\nImpact:EC2/AbusedDomainRequest.Reputation\nImpact:EC2/BitcoinDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Reputation\nImpact:EC2/MaliciousDomainRequest.Custom\nImpact:EC2/PortSweep\nImpact:EC2/SuspiciousDomainRequest.Reputation\nImpact:EC2/WinRMBruteForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nT"
+  },
+  {
+    "id": "chunk_003",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 3,
+    "text": "eForce\nRecon:EC2/PortProbeEMRUnprotectedPort\nRecon:EC2/PortProbeUnprotectedPort\nRecon:EC2/Portscan\nTrojan:EC2/BlackholeTraffic\nTrojan:EC2/BlackholeTraffic!DNS\nTrojan:EC2/DGADomainRequest.B\nTrojan:EC2/DGADomainRequest.C!DNS\nTrojan:EC2/DNSDataExfiltration\nTrojan:EC2/DriveBySourceTraffic!DNS\nTrojan:EC2/DropPoint\nTrojan:EC2/DropPoint!DNS\nTrojan:EC2/PhishingDomainRequest!DNS\nUnauthorizedAccess:EC2/MaliciousIPCaller.Custom\nUnauthorizedAccess:EC2/MetadataDNSRebind\nUnauthorizedAccess:EC2/RDPBruteForce\nUnauthorizedAccess:EC2/SSHBruteForce\nUnauthorizedAccess:EC2/TorClient\nUnauthorizedAccess:EC2/TorRelay\nBackdoor:EC2/C&CActivity.B\nAn EC2 instance is querying an IP that is associated with a known command and control server.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you tha"
+  },
+  {
+    "id": "chunk_004",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 4,
+    "text": "d and control server.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed instance within your AWS\n                    environment is querying an IP associated with a known command and control\n                    (C&C) server. The listed instance might be compromised. Command and control\n                    servers are computers that issue commands to members of a botnet.\nA botnet is a collection of internet-connected devices which might include\n                    PCs, servers, mobile devices, and Internet of Things devices, that are infected\n                    and controlled by a common type of malware. Botnets are often used to distribute\n                    malware and gather misappropriated information, such as credit card numbers.\n             "
+  },
+  {
+    "id": "chunk_005",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 5,
+    "text": "          malware and gather misappropriated information, such as credit card numbers.\n                    Depending on the purpose and structure of the botnet, the C&C server might\n                    also issue commands to begin a distributed denial of service (DDoS)\n                    attack.\nNote\nIf the IP queried is log4j-related, then fields of the associated finding will\n                    include the following values:\nservice.additionalInfo.threatListName = Amazon\nservice.additionalInfo.threatName = Log4j Related\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/C&CActivity.B!DNS\nAn EC2 instance is querying a domain name that is associate"
+  },
+  {
+    "id": "chunk_006",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 6,
+    "text": "nstance\n.\nBackdoor:EC2/C&CActivity.B!DNS\nAn EC2 instance is querying a domain name that is associated with a known command and control server.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed instance within your AWS\n                    environment is querying a domain name associated with a known command and\n                    control (C&C) server. The listed instance might be compromised. Command and\n                    control servers are computers that issue commands to members of a botnet.\nA botnet is a collection of internet-connected devices which might include\n                    PCs, servers, mobile devices, and Internet of Things devices, that are infected\n                    and controlled by a common type of malware. Botnets are often used "
+  },
+  {
+    "id": "chunk_007",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 7,
+    "text": "are infected\n                    and controlled by a common type of malware. Botnets are often used to distribute\n                    malware and gather misappropriated information, such as credit card numbers.\n                    Depending on the purpose and structure of the botnet, the C&C server might\n                    also issue commands to begin a distributed denial of service (DDoS)\n                    attack.\nNote\nIf the domain name queried is log4j-related, then the fields of the\n                        associated finding will include the following values:\nservice.additionalInfo.threatListName = Amazon\nservice.additionalInfo.threatName = Log4j Related\nNote\nTo test how GuardDuty generates this finding type, you can make a\n                        DNS request from your instance (usi"
+  },
+  {
+    "id": "chunk_008",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 8,
+    "text": "erates this finding type, you can make a\n                        DNS request from your instance (using\ndig\nfor Linux or\nnslookup\nfor Windows) against a test domain\nguarddutyc2activityb.com\n.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Dns\nAn EC2 instance is behaving in a manner that may indicate it is being used to perform a Denial of Service (DoS) attack using the DNS protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound DNS traffic. This may\n                    indicate that the"
+  },
+  {
+    "id": "chunk_009",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 9,
+    "text": "is generating a large volume of outbound DNS traffic. This may\n                    indicate that the listed instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using DNS protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Tcp\nAn EC2 instance is behaving in a manner indicating it is being used to perform a Denial of Service (DoS) attack using the TCP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs "
+  },
+  {
+    "id": "chunk_010",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 10,
+    "text": "tack using the TCP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound TCP traffic. This may\n                    indicate that the instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using TCP protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Udp\nAn EC2 instance is behaving in a "
+  },
+  {
+    "id": "chunk_011",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 11,
+    "text": "compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.Udp\nAn EC2 instance is behaving in a manner indicating it is being used to perform a Denial of Service (DoS) attack using the UDP protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound UDP traffic. This may\n                    indicate that the listed instance is compromised and being used to perform\n                    denial-of-service (DoS) attacks using UDP protocol.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your "
+  },
+  {
+    "id": "chunk_012",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 12,
+    "text": "e primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.UdpOnTcpPorts\nAn EC2 instance is behaving in a manner that may indicate it is being used to perform a Denial of Service (DoS) attack using the UDP protocol on a TCP port.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance within your AWS\n                    environment is generating a large volume of outbound UDP traffic targeted to a\n                    port that is typically used for TCP communication. This may indicate that the\n                    listed instance is compromised and being used to"
+  },
+  {
+    "id": "chunk_013",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 13,
+    "text": "ion. This may indicate that the\n                    listed instance is compromised and being used to perform a denial-of-service\n                    (DoS) attacks using UDP protocol on a TCP port.\nNote\nThis finding detects DoS attacks only against publicly routable IP\n                        addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/DenialOfService.UnusualProtocol\nAn EC2 instance is behaving in a manner that may indicate it is being used to perform a Denial of Service (DoS) attack using an unusual protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that th"
+  },
+  {
+    "id": "chunk_014",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 14,
+    "text": "unusual protocol.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is generating a large volume of outbound traffic from an unusual\n                    protocol type that is not typically used by EC2 instances, such as Internet\n                    Group Management Protocol. This may indicate that the instance is compromised\n                    and is being used to perform denial-of-service (DoS) attacks using an unusual\n                    protocol. This finding detects DoS attacks only against publicly routable IP\n                    addresses, which are primary targets of DoS attacks.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more inf"
+  },
+  {
+    "id": "chunk_015",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 15,
+    "text": "tion recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBackdoor:EC2/Spambot\nAn EC2 instance is exhibiting unusual behavior by communicating with a remote host on port 25.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is communicating with a remote host on port 25. This behavior is\n                    unusual because this EC2 instance has no prior history of communications on port\n                    25. Port 25 is traditionally used by mail servers for SMTP communications. This\n                    finding indicates your EC2 instance might be compromised for use in sendin"
+  },
+  {
+    "id": "chunk_016",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 16,
+    "text": " This\n                    finding indicates your EC2 instance might be compromised for use in sending out\n                    spam.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBehavior:EC2/NetworkPortUnusual\nAn EC2 instance is communicating with a remote host on an unusual server port.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is behaving in a way that deviates from the established baseline.\n                    This EC2 instance has no prior history of communications on this remote\n                    port.\nNote\nIf the EC2 instance communicated on p"
+  },
+  {
+    "id": "chunk_017",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 17,
+    "text": "f communications on this remote\n                    port.\nNote\nIf the EC2 instance communicated on port 389 or port 1389, then the\n                        associated finding severity will be modified to High, and the finding fields\n                        will include the following value:\nservice.additionalInfo.context = Possible log4j callback\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nBehavior:EC2/TrafficVolumeUnusual\nAn EC2 instance is generating unusually large amounts of network traffic to a remote host.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environme"
+  },
+  {
+    "id": "chunk_018",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 18,
+    "text": "logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is behaving in a way that deviates from the established baseline.\n                    This EC2 instance has no prior history of sending this much traffic to this\n                    remote host.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nCryptoCurrency:EC2/BitcoinTool.B\nAn EC2 instance is querying an IP address that is associated with cryptocurrency-related activity.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is querying an IP Address that is associa"
+  },
+  {
+    "id": "chunk_019",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 19,
+    "text": "d EC2 instance in your AWS\n                    environment is querying an IP Address that is associated with Bitcoin or other\n                    cryptocurrency-related activity. Bitcoin is a worldwide cryptocurrency and\n                    digital payment system that can be exchanged for other currencies, products, and\n                    services. Bitcoin is a reward for bitcoin-mining and is highly sought after by\n                    threat actors.\nRemediation recommendations:\nIf you use this EC2 instance to mine or manage cryptocurrency, or this\n                    instance is otherwise involved in blockchain activity, this finding could be\n                    expected activity for your environment. If this is the case in your AWS\n                    environment, we recommend that you "
+  },
+  {
+    "id": "chunk_020",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 20,
+    "text": "environment. If this is the case in your AWS\n                    environment, we recommend that you set up a suppression rule for this finding.\n                    The suppression rule should consist of two filter criteria. The first criteria\n                    should use the\nFinding type\nattribute with a\n                    value of\nCryptoCurrency:EC2/BitcoinTool.B\n. The second filter\n                    criteria should be the\nInstance ID\nof the instance involved\n                    in blockchain activity. To learn more about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nCryptoCurrency:EC2/BitcoinTool.B!DNS\nAn EC2 instance is querying a do"
+  },
+  {
+    "id": "chunk_021",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 21,
+    "text": "promised Amazon EC2 instance\n.\nCryptoCurrency:EC2/BitcoinTool.B!DNS\nAn EC2 instance is querying a domain name that is associated with cryptocurrency-related activity.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is querying a domain name that is associated with Bitcoin or other\n                    cryptocurrency-related activity. Bitcoin is a worldwide cryptocurrency and\n                    digital payment system that can be exchanged for other currencies, products, and\n                    services. Bitcoin is a reward for bitcoin-mining and is highly sought after by\n                    threat actors.\nRemediation recommendations:\nIf you use this EC2 instance to mine or manage cryptocurrency, o"
+  },
+  {
+    "id": "chunk_022",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 22,
+    "text": "ctors.\nRemediation recommendations:\nIf you use this EC2 instance to mine or manage cryptocurrency, or this\n                    instance is otherwise involved in blockchain activity, this finding could be\n                    expected activity for your environment. If this is the case in your AWS\n                    environment, we recommend that you set up a suppression rule for this finding.\n                    The suppression rule should consist of two filter criteria. The first criteria\n                    should use the\nFinding type\nattribute with a\n                    value of\nCryptoCurrency:EC2/BitcoinTool.B!DNS\n. The second filter\n                    criteria should be the\nInstance ID\nof the instance involved\n                    in blockchain activity. To learn more about creating su"
+  },
+  {
+    "id": "chunk_023",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 23,
+    "text": "of the instance involved\n                    in blockchain activity. To learn more about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nDefenseEvasion:EC2/UnusualDNSResolver\nAn Amazon EC2 instance is communicating with an unusual public DNS resolver.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed Amazon EC2 instance in your AWS\n                    environment is behaving in a way that deviates from the baseline behavior. This\n                    EC2 instance has no recent history of communicating with this public DNS\n                    resolver. The\nUnusual\nfield in the finding details panel in\n "
+  },
+  {
+    "id": "chunk_024",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 24,
+    "text": "th this public DNS\n                    resolver. The\nUnusual\nfield in the finding details panel in\n                    the GuardDuty console can provide information about the queried DNS resolver.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nDefenseEvasion:EC2/UnusualDoHActivity\nAn Amazon EC2 instance is performing an unusual DNS over HTTPS (DoH) communication.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed Amazon EC2 instance within your AWS\n                    environment is behaving in a way that deviates from the established baseline.\n                    This EC2 instance doesn't have any recent history of "
+  },
+  {
+    "id": "chunk_025",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 25,
+    "text": " the established baseline.\n                    This EC2 instance doesn't have any recent history of DNS over HTTPS (DoH)\n                    communications with this public DoH server. The\nUnusual\nfield in the finding details can provide information about the queried DoH\n                    server.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nDefenseEvasion:EC2/UnusualDoTActivity\nAn Amazon EC2 instance is performing an unusual DNS over TLS (DoT) communication.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is behaving in a way that deviates from the estab"
+  },
+  {
+    "id": "chunk_026",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 26,
+    "text": "stance in your AWS\n                    environment is behaving in a way that deviates from the established baseline.\n                    This EC2 instance doesn't have any recent history of DNS over TLS (DoT)\n                    communications with this public DoT server. The\nUnusual\nfield in the finding details panel can provide information about the queried DoT\n                    server.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/AbusedDomainRequest.Reputation\nAn EC2 instance is querying a low reputation domain name that is associated with known abused domains.\nDefault severity: Medium\nData source:\nDNS logs\nThis finding informs you that the"
+  },
+  {
+    "id": "chunk_027",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 27,
+    "text": "own abused domains.\nDefault severity: Medium\nData source:\nDNS logs\nThis finding informs you that the listed Amazon EC2 instance within your AWS\n                    environment is querying a low reputation domain name associated with known\n                    abused domains or IP addresses. Examples of abused domains are top level domain\n                    names (TLDs) and second-level domain names (2LDs) providing free subdomain\n                    registrations as well as dynamic DNS providers. Threat actors tend to use these\n                    services to register domains for free or at low costs. Low reputation domains in\n                    this category may also be expired domains resolving to a registrar's parking IP\n                    address and therefore may no longer be active"
+  },
+  {
+    "id": "chunk_028",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 28,
+    "text": "olving to a registrar's parking IP\n                    address and therefore may no longer be active. A parking IP is where a registrar\n                    directs traffic for domains that have not been linked to any service. The listed\n                    Amazon EC2 instance may be compromised as threat actors commonly use these\n                    registrar's or services for C&C and malware distribution.\nLow reputation domains are based on a reputation score model. This model\n                    evaluates and ranks the characteristics of a domain to determine its likelihood\n                    of being malicious.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instanc"
+  },
+  {
+    "id": "chunk_029",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 29,
+    "text": "y be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/BitcoinDomainRequest.Reputation\nAn EC2 instance is querying a low reputation domain name that is associated with cryptocurrency-related activity.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed Amazon EC2 instance within your AWS\n                    environment is querying a low reputation domain name associated with Bitcoin or\n                    other cryptocurrency-related activity. Bitcoin is a worldwide cryptocurrency and\n                    digital payment system that can be exchanged for other currencies, products, and\n                    services. Bitcoin is a reward for bitcoin-mining and is highly sought after by\n                "
+  },
+  {
+    "id": "chunk_030",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 30,
+    "text": "     services. Bitcoin is a reward for bitcoin-mining and is highly sought after by\n                    threat actors.\nLow reputation domains are based on a reputation score model. This model\n                    evaluates and ranks the characteristics of a domain to determine its likelihood\n                    of being malicious.\nRemediation recommendations:\nIf you use this EC2 instance to mine or manage cryptocurrency, or this\n                    instance is otherwise involved in blockchain activity, this finding could\n                    represent expected activity for your environment. If this is the case in your\n                    AWS environment, we recommend that you set up a suppression rule for this\n                    finding. The suppression rule should consist of two filter cri"
+  },
+  {
+    "id": "chunk_031",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 31,
+    "text": "ion rule for this\n                    finding. The suppression rule should consist of two filter criteria. The first\n                    criteria should use the\nFinding type\nattribute\n                    with a value of\nImpact:EC2/BitcoinDomainRequest.Reputation\n. The\n                    second filter criteria should be the\nInstance ID\nof the\n                    instance involved in blockchain activity. To learn more about creating\n                    suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/MaliciousDomainRequest.Reputation\nAn EC2 instance is querying a low reputation domain that is associated with known malicious domains.\nDefault se"
+  },
+  {
+    "id": "chunk_032",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 32,
+    "text": "ance is querying a low reputation domain that is associated with known malicious domains.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed Amazon EC2 instance within your AWS\n                    environment is querying a low reputation domain name associated with known\n                    malicious domains or IP addresses. For example, domains may be associated with a\n                    known sinkhole IP address. Sinkholed domains are domains that were previously\n                    controlled by a threat actor, and requests made to them can indicate the\n                    instance is compromised. These domains may also be correlated with known\n                    malicious campaigns or domain generation algorithms.\nLow reputation domains are based on"
+  },
+  {
+    "id": "chunk_033",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 33,
+    "text": "            malicious campaigns or domain generation algorithms.\nLow reputation domains are based on a reputation score model. This model\n                    evaluates and ranks the characteristics of a domain to determine its likelihood\n                    of being malicious.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/MaliciousDomainRequest.Custom\nAn EC2 instance is querying a domain on a custom threat entity list.\nDefault severity: Medium\nData source:\nDNS logs\nThis finding informs you that the listed Amazon EC2 instance within your AWS\n                    environment is querying a domain name that is included in threat entity list\n          "
+  },
+  {
+    "id": "chunk_034",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 34,
+    "text": "             environment is querying a domain name that is included in threat entity list\n                    that you uploaded and activated. In GuardDuty, a threat entity list consists of known\n                malicious domain names and IP addresses. GuardDuty generates findings based on the activity\n                associated with the uploaded threat entity list. You can view name of the threat entity\n                list in the finding details.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/PortSweep\nAn EC2 instance is probing a port on a large number of IP addresses.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you t"
+  },
+  {
+    "id": "chunk_035",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 35,
+    "text": "number of IP addresses.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you the listed EC2 instance in your AWS environment is\n                    probing a port on a large number of publicly routable IP addresses. This type of\n                    activity is typically used to find vulnerable hosts to exploit. In the finding\n                    details panel in your GuardDuty console, only the most recent remote IP address gets\n                    displayed\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/SuspiciousDomainRequest.Reputation\nAn EC2 instance is querying a low reputation domain name that is suspicious in nature du"
+  },
+  {
+    "id": "chunk_036",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 36,
+    "text": ".Reputation\nAn EC2 instance is querying a low reputation domain name that is suspicious in nature due to its age, or low popularity.\nDefault severity: Low\nData source:\nDNS logs\nThis finding informs you that the listed Amazon EC2 instance within your AWS\n                    environment is querying a low reputation domain name that is suspected of being\n                    malicious. noticed characteristics of this domain that were consistent with\n                    previously observed malicious domains, however, our reputation model was unable\n                    to definitively relate it to a known threat. These domains are typically newly\n                    observed or receive a low amount of traffic.\nLow reputation domains are based on a reputation score model. This model\n             "
+  },
+  {
+    "id": "chunk_037",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 37,
+    "text": "t of traffic.\nLow reputation domains are based on a reputation score model. This model\n                    evaluates and ranks the characteristics of a domain to determine its likelihood\n                    of being malicious.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nImpact:EC2/WinRMBruteForce\nAn EC2 instance is performing an outbound Windows Remote Management brute force attack.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attac"
+  },
+  {
+    "id": "chunk_038",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 38,
+    "text": "f your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is performing a Windows Remote Management (WinRM) brute force attack\n                    aimed at gaining access to the Windows Remote Management service on\n                    Windows-based systems.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/PortProbeEMRUnprotectedPort\nAn EC2 instance has an unprotected EMR related port which is being probed by a known malicious host.\nDefault severity: High\nData source:\nVPC flow logs\nTh"
+  },
+  {
+    "id": "chunk_039",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 39,
+    "text": "hich is being probed by a known malicious host.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that an EMR related sensitive port on the listed EC2\n                    instance that is part of a cluster in your AWS environment is not blocked by a\n                    security group, an access control list (ACL), or an on-host firewall such as\n                    Linux IPTables. This finding also informs that known scanners on the Internet\n                    are actively probing this port. Ports that can trigger this finding, such as\n                    port 8088 (YARN Web UI port), could potentially be used for remote code\n                    execution.\nRemediation recommendations:\nYou should block open access to ports on clusters from the internet and\n         "
+  },
+  {
+    "id": "chunk_040",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 40,
+    "text": "n recommendations:\nYou should block open access to ports on clusters from the internet and\n                    restrict access only to specific IP addresses that require access to these\n                    ports. For more information see,\nSecurity Groups\n                        for EMR Clusters\n.\nRecon:EC2/PortProbeUnprotectedPort\nAn EC2 instance has an unprotected port that is being probed by a known malicious host.\nDefault severity: Low*\nNote\nThis finding's default severity is Low. However, if the port that is being\n                        probed, is used by Elasticsearch (9200 or 9300), the finding's severity is\n                        High.\nData source:\nVPC flow logs\nThis finding informs you that a port on the listed EC2 instance in your AWS\n                    environment is not block"
+  },
+  {
+    "id": "chunk_041",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 41,
+    "text": " you that a port on the listed EC2 instance in your AWS\n                    environment is not blocked by a security group, access control list (ACL), or an\n                    on-host firewall such as Linux IPTables, and that known scanners on the internet\n                    are actively probing it.\nIf the identified unprotected port is 22 or 3389 and you are using these\n                    ports to connect to your instance, you can still limit exposure by allowing\n                    access to these ports only to the IP addresses from your corporate network IP\n                    address space. To restrict access to port 22 on Linux, see\nAuthorizing Inbound Traffic for Your Linux Instances\n. To restrict\n                    access to port 3389 on Windows, see\nAuthorizing Inbound Traffic "
+  },
+  {
+    "id": "chunk_042",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 42,
+    "text": "s\n. To restrict\n                    access to port 3389 on Windows, see\nAuthorizing Inbound Traffic for Your Windows Instances\n.\nGuardDuty doesn't generate this finding for ports 443 and 80.\nRemediation recommendations:\nThere may be cases in which instances are intentionally exposed, for example\n                    if they are hosting web servers. If this is the case in your AWS environment,\n                    we recommend that you set up a suppression rule for this finding. The\n                    suppression rule should consist of two filter criteria. The first criteria\n                    should use the\nFinding type\nattribute with a\n                    value of\nRecon:EC2/PortProbeUnprotectedPort\n. The second filter\n                    criteria should match the instance or instances tha"
+  },
+  {
+    "id": "chunk_043",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 43,
+    "text": "ctedPort\n. The second filter\n                    criteria should match the instance or instances that serve as a bastion host.\n                    You can use either the\nInstance image ID\nattribute or the\nTag\nvalue attribute, depending on which criteria is\n                    identifiable with the instances that host these tools. For more information\n                    about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nRecon:EC2/Portscan\nAn EC2 instance is performing outbound port scans to a remote host.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                   "
+  },
+  {
+    "id": "chunk_044",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 44,
+    "text": "\nVPC flow logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is engaged in a possible port scan attack because it is trying to\n                    connect to multiple ports over a short period of time. The purpose of a port\n                    scan attack is to locate open ports to discover which services the machine is\n                    running and to identify its operating system.\nRemediation recommendations:\nThis finding can be a false positive when vulnerability assessment\n                    applications are deployed on EC2 instances in your environment because these\n                    applications conduct port scans to alert you about misconfigured open ports. If\n                    this is the case in your AWS environment, we re"
+  },
+  {
+    "id": "chunk_045",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 45,
+    "text": "out misconfigured open ports. If\n                    this is the case in your AWS environment, we recommend that you set up a\n                    suppression rule for this finding. The suppression rule should consist of two\n                    filter criteria. The first criteria should use the\nFinding\n                        type\nattribute with a value of\nRecon:EC2/Portscan\n.\n                    The second filter criteria should match the instance or instances that host\n                    these vulnerability assessment tools. You can use either the\nInstance\n                        image ID\nattribute or the\nTag\nvalue\n                    attribute depending on which criteria are identifiable with the instances that\n                    host these tools. For more information about creating su"
+  },
+  {
+    "id": "chunk_046",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 46,
+    "text": "with the instances that\n                    host these tools. For more information about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is unexpected, your instance is likely compromised, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/BlackholeTraffic\nAn EC2 instance is attempting to communicate with an IP address of a remote host that is a known black hole.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you the listed EC2 instance in your AWS environment\n                    might be compromised because it is trying to communicate with an IP address of a\n                    black hole (or sink hole). Black holes are places in the network where incoming\n                    or outgoing traffic is silently"
+  },
+  {
+    "id": "chunk_047",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 47,
+    "text": "k holes are places in the network where incoming\n                    or outgoing traffic is silently discarded without informing the source that the\n                    data didn't reach its intended recipient. A black hole IP address specifies a\n                    host machine that is not running or an address to which no host has been\n                    assigned.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/BlackholeTraffic!DNS\nAn EC2 instance is querying a domain name that is being redirected to a black hole IP address.\nDefault severity: Medium\nData source:\nDNS logs\nThis finding informs you the listed EC2 instance in your AWS environment\n  "
+  },
+  {
+    "id": "chunk_048",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 48,
+    "text": "um\nData source:\nDNS logs\nThis finding informs you the listed EC2 instance in your AWS environment\n                    might be compromised because it is querying a domain name that is being\n                    redirected to a black hole IP address. Black holes are places in the network\n                    where incoming or outgoing traffic is silently discarded without informing the\n                    source that the data didn't reach its intended recipient.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/DGADomainRequest.B\nAn EC2 instance is querying algorithmically generated domains. Such domains are commonly used by malware and could be an indi"
+  },
+  {
+    "id": "chunk_049",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 49,
+    "text": "ng algorithmically generated domains. Such domains are commonly used by malware and could be an indication of a compromised EC2 instance.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is trying to query domain generation algorithm (DGA) domains. Your\n                    EC2 instance might be compromised.\nDGAs are used to periodically generate a large number of domain names that can\n                    be used as rendezvous points with their command and control (C&C) servers.\n                    Command and control servers are computers that issue commands to members of a\n                    botnet, which is a collection of internet-connected devices that are infected\n                    and con"
+  },
+  {
+    "id": "chunk_050",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 50,
+    "text": "t, which is a collection of internet-connected devices that are infected\n                    and controlled by a common type of malware. The large number of potential\n                    rendezvous points makes it difficult to effectively shut down botnets because\n                    infected computers attempt to contact some of these domain names every day to\n                    receive updates or commands.\nNote\nThis finding is based on analysis of domain names using advanced\n                        heuristics and may identify new DGA domains that are not present in threat\n                        intelligence feeds.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 insta"
+  },
+  {
+    "id": "chunk_051",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 51,
+    "text": "may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/DGADomainRequest.C!DNS\nAn EC2 instance is querying algorithmically generated domains. Such domains are commonly used by malware and could be an indication of a compromised EC2 instance.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is trying to query domain generation algorithm (DGA) domains. Your\n                    EC2 instance might be compromised.\nDGAs are used to periodically generate a large number of domain names that can\n                    be used as rendezvous points with their command and control (C&C) servers.\n                    Command and control servers are comput"
+  },
+  {
+    "id": "chunk_052",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 52,
+    "text": " their command and control (C&C) servers.\n                    Command and control servers are computers that issue commands to members of a\n                    botnet, which is a collection of internet-connected devices that are infected\n                    and controlled by a common type of malware. The large number of potential\n                    rendezvous points makes it difficult to effectively shut down botnets because\n                    infected computers attempt to contact some of these domain names every day to\n                    receive updates or commands.\nNote\nThis finding is based on known DGA domains from GuardDuty's threat\n                        intelligence feeds.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more inf"
+  },
+  {
+    "id": "chunk_053",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 53,
+    "text": "tion recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/DNSDataExfiltration\nAn EC2 instance is exfiltrating data through DNS queries.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment is running malware that uses DNS queries for outbound data\n                    transfers. This type of data transfer is indicative of a compromised instance\n                    and could result in the exfiltration of data. DNS traffic is not typically\n                    blocked by firewalls. For example, malware in a compromised EC2 instance can\n                    encode data, (such as you"
+  },
+  {
+    "id": "chunk_054",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 54,
+    "text": "For example, malware in a compromised EC2 instance can\n                    encode data, (such as your credit card number), into a DNS query and send it to\n                    a remote DNS server that is controlled by an attacker.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/DriveBySourceTraffic!DNS\nAn EC2 instance is querying a domain name of a remote host that is a known source of Drive-By download attacks.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that the listed EC2 instance in your AWS\n                    environment might be compromised because it is querying a domain name of a\n                    remote host tha"
+  },
+  {
+    "id": "chunk_055",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 55,
+    "text": "t might be compromised because it is querying a domain name of a\n                    remote host that is a known source of drive-by download attacks. These are\n                    unintended downloads of computer software from the internet that can trigger an\n                    automatic installation of a virus, spyware, or malware.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/DropPoint\nAn EC2 instance is attempting to communicate with an IP address of a remote host that is known to hold credentials and other stolen data captured by malware.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in you"
+  },
+  {
+    "id": "chunk_056",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 56,
+    "text": "ult severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment is\n                    trying to communicate with an IP address of a remote host that is known to hold\n                    credentials and other stolen data captured by malware.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/DropPoint!DNS\nAn EC2 instance is querying a domain name of a remote host that is known to hold credentials and other stolen data captured by malware.\nDefault severity: Medium\nData source:\nDNS logs\nThis finding informs you that an EC2 instance in your AWS environment is\n                    querying a domain name"
+  },
+  {
+    "id": "chunk_057",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 57,
+    "text": "forms you that an EC2 instance in your AWS environment is\n                    querying a domain name of a remote host that is known to hold credentials and\n                    other stolen data captured by malware.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nTrojan:EC2/PhishingDomainRequest!DNS\nAn EC2 instance is querying domains involved in phishing attacks. Your EC2 instance might be compromised.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that there is an EC2 instance in your AWS\n                    environment that is trying to query a domain involved in phishing attacks.\n                    Phishing domains are set up by som"
+  },
+  {
+    "id": "chunk_058",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 58,
+    "text": " query a domain involved in phishing attacks.\n                    Phishing domains are set up by someone posing as a legitimate institution in\n                    order to induce individuals to provide sensitive data, such as personally\n                    identifiable information, banking and credit card details, and passwords. Your\n                    EC2 instance may be trying to retrieve sensitive data stored on a phishing\n                    website, or it may be attempting to set up a phishing website. Your EC2 instance\n                    might be compromised.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/MaliciousIPCaller.Cust"
+  },
+  {
+    "id": "chunk_059",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 59,
+    "text": "iating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/MaliciousIPCaller.Custom\nAn EC2 instance is making connections to an IP address on a custom threat list.\nDefault severity: Medium\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment is\n                    communicating with an IP address included on a threat list that you uploaded. In\n                    GuardDuty, a threat list consists of known malicious IP addresses. GuardDuty\n                    generates findings based on uploaded threat lists. The threat list used to\n                    generate this finding will be listed in the finding's details.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information,"
+  },
+  {
+    "id": "chunk_060",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 60,
+    "text": "mmendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/MetadataDNSRebind\nAn EC2 instance is performing DNS lookups that resolve to the instance metadata service.\nDefault severity: High\nData source:\nDNS logs\nThis finding informs you that an EC2 instance in your AWS environment is\n                    querying a domain that resolves to the EC2 metadata IP address\n                    (169.254.169.254). A DNS query of this kind may indicate that the instance is a\n                    target of a DNS rebinding technique. This technique can be used to obtain\n                    metadata from an EC2 instance, including the IAM credentials associated with the\n         "
+  },
+  {
+    "id": "chunk_061",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 61,
+    "text": "          metadata from an EC2 instance, including the IAM credentials associated with the\n                    instance.\nDNS rebinding involves tricking an application running on the EC2 instance to\n                    load return data from a URL, where the domain name in the URL resolves to the\n                    EC2 metadata IP address (169.254.169.254). This causes the application to access\n                    EC2 metadata and possibly make it available to the attacker.\nIt is possible to access EC2 metadata using DNS rebinding only if the EC2\n                    instance is running a vulnerable application that allows injection of URLs, or\n                    if someone accesses the URL in a web browser running on the EC2 instance.\nRemediation recommendations:\nIn response to this findi"
+  },
+  {
+    "id": "chunk_062",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 62,
+    "text": "in a web browser running on the EC2 instance.\nRemediation recommendations:\nIn response to this finding, you should evaluate if there is a vulnerable\n                    application running on the EC2 instance, or if someone used a browser to access\n                    the domain identified in the finding. If the root cause is a vulnerable\n                    application, you should fix the vulnerability. If someone browsed the identified\n                    domain, you should block the domain or prevent users from accessing it. If you\n                    determine this finding was related to either case above,\nrevoke the\n                        session associated with the EC2 instance\n.\nSome AWS customers intentionally map the metadata IP address to a domain\n                    name on the"
+  },
+  {
+    "id": "chunk_063",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 63,
+    "text": " AWS customers intentionally map the metadata IP address to a domain\n                    name on their authoritative DNS servers. If this is the case in your\n                    environment, we recommend that you set up a suppression rule for this finding.\n                    The suppression rule should consist of two filter criteria. The first criteria\n                    should use the\nFinding type\nattribute with a value of\nUnauthorizedAccess:EC2/MetaDataDNSRebind\n. The second filter\n                    criteria should be\nDNS request domain\nand the value should\n                    match the domain you have mapped to the metadata IP address (169.254.169.254).\n                    For more information on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/"
+  },
+  {
+    "id": "chunk_064",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 64,
+    "text": "formation on creating suppression rules see\nSuppression rules in GuardDuty\n.\nUnauthorizedAccess:EC2/RDPBruteForce\nAn EC2 instance has been involved in RDP brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if your EC2 instance was the target of a\n                        brute force attack. This finding's severity is high if your EC2 instance is\n                        the actor being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to RDP services on\n                    Windows-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recomm"
+  },
+  {
+    "id": "chunk_065",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 65,
+    "text": " This can indicate unauthorized access to your AWS\n                    resources.\nRemediation recommendations:\nIf your instance's\nResource Role\nis\nACTOR\n,\n                    this indicates your instance has been used to perform RDP brute force attacks.\n                    Unless this instance has a legitimate reason to be contacting the IP address\n                    listed as the\nTarget\n, it is recommended that you assume your\n                    instance has been compromised and take the actions listed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nIf your instance's\nResource Role\nis\nTARGET\n,\n                    this finding can be remediated by securing your RDP port to only trusted IPs\n                    through Security Groups, ACLs, or firewalls. For more informatio"
+  },
+  {
+    "id": "chunk_066",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 66,
+    "text": "nly trusted IPs\n                    through Security Groups, ACLs, or firewalls. For more information see\nTips\n                        for securing your EC2 instances (Linux)\n.\nUnauthorizedAccess:EC2/SSHBruteForce\nAn EC2 instance has been involved in SSH brute force attacks.\nDefault severity: Low*\nNote\nThis finding's severity is low if a brute force attack is aimed at one of\n                        your EC2 instances. This finding's severity is high if your EC2 instance is\n                        being used to perform the brute force attack.\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment was\n                    involved in a brute force attack aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can "
+  },
+  {
+    "id": "chunk_067",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 67,
+    "text": "k aimed at obtaining passwords to SSH services on\n                    Linux-based systems. This can indicate unauthorized access to your AWS\n                    resources.\nNote\nThis finding is generated only through monitoring traffic on port 22. If\n                        your SSH services are configured to use other ports, this finding is not\n                        generated.\nRemediation recommendations:\nIf the target of the brute force attempt is a bastion host, this may represent\n                    expected behavior for your AWS environment. If this is the case, we recommend\n                    that you set up a suppression rule for this finding. The suppression rule should\n                    consist of two filter criteria. The first criteria should use the\nFinding type\nattribute wi"
+  },
+  {
+    "id": "chunk_068",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 68,
+    "text": "         consist of two filter criteria. The first criteria should use the\nFinding type\nattribute with a value of\nUnauthorizedAccess:EC2/SSHBruteForce\n. The second filter\n                    criteria should match the instance or instances that serve as a bastion host.\n                    You can use either the\nInstance image ID\nattribute or the\nTag\nvalue attribute depending on which criteria is\n                    identifiable with the instances that host these tools. For more information\n                    about creating suppression rules see\nSuppression rules in GuardDuty\n.\nIf this activity is not expected for your environment and your instance's\nResource Role\nis\nTARGET\n, this finding can\n                    be remediated by securing your SSH port to only trusted IPs through Security\n  "
+  },
+  {
+    "id": "chunk_069",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 69,
+    "text": "\n                    be remediated by securing your SSH port to only trusted IPs through Security\n                    Groups, ACLs, or firewalls. For more information, see\nTips for securing your\n                        EC2 instances (Linux)\n.\nIf your instance's\nResource Role\nis\nACTOR\n,\n                    this indicates the instance has been used to perform SSH brute force attacks.\n                    Unless this instance has a legitimate reason to be contacting the IP address\n                    listed as the\nTarget\n, it is recommended that you assume your\n                    instance has been compromised and take the actions listed in\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/TorClient\nYour EC2 instance is making connections to a Tor Guard or an A"
+  },
+  {
+    "id": "chunk_070",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 70,
+    "text": "ce\n.\nUnauthorizedAccess:EC2/TorClient\nYour EC2 instance is making connections to a Tor Guard or an Authority node.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment is\n                    making connections to a Tor Guard or an Authority node. Tor is software for\n                    enabling anonymous communication. Tor Guards and Authority nodes act as initial\n                    gateways into a Tor network. This traffic can indicate that this EC2 instance\n                    has been compromised and is acting as a client on a Tor network. This finding\n                    may indicate unauthorized access to your AWS resources with the intent of\n                    hiding the attacker's true identity.\nRemediation recomme"
+  },
+  {
+    "id": "chunk_071",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 71,
+    "text": "rces with the intent of\n                    hiding the attacker's true identity.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nUnauthorizedAccess:EC2/TorRelay\nYour EC2 instance is making connections to a Tor network as a Tor relay.\nDefault severity: High\nData source:\nVPC flow logs\nThis finding informs you that an EC2 instance in your AWS environment is\n                    making connections to a Tor network in a manner that suggests that it's acting\n                    as a Tor relay. Tor is software for enabling anonymous communication. Tor\n                    increases anonymity of communication by forwarding the client's possibly illicit\n                "
+  },
+  {
+    "id": "chunk_072",
+    "source": "AWS GuardDuty EC2 Finding Types",
+    "url": "https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_finding-types-ec2.html",
+    "chunk_index": 72,
+    "text": "   increases anonymity of communication by forwarding the client's possibly illicit\n                    traffic from one Tor relay to another.\nRemediation recommendations:\nIf this activity is unexpected, your instance may be compromised. For more information, see\nRemediating a potentially compromised Amazon EC2 instance\n.\nJavascript is disabled or is unavailable in your browser.\nTo use the Amazon Web Services Documentation, Javascript must be enabled. Please refer to your browser's Help pages for instructions.\nDocument Conventions\nFinding types\nIAM finding types"
+  }
+]

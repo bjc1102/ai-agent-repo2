@@ -1,0 +1,191 @@
+{
+  "status": "completed_human_review",
+  "instructions": "사용자가 AWS GuardDuty 공식 문서와 생성 답변을 직접 검토하고 Q1~Q5 모두 적절하다고 확인한 결과를 기록한다. 자동 점수와 별도이며 에이전트가 독립적인 사람 검토를 수행했다는 의미가 아니다.",
+  "result_sha256": "7906e7f89a90228883357df13c93fb8bb18172fd117f20f3e53b488ebe4492f5",
+  "reviews": [
+    {
+      "id": "q1",
+      "question": "SSHBruteForce 탐지는 무엇을 의미하나요?",
+      "answer": "SSHBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 Linux 기반 시스템의 SSH 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 나타냅니다. 이 탐지는 VPC 흐름 로그를 통해 생성되며, 공격의 대상이 되는 EC2 인스턴스가 SSH 서비스에 대한 비밀번호를 얻으려는 시도를 받고 있다는 것을 의미합니다. \n\n이 탐지의 심각도는 공격의 대상이 EC2 인스턴스일 경우 낮은 수준으로 평가되지만, 만약 EC2 인스턴스가 공격을 수행하는 주체로 사용되고 있다면 심각도가 높아집니다. \n\n따라서, SSHBruteForce 탐지는 AWS 리소스에 대한 무단 접근 시도를 나타내며, 이를 방지하기 위해 SSH 포트를 신뢰할 수 있는 IP로만 제한하는 등의 보안 조치를 취하는 것이 권장됩니다.",
+      "evidence": [
+        {
+          "start_line": 848,
+          "end_line": 864
+        }
+      ],
+      "expected_answer": "EC2 인스턴스가 Linux 기반 SSH 서비스의 비밀번호를 얻으려는 무차별 대입 공격에 연루되었음을 뜻한다. 피해 대상이면 심각도 Low, 공격 수행 주체이면 High이며 포트 22 트래픽에서 탐지한다.",
+      "reviewer": "gkmin230",
+      "reviewed_at": "2026-11-14T14:50:10+09:00",
+      "verdict": "success",
+      "source_support": true,
+      "retrieval_found_evidence": true,
+      "generation_used_evidence": true,
+      "answerability_handled": true,
+      "claim_comparisons": [
+        {
+          "claim": "Linux SSH 비밀번호를 노린 무차별 대입 공격",
+          "evidence": "848~860행; chunk_066, chunk_067",
+          "assessment": "supported"
+        },
+        {
+          "claim": "피해 대상 Low, 공격 주체 High 및 VPC 흐름 로그",
+          "evidence": "850~856행; chunk_066",
+          "assessment": "supported"
+        },
+        {
+          "claim": "SSH 포트를 신뢰 IP로 제한",
+          "evidence": "888~895행; chunk_069",
+          "assessment": "supported"
+        }
+      ],
+      "reason": "사용자가 적절하다고 확인함. SSH 비밀번호 무차별 대입, EC2 피해 대상 Low/공격 주체 High, VPC 흐름 로그 및 신뢰 IP 제한 권고가 원문과 대응한다. 답변 중 피해 대상 설명은 뒤의 공격 주체 구분과 함께 읽어야 한다. 포트 22 조건은 생략되었으나 정의 질문의 핵심은 충족한다."
+    },
+    {
+      "id": "q2",
+      "question": "Portscan 탐지는 무엇을 의미하나요?",
+      "answer": "Portscan 탐지는 AWS 환경 내의 특정 EC2 인스턴스가 원격 호스트에 대해 아웃바운드 포트 스캔을 수행하고 있음을 의미합니다. 이는 해당 인스턴스가 짧은 시간 내에 여러 포트에 연결을 시도하고 있다는 것을 나타내며, 포트 스캔 공격의 목적은 열려 있는 포트를 찾아내어 해당 머신에서 실행 중인 서비스와 운영 체제를 식별하는 것입니다. \n\n이 탐지는 기본적으로 중간 정도의 심각도로 분류되며, VPC 흐름 로그를 데이터 소스로 사용합니다. 만약 이 활동이 예상치 못한 것이라면, 해당 인스턴스는 손상되었을 가능성이 있습니다.",
+      "evidence": [
+        {
+          "start_line": 569,
+          "end_line": 583
+        }
+      ],
+      "expected_answer": "EC2 인스턴스가 원격 호스트에 아웃바운드 포트 스캔을 수행함을 뜻한다. 짧은 시간에 여러 포트에 연결하여 열린 포트, 실행 서비스와 운영체제를 식별하려는 활동이며 기본 심각도는 Medium이다. 승인된 취약점 점검일 수도 있다.",
+      "reviewer": "gkmin230",
+      "reviewed_at": "2026-11-14T14:50:10+09:00",
+      "verdict": "success",
+      "source_support": true,
+      "retrieval_found_evidence": true,
+      "generation_used_evidence": true,
+      "answerability_handled": true,
+      "claim_comparisons": [
+        {
+          "claim": "원격 호스트 대상 outbound 스캔, Medium, VPC 흐름 로그",
+          "evidence": "569~573행; chunk_043",
+          "assessment": "supported"
+        },
+        {
+          "claim": "짧은 시간 다중 포트 연결로 열린 포트·서비스·OS 식별",
+          "evidence": "574~578행; chunk_044",
+          "assessment": "supported"
+        },
+        {
+          "claim": "예상하지 못한 활동이면 인스턴스 손상 가능성",
+          "evidence": "602~604행의 Portscan 조치 설명과 일치. 검색에서는 chunk_043의 이전 탐지 유형 조치 및 chunk_010의 DoS 조치에도 유사 경고가 있으나 이를 Portscan 전용 근거로 보아서는 안 됨.",
+          "assessment": "supported"
+        }
+      ],
+      "reason": "사용자가 적절하다고 확인함. 원격 호스트 대상 outbound 스캔, 다중 포트 연결과 서비스/OS 식별, Medium 및 VPC 흐름 로그가 원문과 대응한다. 3위 DoS 청크는 무관하지만 답변에 DoS 주장을 섞지 않았다. 승인된 취약점 점검 가능성은 생략되어 추가 설명 여지는 있다."
+    },
+    {
+      "id": "q3",
+      "question": "RDPBruteForce 탐지는 무엇을 의미하나요?",
+      "answer": "RDPBruteForce 탐지는 AWS 환경 내의 EC2 인스턴스가 RDP(원격 데스크톱 프로토콜) 서비스에 대한 비밀번호를 얻기 위한 무차별 대입 공격에 연루되었음을 의미합니다. 이 탐지는 두 가지 경우로 나뉘어 있습니다:\n\n1. **EC2 인스턴스가 공격의 대상인 경우**: 이 경우 탐지의 심각도는 낮습니다.\n2. **EC2 인스턴스가 공격을 수행하는 경우**: 이 경우 탐지의 심각도는 높습니다.\n\n이 탐지는 VPC 흐름 로그를 데이터 소스로 사용하며, AWS 리소스에 대한 무단 접근을 나타낼 수 있습니다.",
+      "evidence": [
+        {
+          "start_line": 811,
+          "end_line": 823
+        }
+      ],
+      "expected_answer": "EC2 인스턴스가 Windows 기반 RDP 서비스의 비밀번호를 얻으려는 무차별 대입 공격에 연루되었음을 뜻한다. 피해 대상이면 Low, 공격 수행 주체이면 High이다.",
+      "reviewer": "gkmin230",
+      "reviewed_at": "2026-11-14T14:50:10+09:00",
+      "verdict": "success",
+      "source_support": true,
+      "retrieval_found_evidence": true,
+      "generation_used_evidence": true,
+      "answerability_handled": true,
+      "claim_comparisons": [
+        {
+          "claim": "RDP 비밀번호 무차별 대입 공격에 EC2 연루",
+          "evidence": "811~823행; 검색된 RDP 근거",
+          "assessment": "supported"
+        },
+        {
+          "claim": "피해 대상 Low, 공격 주체 High 및 VPC 흐름 로그",
+          "evidence": "813~819행; 검색된 RDP 근거",
+          "assessment": "supported"
+        }
+      ],
+      "reason": "사용자가 적절하다고 확인함. RDP 비밀번호 무차별 대입 및 피해 대상 Low/공격 주체 High, VPC 흐름 로그가 원문과 대응한다. Windows 명시는 생략되었지만 SSH와 혼동하지 않았고 핵심 의미를 충족한다."
+    },
+    {
+      "id": "q4",
+      "question": "어제 우리 회사에서 발생한 GuardDuty 탐지 건수는?",
+      "answer": "제공된 문서만으로는 확인할 수 없습니다.",
+      "evidence": [],
+      "expected_answer": "제공된 문서만으로는 확인할 수 없습니다. 회사 계정의 GuardDuty 탐지 기록과 집계 기간·시간대가 필요합니다.",
+      "reviewer": "gkmin230",
+      "reviewed_at": "2026-11-14T14:50:10+09:00",
+      "verdict": "success",
+      "source_support": false,
+      "retrieval_found_evidence": false,
+      "generation_used_evidence": false,
+      "answerability_handled": true,
+      "claim_comparisons": [
+        {
+          "claim": "제공된 문서만으로 회사의 어제 탐지 건수를 확인할 수 없음",
+          "evidence": "원문 전체의 범위: EC2 탐지 유형 설명. 회사별 일별 기록 없음; 특정 한 줄로 부재를 입증하지 않음",
+          "assessment": "appropriate_abstention"
+        }
+      ],
+      "reason": "사용자가 적절하다고 확인함. 원문은 탐지 유형 설명이며 회사별 어제의 실제 탐지 건수 자료가 아니다. 답변은 확인 불가라고 명시하고 숫자를 추측하지 않았다. 회사 계정 기록, 집계 기간과 시간대 안내를 추가할 수 있으나 현재 거절은 적절하다."
+    },
+    {
+      "id": "q5",
+      "question": "SSHBruteForce 탐지는 무엇을 의미하고, 어제 우리 회사에서 발생한 GuardDuty 탐지 건수는 몇 건인가요?",
+      "answer": "SSHBruteForce 탐지는 AWS 환경 내에서 EC2 인스턴스가 SSH 서비스에 대한 무차별 대입 공격에 연루되었음을 의미합니다. 이 탐지는 주로 포트 22에서의 트래픽을 모니터링하여 생성됩니다. 만약 SSH 서비스가 다른 포트를 사용하도록 설정되어 있다면 이 탐지는 생성되지 않습니다. 이 탐지는 AWS 리소스에 대한 무단 접근을 나타낼 수 있습니다.\n\n어제 발생한 GuardDuty 탐지 건수에 대한 정보는 제공된 문서에 포함되어 있지 않으므로 확인할 수 없습니다.",
+      "evidence": [
+        {
+          "start_line": 848,
+          "end_line": 864
+        }
+      ],
+      "expected_answer": "SSHBruteForce는 EC2 인스턴스가 Linux SSH 비밀번호를 노린 무차별 대입 공격에 연루되었음을 뜻한다. 어제 회사의 탐지 건수는 제공된 문서만으로는 확인할 수 없다.",
+      "reviewer": "gkmin230",
+      "reviewed_at": "2026-11-14T14:50:10+09:00",
+      "verdict": "success",
+      "source_support": true,
+      "retrieval_found_evidence": true,
+      "generation_used_evidence": true,
+      "answerability_handled": true,
+      "claim_comparisons": [
+        {
+          "claim": "EC2가 SSH 무차별 대입 공격에 연루",
+          "evidence": "848~860행. chunk_067은 SSH 비밀번호 공격 문장의 후반만 포함; 정의 전체 검색은 불완전",
+          "assessment": "supported"
+        },
+        {
+          "claim": "포트 22 모니터링 및 다른 SSH 포트에서는 해당 탐지 미생성",
+          "evidence": "861~864행; chunk_067",
+          "assessment": "supported"
+        },
+        {
+          "claim": "AWS 리소스 무단 접근 가능성",
+          "evidence": "859~860행; chunk_067",
+          "assessment": "supported"
+        },
+        {
+          "claim": "회사 어제 탐지 건수는 문서에 없어 확인 불가",
+          "evidence": "원문 전체의 범위 및 회사 기록 부재; 수치 생성 없음",
+          "assessment": "supported"
+        }
+      ],
+      "reason": "사용자가 적절하다고 확인함. SSH 의미·포트 22 및 다른 포트에서 미탐지 조건·무단 접근 가능성은 원문과 대응하고 회사 건수는 확인 불가로 구분했다. 검색된 SSH 청크는 제목과 문장 앞부분이 잘려 정의 근거가 불완전하나 SSH 서비스·포트 조건을 포함한다. 원문 정답성과 검색 문맥 완전성은 구분하며 Ragas 0.0/0.8333333333333334는 그대로 보존한다."
+    }
+  ],
+  "review_provenance": {
+    "type": "user_confirmed_human_review",
+    "reviewer": "gkmin230",
+    "recorded_at": "2026-11-14T14:50:10+09:00",
+    "basis": "이 대화에서 사용자가 Q1~Q5 모두 적절하다고 직접 확인하고 성공 판정 기록을 지시함. reviewed_at은 사용자 지시에 따른 현재 기록 시각이며 실제 원문 검토 시각을 소급 추정하지 않음."
+  },
+  "field_semantics": {
+    "verdict": "success는 사용자가 확인한 답변 적절성 판정이며 자동 지표 목표 달성과 독립적이다.",
+    "source_support": "문서로 답할 수 있는 부분의 근거 존재 여부. Q4 false는 건수 근거 부재를 뜻하며 답변 실패를 뜻하지 않음.",
+    "retrieval_found_evidence": "답변 가능한 부분의 유용한 근거를 검색했는지. 전체 근거 회수 또는 검색 잡음 없음의 의미가 아님.",
+    "generation_used_evidence": "답변과 검색 근거의 대응 여부. 모델 내부 인과 과정을 증명하는 값이 아님. Q4는 사용할 건수 근거가 없어 false.",
+    "answerability_handled": "답변 가능 범위를 지키고 답변 불가능한 부분을 적절히 거절했는지.",
+    "claim_comparisons": "사용자가 동의한 판정을 저장된 답변·검색 문서·원문으로 설명하는 근거 정리. 별도의 사람 재검토 또는 자동 점수 수정이 아님."
+  }
+}
