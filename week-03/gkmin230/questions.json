@@ -1,0 +1,55 @@
+{
+  "source": "data/guardduty.txt",
+  "line_numbering": "1-based inclusive, local snapshot; absence is not proved by a single line",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "SSHBruteForce 탐지는 무엇을 의미하나요?",
+      "answerability": "answerable",
+      "expected_answer": "EC2 인스턴스가 Linux 기반 SSH 서비스의 비밀번호를 얻으려는 무차별 대입 공격에 연루되었음을 뜻한다. 피해 대상이면 심각도 Low, 공격 수행 주체이면 High이며 포트 22 트래픽에서 탐지한다.",
+      "reference": "An EC2 instance is involved in a brute force attack aimed at obtaining passwords to SSH services on Linux-based systems. Severity is low for a target and high for an actor. This finding monitors port 22 only.",
+      "evidence": [{"start_line": 848, "end_line": 864}],
+      "unsupported_parts": []
+    },
+    {
+      "id": "q2",
+      "question": "Portscan 탐지는 무엇을 의미하나요?",
+      "answerability": "answerable",
+      "expected_answer": "EC2 인스턴스가 원격 호스트에 아웃바운드 포트 스캔을 수행함을 뜻한다. 짧은 시간에 여러 포트에 연결하여 열린 포트, 실행 서비스와 운영체제를 식별하려는 활동이며 기본 심각도는 Medium이다. 승인된 취약점 점검일 수도 있다.",
+      "reference": "An EC2 instance performs outbound port scans to a remote host, connecting to multiple ports over a short period to discover open ports, services and the operating system. Default severity is Medium. Vulnerability assessment applications may cause false positives.",
+      "evidence": [{"start_line": 569, "end_line": 583}],
+      "unsupported_parts": []
+    },
+    {
+      "id": "q3",
+      "question": "RDPBruteForce 탐지는 무엇을 의미하나요?",
+      "answerability": "answerable",
+      "expected_answer": "EC2 인스턴스가 Windows 기반 RDP 서비스의 비밀번호를 얻으려는 무차별 대입 공격에 연루되었음을 뜻한다. 피해 대상이면 Low, 공격 수행 주체이면 High이다.",
+      "reference": "An EC2 instance is involved in a brute force attack aimed at obtaining passwords to RDP services on Windows-based systems. Severity is low for a target and high for an actor.",
+      "evidence": [{"start_line": 811, "end_line": 823}],
+      "unsupported_parts": []
+    },
+    {
+      "id": "q4",
+      "question": "어제 우리 회사에서 발생한 GuardDuty 탐지 건수는?",
+      "answerability": "unanswerable",
+      "expected_answer": "제공된 문서만으로는 확인할 수 없습니다. 회사 계정의 GuardDuty 탐지 기록과 집계 기간·시간대가 필요합니다.",
+      "reference": null,
+      "evidence": [],
+      "absence_basis": "원문 전체는 EC2 탐지 유형 설명이며 회사별·날짜별 실제 탐지 기록이 없다. 1~10행은 문서의 범위를 보여주지만 부재의 단독 증거는 아니다.",
+      "scope_evidence": [{"start_line": 1, "end_line": 10}],
+      "unsupported_parts": ["어제 회사의 실제 탐지 건수"]
+    },
+    {
+      "id": "q5",
+      "question": "SSHBruteForce 탐지는 무엇을 의미하고, 어제 우리 회사에서 발생한 GuardDuty 탐지 건수는 몇 건인가요?",
+      "answerability": "partial",
+      "expected_answer": "SSHBruteForce는 EC2 인스턴스가 Linux SSH 비밀번호를 노린 무차별 대입 공격에 연루되었음을 뜻한다. 어제 회사의 탐지 건수는 제공된 문서만으로는 확인할 수 없다.",
+      "reference": "An EC2 instance is involved in a brute force attack aimed at obtaining passwords to SSH services on Linux-based systems.",
+      "reference_scope": "SSHBruteForce 의미 부분만 Context Precision 평가. 회사 건수의 답변 거절은 사람 평가 대상.",
+      "evidence": [{"start_line": 848, "end_line": 864}],
+      "absence_basis": "회사별 실제 탐지 기록이 원문에 없다.",
+      "unsupported_parts": ["어제 회사의 실제 탐지 건수"]
+    }
+  ]
+}
