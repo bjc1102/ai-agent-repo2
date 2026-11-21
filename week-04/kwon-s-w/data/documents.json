@@ -1,0 +1,38 @@
+[
+  {
+    "doc_id": "D2023",
+    "title": "전국 5곳에 8만호 규모의 신규택지 후보지 발표",
+    "date": "2023-11-15",
+    "url": "https://www.molit.go.kr/USR/NEWS/m_71/dtl.jsp?id=95089046",
+    "download_url": "https://eiec.kdi.re.kr/policy/callDownload.do?num=244763&filenum=1",
+    "pdf_sha256": "3c8ffabc40f25b2ecd72fe3d36cf9bf41c205e7dfce179cbfd4c2cdfd3fca0f3",
+    "page_count": 6,
+    "extraction_note": "pdfplumber extraction; paragraph/page aware <=900 characters; no overlap for added PDFs",
+    "chunk_count": 8,
+    "pdf_file": "pdf/housing_2023.pdf"
+  },
+  {
+    "doc_id": "D2024",
+    "title": "서울 2만호 포함, 수도권 신규택지 5만호 발표",
+    "date": "2024-11-05",
+    "url": "https://www.molit.go.kr/USR/NEWS/m_71/dtl.jsp?id=95090342",
+    "download_url": "https://eiec.kdi.re.kr/policy/callDownload.do?num=259266&filenum=1",
+    "pdf_sha256": "2a3bff242281430d4ed1234ddbb964f68d97c6f3b27cb2d246796d3625bd2dd4",
+    "page_count": 5,
+    "extraction_note": "pdfplumber extraction; paragraph/page aware <=900 characters; no overlap for added PDFs",
+    "chunk_count": 7,
+    "pdf_file": "pdf/housing_2024.pdf"
+  },
+  {
+    "doc_id": "D2026",
+    "title": "수도권 신규택지 10.4만호 신속 공급",
+    "date": "2026-10-29",
+    "url": "https://www.korea.kr/briefing/pressReleaseView.do?newsId=156786992",
+    "download_url": "original user-provided PDF; sha256 verified against week03",
+    "pdf_sha256": "9e84959b5991a6b5cedce266d57424579f8ac2c1e9b045cac06f0550b3446d41",
+    "page_count": 6,
+    "extraction_note": "exact 29 redacted week03 chunks reused; page text newly extracted only for original-PDF review",
+    "chunk_count": 29,
+    "pdf_file": "pdf/housing_2026.pdf"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "models": {
+    "embeddinggemma": "85462619ee721b466c5927d109d4cb765861907d5417b9109caebc4e614679f1",
+    "gemma3:4b": "68ceab7e468a31c988b44d5a4984a0e21f58c4f7158c6ce29c1804babac38df7"
+  },
+  "packages": {
+    "ragas": "0.4.3",
+    "chromadb": "1.5.9",
+    "rank-bm25": "0.2.2",
+    "transformers": "4.57.1",
+    "torch": "2.9.1+cpu"
+  },
+  "ollama_version": "ollama version is 0.40.16\n"
+}

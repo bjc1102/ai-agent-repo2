@@ -1,0 +1,282 @@
+[
+  {
+    "id": "Q1",
+    "question": "2026년 10월 29일 보도자료에서 이번에 추가한 후보지 수와 공급 규모를 기존 발표분과 구분해 알려주고, 2030년 내 목표가 착공인지 입주인지 설명해주세요.",
+    "answerability": "answerable",
+    "expected_answer": "이번 추가 발표는 6곳 7.67만호(76,700호)이며, 2030년 내 착공 목표다. 기존 3곳 2.72만호나 전체 약 10.4만호와 구분한다.",
+    "evidence_groups": [
+      {
+        "id": "additional_count",
+        "acceptable_chunk_ids": [
+          "D2026_p001_c003",
+          "D2026_p001_c004"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 1,
+            "quote": "총 6곳"
+          }
+        ]
+      },
+      {
+        "id": "additional_supply",
+        "acceptable_chunk_ids": [
+          "D2026_p001_c000",
+          "D2026_p001_c001",
+          "D2026_p001_c002",
+          "D2026_p001_c003"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 1,
+            "quote": "7.67만호"
+          }
+        ]
+      },
+      {
+        "id": "construction",
+        "acceptable_chunk_ids": [
+          "D2026_p001_c000"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 1,
+            "quote": "30년 내 착공 목표"
+          }
+        ]
+      }
+    ],
+    "source_notes": "D2026 PDF 1쪽. 제목의 10.4만호는 전체 규모. 목표를 확정·입주 완료로 바꾸지 않음.",
+    "checks": [
+      {
+        "id": "sites",
+        "kind": "pattern",
+        "description": "추가 후보지 6곳",
+        "pattern": "(?<![0-9])6(?:곳|개)"
+      },
+      {
+        "id": "supply",
+        "kind": "pattern",
+        "description": "추가 7.67만호",
+        "pattern": "(?:7\\.67만호|76700호)"
+      },
+      {
+        "id": "target",
+        "kind": "pattern",
+        "description": "착공 목표",
+        "pattern": "(?:착공.{0,20}목표|목표.{0,20}착공)"
+      },
+      {
+        "id": "year",
+        "kind": "pattern",
+        "description": "연도 2030 명시",
+        "pattern": "2030년"
+      }
+    ],
+    "required_full_years": [
+      2030
+    ]
+  },
+  {
+    "id": "Q2",
+    "question": "각 보도자료 본문 표기를 기준으로, 2024년 11월 발표한 고양대곡 역세권과 2026년 10월 발표한 고양대곡지식융합확장의 공급 규모를 각각 알려주세요.",
+    "answerability": "answerable",
+    "expected_answer": "2024년 고양대곡 역세권은 본문 표기 0.9만호(9,000호), 2026년 고양대곡지식융합확장은 4천호(4,000호)다.",
+    "evidence_groups": [
+      {
+        "id": "goyang_2024",
+        "acceptable_chunk_ids": [
+          "D2024_p001_c000"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2024",
+            "page": 1,
+            "quote": "고양대곡 역세권(0.9만호)"
+          }
+        ]
+      },
+      {
+        "id": "goyang_2026",
+        "acceptable_chunk_ids": [
+          "D2026_p006_c000"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 6,
+            "quote": "고양대곡지식융합확장(4천호"
+          }
+        ]
+      }
+    ],
+    "source_notes": "D2024 PDF 1쪽, D2026 PDF 6쪽. 이 PDF 본문의 0.9만호를 사용하며 다른 기사/문서의 9,400호를 섞지 않음.",
+    "checks": [
+      {
+        "id": "old_goyang",
+        "kind": "entity_value",
+        "aliases": [
+          "고양대곡역세권",
+          "고양대곡"
+        ],
+        "pattern": "(?:0\\.9만호|9천호|9000호)",
+        "description": "2024 고양대곡 0.9만호"
+      },
+      {
+        "id": "new_goyang",
+        "kind": "entity_value",
+        "aliases": [
+          "고양대곡지식융합확장",
+          "지식융합확장"
+        ],
+        "pattern": "(?:0\\.4만호|4천호|4000호)",
+        "description": "2026 확장 4천호"
+      }
+    ],
+    "required_full_years": []
+  },
+  {
+    "id": "Q3",
+    "question": "2023년 11월 보도자료의 구리토평2와 2026년 10월 보도자료의 구리건원 공급 규모를 사업명과 연결해 각각 알려주세요.",
+    "answerability": "answerable",
+    "expected_answer": "2023년 구리토평2는 1.85만호(18,500호), 2026년 구리건원은 1.46만호(14,600호)다.",
+    "evidence_groups": [
+      {
+        "id": "guri_2023",
+        "acceptable_chunk_ids": [
+          "D2023_p001_c000"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2023",
+            "page": 1,
+            "quote": "구리토평2(1.85만호)"
+          }
+        ]
+      },
+      {
+        "id": "guri_2026",
+        "acceptable_chunk_ids": [
+          "D2026_p002_c003",
+          "D2026_p002_c004"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 2,
+            "quote": "구리건원, 1.46만호"
+          }
+        ]
+      }
+    ],
+    "source_notes": "D2023 PDF 1쪽, D2026 PDF 2쪽. 같은 구리시이지만 다른 사업임.",
+    "checks": [
+      {
+        "id": "topyeong",
+        "kind": "entity_value",
+        "aliases": [
+          "구리토평2",
+          "토평2"
+        ],
+        "pattern": "(?:1\\.85만호|18500호)",
+        "description": "구리토평2 1.85만호"
+      },
+      {
+        "id": "geonwon",
+        "kind": "entity_value",
+        "aliases": [
+          "구리건원",
+          "건원"
+        ],
+        "pattern": "(?:1\\.46만호|14600호)",
+        "description": "구리건원 1.46만호"
+      }
+    ],
+    "required_full_years": []
+  },
+  {
+    "id": "Q4",
+    "question": "제공된 세 보도자료만으로 김포아라 전용 84㎡ 주택의 확정 분양가를 얼마라고 확인할 수 있나요?",
+    "answerability": "unanswerable",
+    "expected_answer": "세 보도자료로 김포아라 전용 84㎡의 확정 분양가를 확인할 수 없다. 금액을 추측하지 않는다.",
+    "evidence_groups": [],
+    "source_notes": "세 PDF 전체 17쪽 검토. 확정 분양가 미기재. 정보 부재는 단일 긍정 인용 청크로 증명하지 않음.",
+    "checks": [
+      {
+        "id": "price_unknown",
+        "kind": "unknown",
+        "scope": "분양가|가격",
+        "description": "요청 가격 확인 불가 안내"
+      }
+    ],
+    "required_full_years": []
+  },
+  {
+    "id": "Q5",
+    "question": "2026년 10월 보도자료의 하남미사 K-컬처와 하남감일2에 대해 각각 공급 규모와 확정 입주일을 알려주세요.",
+    "answerability": "partial",
+    "expected_answer": "하남미사 K-컬처는 1.2만호(12,000호), 하남감일2는 6.5천호(6,500호)이며 두 지구의 확정 입주일은 제공된 자료로 확인할 수 없다.",
+    "evidence_groups": [
+      {
+        "id": "misa",
+        "acceptable_chunk_ids": [
+          "D2026_p006_c000"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 6,
+            "quote": "하남미사 K-컬처(1.2만호"
+          }
+        ]
+      },
+      {
+        "id": "gamil",
+        "acceptable_chunk_ids": [
+          "D2026_p006_c000"
+        ],
+        "source_examples": [
+          {
+            "doc_id": "D2026",
+            "page": 6,
+            "quote": "하남감일2(6.5천호"
+          }
+        ]
+      }
+    ],
+    "source_notes": "D2026 PDF 2·6쪽 공급 규모, 세 문서 전체에 두 지구 확정 입주일 미기재. 2030년 착공 목표를 입주일로 쓰지 않음.",
+    "checks": [
+      {
+        "id": "misa",
+        "kind": "entity_value",
+        "aliases": [
+          "하남미사K-컬처",
+          "미사K-컬처",
+          "하남미사"
+        ],
+        "pattern": "(?:1\\.2만호|12000호)",
+        "description": "하남미사 1.2만호"
+      },
+      {
+        "id": "gamil",
+        "kind": "entity_value",
+        "aliases": [
+          "하남감일2",
+          "감일2"
+        ],
+        "pattern": "(?:6\\.5천호|0\\.65만호|6500호)",
+        "description": "하남감일2 6.5천호"
+      },
+      {
+        "id": "occupancy_unknown",
+        "kind": "unknown",
+        "scope": "입주",
+        "description": "두 지구 확정 입주일 확인 불가 안내; 대상별 충분성은 사람도 확인"
+      }
+    ],
+    "required_full_years": []
+  }
+]

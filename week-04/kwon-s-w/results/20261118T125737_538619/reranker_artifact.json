@@ -1,0 +1,7 @@
+{
+  "name": "BAAI/bge-reranker-v2-m3",
+  "revision": "953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e",
+  "device": "cpu",
+  "load_seconds": 25.310126587000013,
+  "note": "model load excluded from warm question latency; included in setup records"
+}

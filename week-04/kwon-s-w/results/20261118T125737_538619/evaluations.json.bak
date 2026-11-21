@@ -1,0 +1,1249 @@
+[
+  {
+    "key": "Q1:baseline",
+    "question_id": "Q1",
+    "variant": "baseline",
+    "fingerprint": "985ec016a9b9bb489500e9babdca771a0cb330c4d77801830979a2d035840dad",
+    "answer_sha256": "5e95740a535f4fa93013808487b3c5a103406609d92eb29459ca4a51d511a02c",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 3/3. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "additional_count",
+          "additional_supply",
+          "construction"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 3/3. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "additional_count",
+          "additional_supply",
+          "construction"
+        ]
+      },
+      "elements": {
+        "value": 0.75,
+        "status": "measured",
+        "reason": "필수요소 3/4. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "sites",
+            "kind": "pattern",
+            "description": "추가 후보지 6곳",
+            "pattern": "(?<![0-9])6(?:곳|개)",
+            "matched": true
+          },
+          {
+            "id": "supply",
+            "kind": "pattern",
+            "description": "추가 7.67만호",
+            "pattern": "(?:7\\.67만호|76700호)",
+            "matched": false
+          },
+          {
+            "id": "target",
+            "kind": "pattern",
+            "description": "착공 목표",
+            "pattern": "(?:착공.{0,20}목표|목표.{0,20}착공)",
+            "matched": true
+          },
+          {
+            "id": "year",
+            "kind": "pattern",
+            "description": "연도 2030 명시",
+            "pattern": "2030년",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 0.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [
+          "‘30년"
+        ],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2026년 10월 29일 보도자료에 따르면, 이번에 추가한 후보지는 경기도 김포시, 구리시, 하남시, 의정부시, 고양시 내 총 6곳입니다.",
+              "이 후보지들은 서울 경계로부터 약 5km 이내에 위치한 교통 요충지입니다.",
+              "2030년 내 목표는 ‘30년 내 착공’을 목표로 하고 있습니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2026년 10월 29일 보도자료에 따르면, 이번에 추가한 후보지는 경기도 김포시, 구리시, 하남시, 의정부시, 고양시 내 총 6곳입니다.",
+                "reason": "보도자료 [D2026_p001_c003]에서 ‘이번 후보지는 경기도 김포시, 구리시, 하남시, 의정부시, 고양시 내 총 6곳이며, 모두 서울 경계로부터 약 5km 이내에 위치한 교통 요충지로’라고 명시하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "이 후보지들은 서울 경계로부터 약 5km 이내에 위치한 교통 요충지입니다.",
+                "reason": "위 주장을 뒷받침하는 정보는 [D2026_p001_c003]에서 ‘모두 서울 경계로부터 약 5km 이내에 위치한 교통 요충지’라고 언급하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2030년 내 목표는 ‘30년 내 착공’을 목표로 하고 있습니다.",
+                "reason": "보도자료 [D2026_p003_c007]에서 ‘이를 통해 지구지정 단계부터 단계별 조기화 방안을 적용하여 ‘30년 내 착공을 목표로 신속하게 공급을 추진할 계획이다’라고 명시하고 있습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 15.957771987999877
+  },
+  {
+    "key": "Q1:rerank",
+    "question_id": "Q1",
+    "variant": "rerank",
+    "fingerprint": "358b7d3239b8059de5565b038a269f7ff81c08c35fbac1c670ef86668b9c6103",
+    "answer_sha256": "bd3c243e3cc462175726683b6533c65794b8c449899293f8b73f5f4870e4a928",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 3/3. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "additional_count",
+          "additional_supply",
+          "construction"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 3/3. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "additional_count",
+          "additional_supply",
+          "construction"
+        ]
+      },
+      "elements": {
+        "value": 0.75,
+        "status": "measured",
+        "reason": "필수요소 3/4. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "sites",
+            "kind": "pattern",
+            "description": "추가 후보지 6곳",
+            "pattern": "(?<![0-9])6(?:곳|개)",
+            "matched": true
+          },
+          {
+            "id": "supply",
+            "kind": "pattern",
+            "description": "추가 7.67만호",
+            "pattern": "(?:7\\.67만호|76700호)",
+            "matched": false
+          },
+          {
+            "id": "target",
+            "kind": "pattern",
+            "description": "착공 목표",
+            "pattern": "(?:착공.{0,20}목표|목표.{0,20}착공)",
+            "matched": true
+          },
+          {
+            "id": "year",
+            "kind": "pattern",
+            "description": "연도 2030 명시",
+            "pattern": "2030년",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 0.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [
+          "‘30년"
+        ],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "이번에 추가한 후보지는 경기도 김포시, 구리시, 하남시, 의정부시, 고양시 내 총 6곳입니다.",
+              "이 후보지들은 모두 서울 경계로부터 약 5km 이내에 위치한 교통 요충지입니다.",
+              "2030년 내 목표는 ‘30년 내 착공’을 목표로 하고 있습니다.",
+              "착공 시점은 입주 시점보다 앞서 있을 것으로 예상됩니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "이번에 추가한 후보지는 경기도 김포시, 구리시, 하남시, 의정부시, 고양시 내 총 6곳입니다.",
+                "reason": "문맥상 2026년 10월 29일 발표된 신규택지 후보지 위치 정보를 설명하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "이 후보지들은 모두 서울 경계로부터 약 5km 이내에 위치한 교통 요충지입니다.",
+                "reason": "후보지들의 위치 특징을 설명하며, 서울과의 접근성을 강조하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2030년 내 목표는 ‘30년 내 착공’을 목표로 하고 있습니다.",
+                "reason": "국토교통부의 계획을 언급하며, 신속 공급을 위한 목표를 제시하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "착공 시점은 입주 시점보다 앞서 있을 것으로 예상됩니다.",
+                "reason": "신속 공급 계획의 핵심 내용을 설명하며, 착공과 입주 시점의 차이를 강조하고 있습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 10.674619583000094
+  },
+  {
+    "key": "Q1:decompose",
+    "question_id": "Q1",
+    "variant": "decompose",
+    "fingerprint": "1571e09c0c41362226e6885b554c20eb1e361640543854cec9314f81080837b2",
+    "answer_sha256": "f9789cb49bf8353156dd3452caed677f6d944e73c8158b966e2a39521d368afd",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 3/3. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "additional_count",
+          "additional_supply",
+          "construction"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 3/3. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "additional_count",
+          "additional_supply",
+          "construction"
+        ]
+      },
+      "elements": {
+        "value": 0.75,
+        "status": "measured",
+        "reason": "필수요소 3/4. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "sites",
+            "kind": "pattern",
+            "description": "추가 후보지 6곳",
+            "pattern": "(?<![0-9])6(?:곳|개)",
+            "matched": false
+          },
+          {
+            "id": "supply",
+            "kind": "pattern",
+            "description": "추가 7.67만호",
+            "pattern": "(?:7\\.67만호|76700호)",
+            "matched": true
+          },
+          {
+            "id": "target",
+            "kind": "pattern",
+            "description": "착공 목표",
+            "pattern": "(?:착공.{0,20}목표|목표.{0,20}착공)",
+            "matched": true
+          },
+          {
+            "id": "year",
+            "kind": "pattern",
+            "description": "연도 2030 명시",
+            "pattern": "2030년",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 0.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [
+          "‘30년"
+        ],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "이번에 추가한 후보지는 7.67만호이다.",
+              "공급 규모는 기존 발표분과 구분하여 알려주지 않는다.",
+              "2030년 내 목표는 ‘30년 내 착공을 목표로 신속하게 공급을 추진할 계획’이다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "이번에 추가한 후보지는 7.67만호이다.",
+                "reason": "문서에 7.67만호의 신규 택지 후보지를 추가 발표했다고 명시되어 있다.",
+                "verdict": 1
+              },
+              {
+                "statement": "공급 규모는 기존 발표분과 구분하여 알려주지 않는다.",
+                "reason": "문서에 기존 발표분과 추가 발표분의 공급 규모를 별도로 구분하여 언급하지 않고 있다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2030년 내 목표는 ‘30년 내 착공을 목표로 신속하게 공급을 추진할 계획’이다.",
+                "reason": "문서에 ‘30년 내 착공 목표’라는 목표를 명시하고 있다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 7.808784101000128
+  },
+  {
+    "key": "Q2:rerank",
+    "question_id": "Q2",
+    "variant": "rerank",
+    "fingerprint": "f78603d9f0109074225986f84ed22fd7bdeee8b9632fb1ab6e279b7f6f597e42",
+    "answer_sha256": "a0ebea4f28eb4aae5ce284a3d6e30f663a80b2a0198c4f9976371667ef0ba46e",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "goyang_2024",
+          "goyang_2026"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "goyang_2024",
+          "goyang_2026"
+        ]
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 2/2. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "old_goyang",
+            "kind": "entity_value",
+            "aliases": [
+              "고양대곡역세권",
+              "고양대곡"
+            ],
+            "pattern": "(?:0\\.9만호|9천호|9000호)",
+            "description": "2024 고양대곡 0.9만호",
+            "matched": true
+          },
+          {
+            "id": "new_goyang",
+            "kind": "entity_value",
+            "aliases": [
+              "고양대곡지식융합확장",
+              "지식융합확장"
+            ],
+            "pattern": "(?:0\\.4만호|4천호|4000호)",
+            "description": "2026 확장 4천호",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2024년 11월 발표한 고양대곡 역세권 공급 규모는 0.9만호입니다.",
+              "2026년 10월 발표한 고양대곡지식융합확장의 공급 규모는 4천호입니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2024년 11월 발표한 고양대곡 역세권 공급 규모는 0.9만호입니다.",
+                "reason": "문맥에서 고양대곡 역세권의 공급 규모가 0.9만호로 명시적으로 언급되어 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2026년 10월 발표한 고양대곡지식융합확장의 공급 규모는 4천호입니다.",
+                "reason": "문맥에서 고양대곡지식융합확장의 공급 규모가 4천호로 명시적으로 언급되어 있습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 6.815712175000044
+  },
+  {
+    "key": "Q2:decompose",
+    "question_id": "Q2",
+    "variant": "decompose",
+    "fingerprint": "266d6e7596ca39d49afb49697b516d0a9b842c6fb817432525b00fca4dbdb175",
+    "answer_sha256": "00dba396a6b2f5f0dbd7949818f8927d2421b922fae9bdbe7e91d0fe58d66a38",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "goyang_2024",
+          "goyang_2026"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "goyang_2024",
+          "goyang_2026"
+        ]
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 2/2. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "old_goyang",
+            "kind": "entity_value",
+            "aliases": [
+              "고양대곡역세권",
+              "고양대곡"
+            ],
+            "pattern": "(?:0\\.9만호|9천호|9000호)",
+            "description": "2024 고양대곡 0.9만호",
+            "matched": true
+          },
+          {
+            "id": "new_goyang",
+            "kind": "entity_value",
+            "aliases": [
+              "고양대곡지식융합확장",
+              "지식융합확장"
+            ],
+            "pattern": "(?:0\\.4만호|4천호|4000호)",
+            "description": "2026 확장 4천호",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2024년 11월 발표한 고양대곡 역세권 공급 규모는 0.9만호입니다.",
+              "2026년 10월 발표한 고양대곡지식융합확장의 공급 규모는 4천호입니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2024년 11월 발표한 고양대곡 역세권 공급 규모는 0.9만호입니다.",
+                "reason": "문맥에서 ‘고양대곡 역세권’에 대한 공급 규모로 0.9만호를 명시적으로 언급하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2026년 10월 발표한 고양대곡지식융합확장의 공급 규모는 4천호입니다.",
+                "reason": "문맥에서 ‘고양대곡지식융합확장’에 대한 공급 규모로 4천호를 명시적으로 언급하고 있습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 6.989591338000082
+  },
+  {
+    "key": "Q2:baseline",
+    "question_id": "Q2",
+    "variant": "baseline",
+    "fingerprint": "4dc772a993835d690471314118a0979a7c1aeefbbbf4b547ef535a96f3624e13",
+    "answer_sha256": "00dba396a6b2f5f0dbd7949818f8927d2421b922fae9bdbe7e91d0fe58d66a38",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "goyang_2024",
+          "goyang_2026"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "goyang_2024",
+          "goyang_2026"
+        ]
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 2/2. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "old_goyang",
+            "kind": "entity_value",
+            "aliases": [
+              "고양대곡역세권",
+              "고양대곡"
+            ],
+            "pattern": "(?:0\\.9만호|9천호|9000호)",
+            "description": "2024 고양대곡 0.9만호",
+            "matched": true
+          },
+          {
+            "id": "new_goyang",
+            "kind": "entity_value",
+            "aliases": [
+              "고양대곡지식융합확장",
+              "지식융합확장"
+            ],
+            "pattern": "(?:0\\.4만호|4천호|4000호)",
+            "description": "2026 확장 4천호",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2024년 11월 발표한 고양대곡 역세권 공급 규모는 0.9만호입니다.",
+              "2026년 10월 발표한 고양대곡지식융합확장의 공급 규모는 4천호입니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2024년 11월 발표한 고양대곡 역세권 공급 규모는 0.9만호입니다.",
+                "reason": "문맥에서 2024년 11월 5일 발표 자료에 의거하여 고양대곡 역세권에 0.9만호가 공급된다고 명시하고 있습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2026년 10월 발표한 고양대곡지식융합확장의 공급 규모는 4천호입니다.",
+                "reason": "문맥에서 2026년 10월 29일 발표 자료에 의거하여 고양대곡지식융합확장의 공급 규모가 4천호라고 명시하고 있습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 7.549526538000009
+  },
+  {
+    "key": "Q3:decompose",
+    "question_id": "Q3",
+    "variant": "decompose",
+    "fingerprint": "469233647fabe8f0c098c66c92cbe40be8616924bbf48ceac5189bb9e2b0f4d6",
+    "answer_sha256": "ad68da33f6ec52735b73430da7b6cb6a7a116067aa63f8d4f28ae1d8b9428fb6",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "guri_2023",
+          "guri_2026"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "guri_2023",
+          "guri_2026"
+        ]
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 2/2. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "topyeong",
+            "kind": "entity_value",
+            "aliases": [
+              "구리토평2",
+              "토평2"
+            ],
+            "pattern": "(?:1\\.85만호|18500호)",
+            "description": "구리토평2 1.85만호",
+            "matched": true
+          },
+          {
+            "id": "geonwon",
+            "kind": "entity_value",
+            "aliases": [
+              "구리건원",
+              "건원"
+            ],
+            "pattern": "(?:1\\.46만호|14600호)",
+            "description": "구리건원 1.46만호",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2023년 11월 보도자료에 따르면 구리토평2는 1.85만호를 공급합니다.",
+              "2026년 10월 보도자료에 따르면 구리건원은 1.46만호를 공급합니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2023년 11월 보도자료에 따르면 구리토평2는 1.85만호를 공급합니다.",
+                "reason": "문맥에서 구리토평2가 1.85만호를 선정했다고 명시적으로 언급했습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2026년 10월 보도자료에 따르면 구리건원은 1.46만호를 공급합니다.",
+                "reason": "문맥에서 구리건원이 1.46만호를 선정했다고 명시적으로 언급했습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 6.453219100000297
+  },
+  {
+    "key": "Q3:baseline",
+    "question_id": "Q3",
+    "variant": "baseline",
+    "fingerprint": "cfbd638ced3d4437edbea615e1710134c9ef76a1f4b12d15e6b9dfbe6e85d04c",
+    "answer_sha256": "ad68da33f6ec52735b73430da7b6cb6a7a116067aa63f8d4f28ae1d8b9428fb6",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "guri_2023",
+          "guri_2026"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "guri_2023",
+          "guri_2026"
+        ]
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 2/2. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "topyeong",
+            "kind": "entity_value",
+            "aliases": [
+              "구리토평2",
+              "토평2"
+            ],
+            "pattern": "(?:1\\.85만호|18500호)",
+            "description": "구리토평2 1.85만호",
+            "matched": true
+          },
+          {
+            "id": "geonwon",
+            "kind": "entity_value",
+            "aliases": [
+              "구리건원",
+              "건원"
+            ],
+            "pattern": "(?:1\\.46만호|14600호)",
+            "description": "구리건원 1.46만호",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2023년 11월 보도자료에 따르면 구리토평2는 1.85만호를 공급합니다.",
+              "2026년 10월 보도자료에 따르면 구리건원은 1.46만호를 공급합니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2023년 11월 보도자료에 따르면 구리토평2는 1.85만호를 공급합니다.",
+                "reason": "2023. 11. 15. (수) 10:00 (11. 15.(수) 석간) / 배포 : 23. 11. 15.(수) 전국 5곳에 8만호 규모의 신규택지 후보지 발표 - 「주택공급 활성화 방안(9.26)」 후속조치, 지속적 주택공급 기반 확충 - 구리·오산·용인 등 수도권 3곳(6.55만호), 청주·제주 등 비수도권 2곳(1.45만호)에서 구리토평2가 1.85만호로 언급되었습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2026년 10월 보도자료에 따르면 구리건원은 1.46만호를 공급합니다.",
+                "reason": "2026. 10. 29.(목) 10:00 이후 / 배포 : 2026. 10. 29.(목) 수도권 ‘신규택지 10.4만호’ 신속 공급 - 「주 택 신 속 공급 방 안(8.13)」 후 속조 치, 기 발 표 3곳(2.72만 호) 외 6곳 7.67만 호 추 가 발 표 - 서울 주변 5km내 우수 입지의 품질 좋은 주택을 청년·신혼부부 등에 공급 추진 - ‘공공택지 최단기 착공모델’을 적용하여 ’30년 내 착공 목표 에서 구리건원이 1.46만호로 언급되었습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 12.363037788999918
+  },
+  {
+    "key": "Q3:rerank",
+    "question_id": "Q3",
+    "variant": "rerank",
+    "fingerprint": "b96b356e36f8a0085285179b4a234586fc05ac8310d800550dae5c52494bc5d0",
+    "answer_sha256": "f26d6aba063f1c772ed05cd872a4f201670ae9ebda46b815b5e7100903b124dc",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "guri_2023",
+          "guri_2026"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "guri_2023",
+          "guri_2026"
+        ]
+      },
+      "elements": {
+        "value": 0.5,
+        "status": "measured",
+        "reason": "필수요소 1/2. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "topyeong",
+            "kind": "entity_value",
+            "aliases": [
+              "구리토평2",
+              "토평2"
+            ],
+            "pattern": "(?:1\\.85만호|18500호)",
+            "description": "구리토평2 1.85만호",
+            "matched": true
+          },
+          {
+            "id": "geonwon",
+            "kind": "entity_value",
+            "aliases": [
+              "구리건원",
+              "건원"
+            ],
+            "pattern": "(?:1\\.46만호|14600호)",
+            "description": "구리건원 1.46만호",
+            "matched": false
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2023년 11월 보도자료에 따르면 구리토평2는 1.85만호 규모입니다.",
+              "2026년 10월 보도자료에 따르면 구리건원(구리토평2)은 1.46만호 규모입니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2023년 11월 보도자료에 따르면 구리토평2는 1.85만호 규모입니다.",
+                "reason": "2023년 11월 15일 발표 보도자료에서 구리토평2는 1.85만호로 명시적으로 언급되었습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "2026년 10월 보도자료에 따르면 구리건원(구리토평2)은 1.46만호 규모입니다.",
+                "reason": "2026년 10월 29일 발표 보도자료에서 구리건원(구리토평2)은 1.46만호로 명시적으로 언급되었습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 7.534760974999699
+  },
+  {
+    "key": "Q4:baseline",
+    "question_id": "Q4",
+    "variant": "baseline",
+    "fingerprint": "059efdc4f82e57bf698831d1263b580799e3d3ced4bb88b0fc0f0569f4038968",
+    "answer_sha256": "50bd37744b9311f44a49b6a68b154f9f1f2fc7b144a067f233c22f8d76e363ef",
+    "metrics": {
+      "recall_candidates": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "긍정적인 정답 근거 그룹이 없는 답변 불가 문항."
+      },
+      "recall_delivered": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "긍정적인 정답 근거 그룹이 없는 답변 불가 문항."
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 1/1. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "price_unknown",
+            "kind": "unknown",
+            "scope": "분양가|가격",
+            "description": "요청 가격 확인 불가 안내",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "답변에 연도가 없고 연도 명시 요구도 없는 문항."
+      },
+      "faithfulness": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "순수 확인 불가 안내. 긍정적 사실이 없어 Faithfulness 적용 불가. 거절 적절성은 별도 사람 판정."
+      }
+    },
+    "wall_seconds": 0.0036331420001260994
+  },
+  {
+    "key": "Q4:rerank",
+    "question_id": "Q4",
+    "variant": "rerank",
+    "fingerprint": "dfc0e179b8d46246b8df1992729685ec47aa6731f0ac3df33ccd8fafbfded772",
+    "answer_sha256": "b0241993cde6983d2bd44915ead62be11f8ac5223980335b1d4743e26fa15dd5",
+    "metrics": {
+      "recall_candidates": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "긍정적인 정답 근거 그룹이 없는 답변 불가 문항."
+      },
+      "recall_delivered": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "긍정적인 정답 근거 그룹이 없는 답변 불가 문항."
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 1/1. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "price_unknown",
+            "kind": "unknown",
+            "scope": "분양가|가격",
+            "description": "요청 가격 확인 불가 안내",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "답변에 연도가 없고 연도 명시 요구도 없는 문항."
+      },
+      "faithfulness": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "제공된 자료에는 김포아라 전용 84㎡ 주택의 확정 분양가에 대한 정보가 없습니다.",
+              "자료에는 김포아라 택지(3.7만호)의 위치와 주변 환경에 대한 정보만 포함되어 있습니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "제공된 자료에는 김포아라 전용 84㎡ 주택의 확정 분양가에 대한 정보가 없습니다.",
+                "reason": "자료에는 김포아라 택지의 규모(3.7만호)와 위치 정보만 제공되며, 특정 주택 유형(84㎡)의 분양가에 대한 구체적인 정보는 포함되어 있지 않습니다.",
+                "verdict": 1
+              },
+              {
+                "statement": "자료에는 김포아라 택지(3.7만호)의 위치와 주변 환경에 대한 정보만 포함되어 있습니다.",
+                "reason": "자료는 김포아라 택지의 위치(서울 강서구 인접, 한강변), 주변 환경(5호선 연장 사업 추진, 교통망 등)에 대한 설명을 제공하지만, 택지의 면적(3.7만호)에 대한 상세 정보는 포함되어 있지 않습니다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 8.188514969000153
+  },
+  {
+    "key": "Q4:decompose",
+    "question_id": "Q4",
+    "variant": "decompose",
+    "fingerprint": "0063e57526b4cd9f07de6cb164358685fab5cce7ae7b816eb73509850b8e7260",
+    "answer_sha256": "50bd37744b9311f44a49b6a68b154f9f1f2fc7b144a067f233c22f8d76e363ef",
+    "metrics": {
+      "recall_candidates": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "긍정적인 정답 근거 그룹이 없는 답변 불가 문항."
+      },
+      "recall_delivered": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "긍정적인 정답 근거 그룹이 없는 답변 불가 문항."
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 1/1. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "price_unknown",
+            "kind": "unknown",
+            "scope": "분양가|가격",
+            "description": "요청 가격 확인 불가 안내",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "답변에 연도가 없고 연도 명시 요구도 없는 문항."
+      },
+      "faithfulness": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "순수 확인 불가 안내. 긍정적 사실이 없어 Faithfulness 적용 불가. 거절 적절성은 별도 사람 판정."
+      }
+    },
+    "wall_seconds": 0.000334254999870609
+  },
+  {
+    "key": "Q5:rerank",
+    "question_id": "Q5",
+    "variant": "rerank",
+    "fingerprint": "c7de0c94fad5d9eac6fb125032087cd1524eb410c2aa0090ed93946a661e5e7a",
+    "answer_sha256": "e0c4509d620c57c0fb0350fcdfcdd1c6b0a3e495cc9a7cf61ed35072d3024675",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "misa",
+          "gamil"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "misa",
+          "gamil"
+        ]
+      },
+      "elements": {
+        "value": 0.6666666666666666,
+        "status": "measured",
+        "reason": "필수요소 2/3. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "misa",
+            "kind": "entity_value",
+            "aliases": [
+              "하남미사K-컬처",
+              "미사K-컬처",
+              "하남미사"
+            ],
+            "pattern": "(?:1\\.2만호|12000호)",
+            "description": "하남미사 1.2만호",
+            "matched": true
+          },
+          {
+            "id": "gamil",
+            "kind": "entity_value",
+            "aliases": [
+              "하남감일2",
+              "감일2"
+            ],
+            "pattern": "(?:6\\.5천호|0\\.65만호|6500호)",
+            "description": "하남감일2 6.5천호",
+            "matched": true
+          },
+          {
+            "id": "occupancy_unknown",
+            "kind": "unknown",
+            "scope": "입주",
+            "description": "두 지구 확정 입주일 확인 불가 안내; 대상별 충분성은 사람도 확인",
+            "matched": false
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": null,
+        "status": "not_applicable",
+        "reason": "답변에 연도가 없고 연도 명시 요구도 없는 문항."
+      },
+      "faithfulness": {
+        "value": null,
+        "status": "error",
+        "reason": "ValueError: Judge가 주장을 누락·중복·변경함",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2026년 10월 보도자료에 따르면 하남미사 K-컬처는 1만2천호로 공급될 예정이다.",
+              "하남미사 K-컬처는 미사섬 인근의 5호선과 연계하여 서울 내 주요 역까지의 접근성을 개선하는 계획이다.",
+              "2026년 10월 보도자료에 따르면 하남감일2는 6천5백호로 공급될 예정이다.",
+              "하남감일2는 감이천을 통한 올림픽공원 및 한강 접근성과 함께 하남감일지구의 3호선 연장사업과 연계된 대중교통 체계를 구축할 계획이다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2026년 10월 보도자료에 따르면 하남미사 K-컬처는 1만2천호로 공급될 예정이다.",
+                "reason": "문맥에서 ‘하남미사 K-컬처(1.2만호)’라는 수치를 언급하며 1만2천호로 공급될 예정이라고 명시적으로 설명하고 있다.",
+                "verdict": 1
+              },
+              {
+                "statement": "하남미사 K-컬처는 미사섬 인근의 5호선과 연계하여 서울 내 주요 역까지의 접근성을 개선하는 계획이다.",
+                "reason": "문맥에서 ‘미사섬 인근으로 5호선이 위치하고’라는 정보를 통해 5호선 연계로 접근성 개선 계획이 있다는 내용을 확인했다.",
+                "verdict": 1
+              },
+              {
+                "statement": "하남감일2는 6천5백호로 공급될 예정이다.",
+                "reason": "문맥에서 ‘하남감일2(6.5천호)’라는 수치를 언급하며 6천5백호로 공급될 예정이라고 명시적으로 설명하고 있다.",
+                "verdict": 1
+              },
+              {
+                "statement": "하남감일2는 감이천을 통한 올림픽공원 및 한강 접근성과 함께 하남감일지구의 3호선 연장사업과 연계된 대중교통 체계를 구축할 계획이다.",
+                "reason": "문맥에서 ‘감이천을 통한 올림픽공원, 한강으로의 접근성이 우수한 지역’이라는 정보를 통해 관련 계획을 확인했다.",
+                "verdict": 1
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 13.250065363999965
+  },
+  {
+    "key": "Q5:decompose",
+    "question_id": "Q5",
+    "variant": "decompose",
+    "fingerprint": "6993e96a9f975c82edcd39fbfa11f8794b6f2be2954a69b7bbbfe909987ae1bf",
+    "answer_sha256": "eb6db5984591b0095f230177d1490d50f2d96a6b039edf4157d9bfd9fa40d03a",
+    "metrics": {
+      "recall_candidates": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "misa",
+          "gamil"
+        ]
+      },
+      "recall_delivered": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필요 근거 그룹 2/2. 청크 ID 기반이며 의미 정확성/정밀도와 별개.",
+        "found_groups": [
+          "misa",
+          "gamil"
+        ]
+      },
+      "elements": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "필수요소 3/3. 문구·대상 연결 보조 검사이며 전체 정답률이 아님.",
+        "checks": [
+          {
+            "id": "misa",
+            "kind": "entity_value",
+            "aliases": [
+              "하남미사K-컬처",
+              "미사K-컬처",
+              "하남미사"
+            ],
+            "pattern": "(?:1\\.2만호|12000호)",
+            "description": "하남미사 1.2만호",
+            "matched": true
+          },
+          {
+            "id": "gamil",
+            "kind": "entity_value",
+            "aliases": [
+              "하남감일2",
+              "감일2"
+            ],
+            "pattern": "(?:6\\.5천호|0\\.65만호|6500호)",
+            "description": "하남감일2 6.5천호",
+            "matched": true
+          },
+          {
+            "id": "occupancy_unknown",
+            "kind": "unknown",
+            "scope": "입주",
+            "description": "두 지구 확정 입주일 확인 불가 안내; 대상별 충분성은 사람도 확인",
+            "matched": true
+          }
+        ]
+      },
+      "year_clarity": {
+        "value": 1.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [],
+        "missing_required_years": []
+      },
+      "faithfulness": {
+        "value": 0.5,
+        "status": "measured",
+        "reason": "Gemma Judge가 근거로 지지된다고 판단한 주장 비율. 완전성·전체 정답률과 다름.",
+        "judge_outputs": [
+          {
+            "statements": [
+              "2026년 10월 보도자료에 따르면 하남미사 K-컬처는 1.2만 호로 공급될 예정입니다.",
+              "하남미사 K-컬처의 확정 입주일은 자료에 나와 있지 않습니다.",
+              "2026년 10월 보도자료에 따르면 하남감일2는 6.5천 호로 공급될 예정입니다.",
+              "하남감일2의 확정 입주일은 자료에 나와 있지 않습니다."
+            ]
+          },
+          {
+            "statements": [
+              {
+                "statement": "2026년 10월 보도자료에 따르면 하남미사 K-컬처는 1.2만 호로 공급될 예정입니다.",
+                "reason": "문맥에서 하남미사 K-컬처가 1.2만 호로 언급됨",
+                "verdict": 1
+              },
+              {
+                "statement": "하남미사 K-컬처의 확정 입주일은 자료에 나와 있지 않습니다.",
+                "reason": "자료에서 하남미사 K-컬처의 정확한 입주일 정보가 제공되지 않음",
+                "verdict": 0
+              },
+              {
+                "statement": "2026년 10월 보도자료에 따르면 하남감일2는 6.5천 호로 공급될 예정입니다.",
+                "reason": "문맥에서 하남감일2가 6.5천 호로 언급됨",
+                "verdict": 1
+              },
+              {
+                "statement": "하남감일2의 확정 입주일은 자료에 나와 있지 않습니다.",
+                "reason": "자료에서 하남감일2의 정확한 입주일 정보가 제공되지 않음",
+                "verdict": 0
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "wall_seconds": 10.437238797000191
+  }
+]
