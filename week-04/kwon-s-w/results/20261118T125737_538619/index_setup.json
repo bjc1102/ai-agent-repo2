@@ -1,0 +1,9 @@
+{
+  "wall_seconds": 88.46366816999989,
+  "shared_by": [
+    "baseline",
+    "rerank",
+    "decompose"
+  ],
+  "note": "common setup cost, excluded from per-question RAG latency"
+}

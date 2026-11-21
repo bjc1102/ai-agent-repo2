@@ -1,0 +1,4 @@
+{
+  "ollama_ps": "NAME         ID              SIZE      PROCESSOR    CONTEXT    RUNNER      UNTIL              \ngemma3:4b    68ceab7e468a    3.0 GB    100% GPU     8192       llamacpp    4 minutes from now    \n",
+  "answer": "김포아라 공급 규모는 3.7만호이다."
+}

@@ -1,0 +1,54 @@
+{
+  "config": {
+    "generation_model": "gemma3:4b",
+    "embedding_model": "embeddinggemma",
+    "temperature": 0,
+    "seed": 42,
+    "num_ctx": 8192,
+    "num_predict": 600,
+    "dense_candidates": 6,
+    "lexical_candidates": 6,
+    "rrf_k": 60,
+    "final_top_k": 8,
+    "context_max_characters": 4200,
+    "reranker": "BAAI/bge-reranker-v2-m3",
+    "reranker_device": "cpu",
+    "reranker_max_length": 1024,
+    "reranker_batch_size": 2,
+    "max_subqueries": 3,
+    "decomposition_num_predict": 384,
+    "judge_num_predict": 2048,
+    "timeout_seconds": 600,
+    "repetitions": 1
+  },
+  "policy_sha256": "c87a980a60e88ab0cb904d7b65aa803e52b36d90baa5f26425dd27a56cc11fab",
+  "created_at_utc": "2026-11-18T12:57:37.606801+00:00",
+  "variants": [
+    "baseline",
+    "rerank",
+    "decompose"
+  ],
+  "questions": [
+    {
+      "id": "Q1",
+      "question": "2026년 10월 29일 보도자료에서 이번에 추가한 후보지 수와 공급 규모를 기존 발표분과 구분해 알려주고, 2030년 내 목표가 착공인지 입주인지 설명해주세요."
+    },
+    {
+      "id": "Q2",
+      "question": "각 보도자료 본문 표기를 기준으로, 2024년 11월 발표한 고양대곡 역세권과 2026년 10월 발표한 고양대곡지식융합확장의 공급 규모를 각각 알려주세요."
+    },
+    {
+      "id": "Q3",
+      "question": "2023년 11월 보도자료의 구리토평2와 2026년 10월 보도자료의 구리건원 공급 규모를 사업명과 연결해 각각 알려주세요."
+    },
+    {
+      "id": "Q4",
+      "question": "제공된 세 보도자료만으로 김포아라 전용 84㎡ 주택의 확정 분양가를 얼마라고 확인할 수 있나요?"
+    },
+    {
+      "id": "Q5",
+      "question": "2026년 10월 보도자료의 하남미사 K-컬처와 하남감일2에 대해 각각 공급 규모와 확정 입주일을 알려주세요."
+    }
+  ],
+  "note": "evaluation rubric frozen before variants; one repetition; model digests checked"
+}

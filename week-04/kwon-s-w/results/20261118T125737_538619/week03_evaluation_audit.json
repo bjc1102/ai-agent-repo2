@@ -1,0 +1,44 @@
+{
+  "original_run": "20261114T070242_264622",
+  "note": "old answers rechecked; no new generation; old judge not rerun",
+  "items": [
+    {
+      "question_id": "E1",
+      "answer": "김포아라의 주택 공급 규모는 3.7만호입니다.",
+      "old_element_coverage": 1.0
+    },
+    {
+      "question_id": "E2",
+      "answer": "이번에 추가 발표한 신규 택지 후보지는 총 6곳입니다.",
+      "old_element_coverage": 1.0
+    },
+    {
+      "question_id": "E3",
+      "answer": "보도자료는 ’30년 내 착공을 목표로 하고 있다.",
+      "old_element_coverage": 1.0,
+      "new_year_clarity": {
+        "value": 0.0,
+        "status": "measured",
+        "reason": "연도 표현만 검사. 연도 사실관계는 별도 원문 대조.",
+        "abbreviated": [
+          "’30년"
+        ],
+        "missing_required_years": [
+          2030
+        ]
+      }
+    },
+    {
+      "question_id": "E4",
+      "answer": "제공된 자료에는 김포아라 전용 84㎡ 주택의 확정 분양가에 대한 정보가 없습니다.",
+      "old_element_coverage": 1.0
+    },
+    {
+      "question_id": "E5",
+      "answer": "하남미사 K-컬처는 1.2만호를 공급합니다. \n확정 입주일은 자료에 나와 있지 않습니다.",
+      "old_element_coverage": 0.5,
+      "new_occupancy_unknown_recognized": true,
+      "new_element_coverage": 1.0
+    }
+  ]
+}
